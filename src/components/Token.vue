@@ -70,7 +70,15 @@ export default {
     return {};
   },
   filters: {
-    nameToFontSize: name => (name && name.length > 10 ? "90%" : "110%")
+    nameToFontSize: name => {
+      if (!name) {
+        return "110%";
+      }
+      const baseSize = 110;
+      const lengthOverage = Math.max(0, name.length - 10);
+      const scaledSize = baseSize - lengthOverage * 4;
+      return `${Math.max(70, scaledSize)}%`;
+    }
   },
   methods: {
     setRole() {
