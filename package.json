@@ -5,11 +5,11 @@
   "author": "Steffen Baumgart",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve --host 0.0.0.0 --port $PORT",
     "build": "vue-cli-service build ./src/main.js",
     "lint": "vue-cli-service lint",
     "lint-ci": "vue-cli-service lint --no-fix --max-warnings=0"
   },
-  "main": "App.vue",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
