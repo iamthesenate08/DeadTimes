@@ -5,10 +5,10 @@
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 33,
-    "firstNightReminder": "Show the character token of a Townsfolk in play. Point to two players, one of which is that character.",
+    "firstNightReminder": "Show the character token of a Student in play. Point to two players, one of which is that character.",
     "otherNight": 0,
     "otherNightReminder": "",
-    "reminders": ["Townsfolk",
+    "reminders": ["Students",
         "Wrong"],
     "setup": false,
     "ability": "You start knowing that 1 of 2 players is a particular Student."
@@ -19,10 +19,10 @@
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 34,
-    "firstNightReminder": "Show the character token of an Outsider in play. Point to two players, one of which is that character.",
+    "firstNightReminder": "Show the character token of a Faculty member in play. Point to two players, one of which is that character.",
     "otherNight": 0,
     "otherNightReminder": "",
-    "reminders": ["Outsider",
+    "reminders": ["Faculty",
         "Wrong"],
     "setup": false,
     "ability": "You start knowing that 1 of 2 players is a particular Faculty member. (Or that zero are in play.)"
@@ -33,10 +33,10 @@
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 35,
-    "firstNightReminder": "Show the character token of a Minion in play. Point to two players, one of which is that character.",
+    "firstNightReminder": "Show the character token of an Accomplice in play. Point to two players, one of which is that character.",
     "otherNight": 0,
     "otherNightReminder": "",
-    "reminders": ["Minion",
+    "reminders": ["Accomplice",
         "Wrong"],
     "setup": false,
     "ability": "You start knowing that 1 of 2 players is a particular Accomplice."
@@ -73,9 +73,9 @@
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 38,
-    "firstNightReminder": "The Fortune Teller points to two players. Give the head signal (nod yes, shake no) for whether one of those players is the Demon. ",
+    "firstNightReminder": "The Fortune Teller points to two players. Give the head signal (nod yes, shake no) for whether one of those players is the Slasher. ",
     "otherNight": 54,
-    "otherNightReminder": "The Fortune Teller points to two players. Show the head signal (nod 'yes', shake 'no') for whether one of those players is the Demon.",
+    "otherNightReminder": "The Fortune Teller points to two players. Show the head signal (nod 'yes', shake 'no') for whether one of those players is the Slasher.",
     "reminders": ["Red herring"],
     "setup": false,
     "ability": "Each night, choose 2 players: you learn if either is the Killer. There is a good player that registers as the Killer to you."
@@ -196,7 +196,7 @@
     "reminders": [],
     "remindersGlobal": ["Drunk"],
     "setup": true,
-    "ability": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not."
+    "ability": "You do not know you are the Drunk. You think you are a Student character, but you are not."
   },
   {
     "id": "recluse",
@@ -271,8 +271,8 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 19,
-    "otherNightReminder": "If the Scarlet Woman became the Demon today: Show the 'You are' card, then the demon token.",
-    "reminders": ["Demon"],
+    "otherNightReminder": "If the Scarlet Woman became the Slasher today: Show the 'You are' card, then the slasher token.",
+    "reminders": ["Slasher"],
     "setup": false,
     "ability": "If there are 5 or more players alive & the Killer dies, you become the Killer."
   },
@@ -297,7 +297,7 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 24,
-    "otherNightReminder": "The Imp points to a player. That player dies. If the Imp chose themselves: Replace the character of 1 alive minion with a spare Imp token. Show the 'You are' card, then the Imp token.",
+    "otherNightReminder": "The Imp points to a player. That player dies. If the Imp chose themselves: Replace the character of 1 alive accomplice with a spare Imp token. Show the 'You are' card, then the Imp token.",
     "reminders": ["Dead"],
     "setup": false,
     "ability": "Each night*, choose a player: they die. If you kill yourself this way, an Accomplice becomes the Slasher."
@@ -375,10 +375,10 @@
     "firstNight": 40,
     "firstNightReminder": "Show the marked character token. Point to the marked player.",
     "otherNight": 51,
-    "otherNightReminder": "If the Grandmother\u2019s grandchild was killed by the Demon tonight: The Grandmother dies.",
+    "otherNightReminder": "If the Grandmother\u2019s grandchild was killed by the Slasher tonight: The Grandmother dies.",
     "reminders": ["Grandchild"],
     "setup": false,
-    "ability": "You start knowing a good player & their character. If the Demon kills them, you die too."
+    "ability": "You start knowing a good player & their character. If the Slasher kills them, you die too."
   },
   {
     "id": "sailor",
@@ -414,10 +414,10 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 21,
-    "otherNightReminder": "The Exorcist points to a player, different from the previous night. If that player is the Demon: Wake the Demon. Show the Exorcist token. Point to the Exorcist. The Demon does not act tonight.",
+    "otherNightReminder": "The Exorcist points to a player, different from the previous night. If that player is the Slasher: Wake the Slasher. Show the Exorcist token. Point to the Exorcist. The Slasher does not act tonight.",
     "reminders": ["Chosen"],
     "setup": false,
-    "ability": "Each night*, choose a player (different to last night): the Demon, if chosen, learns who you are then doesn't wake tonight."
+    "ability": "Each night*, choose a player (different to last night): the Slasher, if chosen, learns who you are then doesn't wake tonight."
   },
   {
     "id": "innkeeper",
@@ -483,7 +483,7 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 43,
-    "otherNightReminder": "If the Professor has not used their ability: The Professor either shakes their head no, or points to a player. If that player is a Townsfolk, they are now alive.",
+    "otherNightReminder": "If the Professor has not used their ability: The Professor either shakes their head no, or points to a player. If that player is a Student, they are now alive.",
     "reminders": ["Alive",
         "No ability"],
     "setup": false,
@@ -500,7 +500,7 @@
     "otherNightReminder": "",
     "reminders": ["Everyone drunk"],
     "setup": false,
-    "ability": "When a Minion dies by execution, all other players (except Travellers) are drunk until dusk tomorrow."
+    "ability": "When an Accomplice dies by execution, all other players (except Travellers) are drunk until dusk tomorrow."
   },
   {
     "id": "tealady",
@@ -586,14 +586,14 @@
     "edition": "bmr",
     "team": "outsider",
     "firstNight": 8,
-    "firstNightReminder": "If 7 or more players: Show the Lunatic a number of arbitrary 'Minions', players equal to the number of Minions in play. Show 3 character tokens of arbitrary good characters. If the token received by the Lunatic is a Demon that would wake tonight: Allow the Lunatic to do the Demon actions. Place their 'attack' markers. Wake the Demon. Show the Demon\u2019s real character token. Show them the Lunatic player. If the Lunatic attacked players: Show the real demon each marked player. Remove any Lunatic 'attack' markers.",
+    "firstNightReminder": "If 7 or more players: Show the Lunatic a number of arbitrary 'Accomplices', players equal to the number of Accomplices in play. Show 3 character tokens of arbitrary good characters. If the token received by the Lunatic is a Slasher that would wake tonight: Allow the Lunatic to do the Slasher actions. Place their 'attack' markers. Wake the Slasher. Show the Slasher\u2019s real character token. Show them the Lunatic player. If the Lunatic attacked players: Show the real slasher each marked player. Remove any Lunatic 'attack' markers.",
     "otherNight": 20,
-    "otherNightReminder": "Allow the Lunatic to do the actions of the Demon. Place their 'attack' markers. If the Lunatic selected players: Wake the Demon. Show the 'attack' marker, then point to each marked player. Remove any Lunatic 'attack' markers.",
+    "otherNightReminder": "Allow the Lunatic to do the actions of the Slasher. Place their 'attack' markers. If the Lunatic selected players: Wake the Slasher. Show the 'attack' marker, then point to each marked player. Remove any Lunatic 'attack' markers.",
     "reminders": ["Attack 1",
         "Attack 2",
         "Attack 3"],
     "setup": false,
-    "ability": "You think you are a Demon, but you are not. The Demon knows who you are & who you choose at night."
+    "ability": "You think you are a Slasher, but you are not. The Slasher knows who you are & who you choose at night."
   },
   {
     "id": "godfather",
@@ -601,13 +601,13 @@
     "edition": "bmr",
     "team": "minion",
     "firstNight": 21,
-    "firstNightReminder": "Show each of the Outsider tokens in play.",
+    "firstNightReminder": "Show each of the Faculty tokens in play.",
     "otherNight": 37,
-    "otherNightReminder": "If an Outsider died today: The Godfather points to a player. That player dies.",
+    "otherNightReminder": "If a Faculty member died today: The Godfather points to a player. That player dies.",
     "reminders": ["Died today",
         "Dead"],
     "setup": true,
-    "ability": "You start knowing which Outsiders are in play. If 1 died today, choose a player tonight: they die. [\u22121 or +1 Outsider]"
+    "ability": "You start knowing which Faculty are in play. If 1 died today, choose a player tonight: they die. [\u22121 or +1 Faculty]"
   },
   {
     "id": "devilsadvocate",
@@ -647,7 +647,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "If the Demon dies by execution (ending the game), play for 1 more day. If a player is then executed, their team loses."
+    "ability": "If the Slasher dies by execution (ending the game), play for 1 more day. If a player is then executed, their team loses."
   },
   {
     "id": "zombuul",
@@ -711,12 +711,12 @@
     "edition": "bmr",
     "team": "traveler",
     "firstNight": 1,
-    "firstNightReminder": "Show the Apprentice the 'You are' card, then a Townsfolk or Minion token. In the Grimoire, replace the Apprentice token with that character token, and put the Apprentice's 'Is the Apprentice' reminder by that character token.",
+    "firstNightReminder": "Show the Apprentice the 'You are' card, then a Student or Accomplice token. In the Grimoire, replace the Apprentice token with that character token, and put the Apprentice's 'Is the Apprentice' reminder by that character token.",
     "otherNight": 0,
     "otherNightReminder": "",
     "reminders": ["Is the Apprentice"],
     "setup": false,
-    "ability": "On your 1st night, you gain a Townsfolk ability (if good), or a Minion ability (if evil)."
+    "ability": "On your 1st night, you gain a Student ability (if good), or an Accomplice ability (if evil)."
   },
   {
     "id": "matron",
@@ -777,12 +777,12 @@
     "edition": "snv",
     "team": "townsfolk",
     "firstNight": 41,
-    "firstNightReminder": "Show the hand signal for the number (1, 2, 3, etc.) of places from Demon to closest Minion.",
+    "firstNightReminder": "Show the hand signal for the number (1, 2, 3, etc.) of places from Slasher to closest Accomplice.",
     "otherNight": 0,
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "You start knowing how many steps from the Demon to its nearest Minion."
+    "ability": "You start knowing how many steps from the Slasher to its nearest Accomplice."
   },
   {
     "id": "dreamer",
@@ -803,12 +803,12 @@
     "edition": "snv",
     "team": "townsfolk",
     "firstNight": 20,
-    "firstNightReminder": "The Snake Charmer points to a player. If that player is the Demon: swap the Demon and Snake Charmer character and alignments. Wake each player to inform them of their new role and alignment. The new Snake Charmer is poisoned.",
+    "firstNightReminder": "The Snake Charmer points to a player. If that player is the Slasher: swap the Slasher and Snake Charmer character and alignments. Wake each player to inform them of their new role and alignment. The new Snake Charmer is poisoned.",
     "otherNight": 11,
-    "otherNightReminder": "The Snake Charmer points to a player. If that player is the Demon: swap the Demon and Snake Charmer character and alignments. Wake each player to inform them of their new role and alignment. The new Snake Charmer is poisoned.",
+    "otherNightReminder": "The Snake Charmer points to a player. If that player is the Slasher: swap the Slasher and Snake Charmer character and alignments. Wake each player to inform them of their new role and alignment. The new Snake Charmer is poisoned.",
     "reminders": ["Poisoned"],
     "setup": false,
-    "ability": "Each night, choose an alive player: a chosen Demon swaps characters & alignments with you & is then poisoned."
+    "ability": "Each night, choose an alive player: a chosen Slasher swaps characters & alignments with you & is then poisoned."
   },
   {
     "id": "mathematician",
@@ -831,11 +831,11 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 57,
-    "otherNightReminder": "Nod 'yes' or shake head 'no' for whether the Demon voted today. Place the 'Demon not voted' marker (remove 'Demon voted', if any).",
-    "reminders": ["Demon voted",
-        "Demon not voted"],
+    "otherNightReminder": "Nod 'yes' or shake head 'no' for whether the Slasher voted today. Place the 'Slasher not voted' marker (remove 'Slasher voted', if any).",
+    "reminders": ["Slasher voted",
+        "Slasher not voted"],
     "setup": false,
-    "ability": "Each night*, you learn if a Demon voted today."
+    "ability": "Each night*, you learn if a Slasher voted today."
   },
   {
     "id": "towncrier",
@@ -845,9 +845,9 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 58,
-    "otherNightReminder": "Nod 'yes' or shake head 'no' for whether a Minion nominated today. Place the 'Minion not nominated' marker (remove 'Minion nominated', if any).",
-    "reminders": ["Minions not nominated",
-        "Minion nominated"],
+    "otherNightReminder": "Nod 'yes' or shake head 'no' for whether an Accomplice nominated today. Place the 'Accomplice not nominated' marker (remove 'Accomplice nominated', if any).",
+    "reminders": ["Accomplices not nominated",
+        "Accomplice nominated"],
     "setup": false,
     "ability": "Each night*, you learn if an Accomplice nominated today."
   },
@@ -938,10 +938,10 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 42,
-    "otherNightReminder": "If the Sage was killed by a Demon: Point to two players, one of which is that Demon.",
+    "otherNightReminder": "If the Sage was killed by a Slasher: Point to two players, one of which is that Slasher.",
     "reminders": [],
     "setup": false,
-    "ability": "If the Demon kills you, you learn that it is 1 of 2 players."
+    "ability": "If the Slasher kills you, you learn that it is 1 of 2 players."
   },
   {
     "id": "mutant",
@@ -954,7 +954,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "If you are \u201Cmad\u201D about being an Outsider, you might be executed."
+    "ability": "If you are \u201Cmad\u201D about being a Faculty member, you might be executed."
   },
   {
     "id": "sweetheart",
@@ -977,10 +977,10 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 40,
-    "otherNightReminder": "If the Barber died today: Wake the Demon. Show the 'This character selected you' card, then Barber token. The Demon either shows a 'no' head signal, or points to 2 players. If they chose players: Swap the character tokens. Wake each player. Show 'You are', then their new character token.",
+    "otherNightReminder": "If the Barber died today: Wake the Slasher. Show the 'This character selected you' card, then Barber token. The Slasher either shows a 'no' head signal, or points to 2 players. If they chose players: Swap the character tokens. Wake each player. Show 'You are', then their new character token.",
     "reminders": ["Haircuts tonight"],
     "setup": false,
-    "ability": "If you died today or tonight, the Demon may choose 2 players (not another Demon) to swap characters."
+    "ability": "If you died today or tonight, the Slasher may choose 2 players (not another Slasher) to swap characters."
   },
   {
     "id": "klutz",
@@ -1045,7 +1045,7 @@
     "otherNightReminder": "The Pit-Hag points to a player and a character on the sheet. If this character is not in play, wake that player and show them the 'You are' card and the relevant character token. If the character is in play, nothing happens.",
     "reminders": [],
     "setup": false,
-    "ability": "Each night*, choose a player & a character they become (if not-in-play). If a Demon is made, deaths tonight are arbitrary."
+    "ability": "Each night*, choose a player & a character they become (if not-in-play). If a Slasher is made, deaths tonight are arbitrary."
   },
   {
     "id": "fanggu",
@@ -1055,11 +1055,11 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 29,
-    "otherNightReminder": "The Fang Gu points to a player. That player dies. Or, if that player was an Outsider and there are no other Fang Gu in play: The Fang Gu dies instead of the chosen player. The chosen player is now an evil Fang Gu. Wake the new Fang Gu. Show the 'You are' card, then the Fang Gu token. Show the 'You are' card, then the thumb-down 'evil' hand sign.",
+    "otherNightReminder": "The Fang Gu points to a player. That player dies. Or, if that player was a Faculty member and there are no other Fang Gu in play: The Fang Gu dies instead of the chosen player. The chosen player is now an evil Fang Gu. Wake the new Fang Gu. Show the 'You are' card, then the Fang Gu token. Show the 'You are' card, then the thumb-down 'evil' hand sign.",
     "reminders": ["Dead",
         "Once"],
     "setup": true,
-    "ability": "Each night*, choose a player: they die. The 1st Outsider this kills becomes an evil Fang Gu & you die instead. [+1 Outsider]"
+    "ability": "Each night*, choose a player: they die. The 1st Faculty this kills becomes an evil Fang Gu & you die instead. [+1 Faculty]"
   },
   {
     "id": "vigormortis",
@@ -1069,12 +1069,12 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 32,
-    "otherNightReminder": "The Vigormortis points to a player. That player dies. If a Minion, they keep their ability and one of their Townsfolk neighbours is poisoned.",
+    "otherNightReminder": "The Vigormortis points to a player. That player dies. If an Accomplice, they keep their ability and one of their Student neighbours is poisoned.",
     "reminders": ["Dead",
         "Has ability",
         "Poisoned"],
     "setup": true,
-    "ability": "Each night*, choose a player: they die. Minions you kill keep their ability & poison 1 Townsfolk neighbour. [\u22121 Outsider]"
+    "ability": "Each night*, choose a player: they die. Accomplices you kill keep their ability & poison 1 Student neighbour. [\u22121 Faculty]"
   },
   {
     "id": "nodashii",
@@ -1088,7 +1088,7 @@
     "reminders": ["Dead",
         "Poisoned"],
     "setup": false,
-    "ability": "Each night*, choose a player: they die. Your 2 Townsfolk neighbours are poisoned."
+    "ability": "Each night*, choose a player: they die. Your 2 Student neighbours are poisoned."
   },
   {
     "id": "vortox",
@@ -1101,7 +1101,7 @@
     "otherNightReminder": "The Vortox points to a player. That player dies.",
     "reminders": ["Dead"],
     "setup": false,
-    "ability": "Each night*, choose a player: they die. Townsfolk abilities yield false info. Each day, if no-one is executed, evil wins."
+    "ability": "Each night*, choose a player: they die. Student abilities yield false info. Each day, if no-one is executed, evil wins."
   },
   {
     "id": "barista",
@@ -1189,12 +1189,12 @@
     "edition": "",
     "team": "townsfolk",
     "firstNight": 46,
-    "firstNightReminder": "Point to 1 evil player. Wake the townsfolk who is evil and show them the 'You are' card and the thumbs down evil sign.",
+    "firstNightReminder": "Point to 1 evil player. Wake the student who is evil and show them the 'You are' card and the thumbs down evil sign.",
     "otherNight": 64,
     "otherNightReminder": "If the known evil player has died, point to another evil player. ",
     "reminders": ["Known"],
     "setup": true,
-    "ability": "You start knowing 1 evil player. If the player you know dies, you learn another evil player tonight. [1 Townsfolk is evil]"
+    "ability": "You start knowing 1 evil player. If the player you know dies, you learn another evil player tonight. [1 Student is evil]"
   },
   {
     "id": "pixie",
@@ -1202,13 +1202,13 @@
     "edition": "",
     "team": "townsfolk",
     "firstNight": 29,
-    "firstNightReminder": "Show the Pixie 1 in-play Townsfolk character token.",
+    "firstNightReminder": "Show the Pixie 1 in-play Student character token.",
     "otherNight": 0,
     "otherNightReminder": "",
     "reminders": ["Mad",
         "Has ability"],
     "setup": false,
-    "ability": "You start knowing 1 in-play Townsfolk. If you were mad that you were this character, you gain their ability when they die."
+    "ability": "You start knowing 1 in-play Student. If you were mad that you were this character, you gain their ability when they die."
   },
   {
     "id": "general",
@@ -1229,12 +1229,12 @@
     "edition": "",
     "team": "townsfolk",
     "firstNight": 14,
-    "firstNightReminder": "The Preacher chooses a player. If a Minion is chosen, wake the Minion and show the 'This character selected you' card and then the Preacher token.",
+    "firstNightReminder": "The Preacher chooses a player. If an Accomplice is chosen, wake the Accomplice and show the 'This character selected you' card and then the Preacher token.",
     "otherNight": 6,
-    "otherNightReminder": "The Preacher chooses a player. If a Minion is chosen, wake the Minion and show the 'This character selected you' card and then the Preacher token.",
+    "otherNightReminder": "The Preacher chooses a player. If an Accomplice is chosen, wake the Accomplice and show the 'This character selected you' card and then the Preacher token.",
     "reminders": ["At a sermon"],
     "setup": false,
-    "ability": "Each night, choose a player: a Minion, if chosen, learns this. All chosen Minions have no ability."
+    "ability": "Each night, choose a player: an Accomplice, if chosen, learns this. All chosen Accomplices have no ability."
   },
   {
     "id": "king",
@@ -1242,12 +1242,12 @@
     "edition": "",
     "team": "townsfolk",
     "firstNight": 10,
-    "firstNightReminder": "Wake the Demon, show them the 'This character selected you' card, show the King token and point to the King player.",
+    "firstNightReminder": "Wake the Slasher, show them the 'This character selected you' card, show the King token and point to the King player.",
     "otherNight": 63,
     "otherNightReminder": "If there are more dead than living, show the King a character token of a living player.",
     "reminders": [],
     "setup": false,
-    "ability": "Each night, if the dead outnumber the living, you learn 1 alive character. The Demon knows who you are."
+    "ability": "Each night, if the dead outnumber the living, you learn 1 alive character. The Slasher knows who you are."
   },
   {
     "id": "balloonist",
@@ -1258,13 +1258,13 @@
     "firstNightReminder": "Choose a character type. Point to a player whose character is of that type. Place the Balloonist's Seen reminder next to that character.",
     "otherNight": 62,
     "otherNightReminder": "Choose a character type that does not yet have a Seen reminder next to a character of that type. Point to a player whose character is of that type, if there are any. Place the Balloonist's Seen reminder next to that character.",
-    "reminders": ["Seen Townsfolk",
-        "Seen Outsider",
-        "Seen Minion",
-        "Seen Demon",
+    "reminders": ["Seen Students",
+        "Seen Faculty",
+        "Seen Accomplice",
+        "Seen Slasher",
         "Seen Traveller"],
     "setup": true,
-    "ability": "Each night, you learn 1 player of each character type, until there are no more types to learn. [+1 Outsider]"
+    "ability": "Each night, you learn 1 player of each character type, until there are no more types to learn. [+1 Faculty]"
   },
   {
     "id": "cultleader",
@@ -1324,12 +1324,12 @@
     "edition": "",
     "team": "townsfolk",
     "firstNight": 13,
-    "firstNightReminder": "The Engineer shows a 'no' head signal, or points to a Demon or points to the relevant number of Minions. If the Engineer chose characters, replace the Demon or Minions with the choices, then wake the relevant players and show them the You are card and the relevant character tokens.",
+    "firstNightReminder": "The Engineer shows a 'no' head signal, or points to a Slasher or points to the relevant number of Accomplices. If the Engineer chose characters, replace the Slasher or Accomplices with the choices, then wake the relevant players and show them the You are card and the relevant character tokens.",
     "otherNight": 5,
-    "otherNightReminder": "The Engineer shows a 'no' head signal, or points to a Demon or points to the relevant number of Minions. If the Engineer chose characters, replace the Demon or Minions with the choices, then wake the relevant players and show them the 'You are' card and the relevant character tokens.",
+    "otherNightReminder": "The Engineer shows a 'no' head signal, or points to a Slasher or points to the relevant number of Accomplices. If the Engineer chose characters, replace the Slasher or Accomplices with the choices, then wake the relevant players and show them the 'You are' card and the relevant character tokens.",
     "reminders": ["No ability"],
     "setup": false,
-    "ability": "Once per game, at night, choose which Minions or which Demon is in play."
+    "ability": "Once per game, at night, choose which Accomplices or which Slasher is in play."
   },
   {
     "id": "fisherman",
@@ -1355,7 +1355,7 @@
     "otherNightReminder": "The Huntsman shakes their head 'no' or points to a player. If they point to the Damsel, wake that player, show the 'You are' card and a not-in-play character token.",
     "reminders": ["No ability"],
     "setup": true,
-    "ability": "Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Townsfolk. [+the Damsel]"
+    "ability": "Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Student. [+the Damsel]"
   },
   {
     "id": "alchemist",
@@ -1363,13 +1363,13 @@
     "edition": "",
     "team": "townsfolk",
     "firstNight": 3,
-    "firstNightReminder": "Show the Alchemist a not-in-play Minion token",
+    "firstNightReminder": "Show the Alchemist a not-in-play Accomplice token",
     "otherNight": 0,
     "otherNightReminder": "",
     "reminders": [],
     "remindersGlobal": ["Is the Alchemist"],
     "setup": false,
-    "ability": "You have a not-in-play Minion ability."
+    "ability": "You have a not-in-play Accomplice ability."
   },
   {
     "id": "farmer",
@@ -1395,7 +1395,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "The Demon thinks you are a Minion. Minions think you are a Demon."
+    "ability": "The Slasher thinks you are an Accomplice. Accomplices think you are a Slasher."
   },
   {
     "id": "choirboy",
@@ -1405,10 +1405,10 @@
     "firstNight": 0,
     "firstNightReminder": "",
     "otherNight": 44,
-    "otherNightReminder": "If the King was killed by the Demon, wake the Choirboy and point to the Demon player.",
+    "otherNightReminder": "If the King was killed by the Slasher, wake the Choirboy and point to the Slasher player.",
     "reminders": [],
     "setup": true,
-    "ability": "If the Demon kills the King, you learn which player is the Demon. [+ the King]"
+    "ability": "If the Slasher kills the King, you learn which player is the Slasher. [+ the King]"
   },
   {
     "id": "poppygrower",
@@ -1416,12 +1416,12 @@
     "edition": "",
     "team": "townsfolk",
     "firstNight": 4,
-    "firstNightReminder": "Do not inform the Demon/Minions who each other are",
+    "firstNightReminder": "Do not inform the Slasher/Accomplices who each other are",
     "otherNight": 3,
-    "otherNightReminder": "If the Poppy Grower has died, show the Minions/Demon who each other are.",
+    "otherNightReminder": "If the Poppy Grower has died, show the Accomplices/Slasher who each other are.",
     "reminders": ["Evil wakes"],
     "setup": false,
-    "ability": "Minions & Demons do not know each other. If you die, they learn who each other are that night."
+    "ability": "Accomplices & Slashers do not know each other. If you die, they learn who each other are that night."
   },
   {
     "id": "atheist",
@@ -1456,12 +1456,12 @@
     "edition": "",
     "team": "outsider",
     "firstNight": 7,
-    "firstNightReminder": "After Minion info wake each Minion and show them three not-in-play character tokens. These may be the same or different to each other and the ones shown to the Demon.",
+    "firstNightReminder": "After Accomplice info wake each Accomplice and show them three not-in-play character tokens. These may be the same or different to each other and the ones shown to the Slasher.",
     "otherNight": 0,
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "Minions start knowing 3 not-in-play characters."
+    "ability": "Accomplices start knowing 3 not-in-play characters."
   },
   {
     "id": "acrobat",
@@ -1488,7 +1488,7 @@
     "reminders": ["Drunk",
         "Guess used"],
     "setup": false,
-    "ability": "1 player is drunk, even if you die. If you guess (once) who it is, learn the Demon player, but guess wrong & get false info."
+    "ability": "1 player is drunk, even if you die. If you guess (once) who it is, learn the Slasher player, but guess wrong & get false info."
   },
   {
     "id": "heretic",
@@ -1509,12 +1509,12 @@
     "edition": "",
     "team": "outsider",
     "firstNight": 31,
-    "firstNightReminder": "Wake all the Minions, show them the 'This character selected you' card and the Damsel token.",
+    "firstNightReminder": "Wake all the Accomplices, show them the 'This character selected you' card and the Damsel token.",
     "otherNight": 46,
-    "otherNightReminder": "If selected by the Huntsman, wake the Damsel, show 'You are' card and a not-in-play Townsfolk token.",
+    "otherNightReminder": "If selected by the Huntsman, wake the Damsel, show 'You are' card and a not-in-play Student token.",
     "reminders": ["Guess used"],
     "setup": false,
-    "ability": "All Minions know you are in play. If a Minion publicly guesses you (once), your team loses."
+    "ability": "All Accomplices know you are in play. If an Accomplice publicly guesses you (once), your team loses."
   },
   {
     "id": "golem",
@@ -1527,7 +1527,7 @@
     "otherNightReminder": "",
     "reminders": ["Can not nominate"],
     "setup": false,
-    "ability": "You may only nominate once per game. When you do, if the nominee is not the Demon, they die."
+    "ability": "You may only nominate once per game. When you do, if the nominee is not the Slasher, they die."
   },
   {
     "id": "politician",
@@ -1629,13 +1629,13 @@
     "edition": "",
     "team": "minion",
     "firstNight": 12,
-    "firstNightReminder": "Select one of the good players next to the Demon and place the Is the Marionette reminder token. Wake the Demon and show them the Marionette.",
+    "firstNightReminder": "Select one of the good players next to the Slasher and place the Is the Marionette reminder token. Wake the Slasher and show them the Marionette.",
     "otherNight": 0,
     "otherNightReminder": "",
     "reminders": [],
     "remindersGlobal": ["Is the Marionette"],
     "setup": true,
-    "ability": "You think you are a good character but you are not. The Demon knows who you are. [You neighbour the Demon]"
+    "ability": "You think you are a good character but you are not. The Slasher knows who you are. [You neighbour the Slasher]"
   },
   {
     "id": "boomdandy",
@@ -1656,14 +1656,14 @@
     "edition": "",
     "team": "demon",
     "firstNight": 15,
-    "firstNightReminder": "Wake all Minions together, allow them to vote by pointing at who they want to babysit Lil' Monsta.",
+    "firstNightReminder": "Wake all Accomplices together, allow them to vote by pointing at who they want to babysit Lil' Monsta.",
     "otherNight": 35,
-    "otherNightReminder": "Wake all Minions together, allow them to vote by pointing at who they want to babysit Lil' Monsta. Choose a player, that player dies.",
+    "otherNightReminder": "Wake all Accomplices together, allow them to vote by pointing at who they want to babysit Lil' Monsta. Choose a player, that player dies.",
     "reminders": [],
-    "remindersGlobal": ["Is the Demon",
+    "remindersGlobal": ["Is the Slasher",
         "Dead"],
     "setup": true,
-    "ability": "Each night, Minions choose who babysits Lil' Monsta's token & \"is the Demon\". A player dies each night*. [+1 Minion]"
+    "ability": "Each night, Accomplices choose who babysits Lil' Monsta's token & \"is the Slasher\". A player dies each night*. [+1 Accomplice]"
   },
   {
     "id": "lleech",
@@ -1706,7 +1706,7 @@
     "reminders": ["Dead",
         "About to die"],
     "setup": true,
-    "ability": "Each night*, a player might die. Executions fail if only evil voted. You register as a Minion too. [Most players are Legion]"
+    "ability": "Each night*, a player might die. Executions fail if only evil voted. You register as an Accomplice too. [Most players are Legion]"
   },
   {
     "id": "leviathan",
@@ -1737,7 +1737,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": true,
-    "ability": "Nominees die, but may nominate again immediately (on day 3, they must). After day 3, evil wins. [All Minions are Riot]"
+    "ability": "Nominees die, but may nominate again immediately (on day 3, they must). After day 3, evil wins. [All Accomplices are Riot]"
   },
   {
     "id": "gangster",
