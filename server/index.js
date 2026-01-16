@@ -25,7 +25,7 @@ if (useHttps) {
 
 const server = useHttps ? https.createServer(options) : http.createServer();
 const defaultOriginPattern =
-  "^https?:\\/\\/([^.]+\\.github\\.io|localhost|clocktower\\.online|eddbra1nprivatetownsquare\\.xyz|.+\\.onrender\\.com)$";
+  "^https?:\\/\\/([^.]+\\.github\\.io|localhost|clocktower\\.online|eddbra1nprivatetownsquare\\.xyz|.+\\.onrender\\.com)(:\\d+)?$";
 const allowedOriginRegex = new RegExp(
   process.env.ALLOWED_ORIGINS || defaultOriginPattern,
   "i"
