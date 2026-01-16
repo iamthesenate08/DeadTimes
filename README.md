@@ -123,15 +123,10 @@ If you see an error like `Cannot find module '/opt/render/project/src/App.vue'`,
 it usually means the front-end is being started as a Node web service (for
 example, with a custom start command such as `node App.vue`). This project is a
 Vue SPA that should be deployed as a **static** Render service using the
-blueprint in `render.yaml`. When configuring Render manually, make sure:
-
-1. The service type is **Static Site**.
-2. The root directory is the repository root (not `/src`).
-3. The build command is `npm install && npm run build`.
-4. The publish directory is `dist`.
-
-If you intentionally run it as a web service (not recommended), use `npm start`
-from the repository root instead of pointing Node directly at `App.vue`.
+blueprint in `render.yaml`. Make sure the service type is **Static Site**, the
+root directory is the repository root, and the build command is `npm install &&
+npm run build`. If you intentionally run it as a web service, use `npm start`
+instead of pointing Node directly at `App.vue`.
 
 ## [Code of Conduct](CODE_OF_CONDUCT.md)
 
