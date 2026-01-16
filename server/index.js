@@ -1,4 +1,5 @@
 const fs = require("fs");
+const http = require("http");
 const https = require("https");
 const WebSocket = require("ws");
 const client = require("prom-client");
@@ -12,21 +13,28 @@ register.setDefaultLabels({
 
 const PING_INTERVAL = 30000; // 30 seconds
 
+const isDevelopment = process.env.NODE_ENV === "development";
+const useHttps =
+  !isDevelopment && !process.env.RENDER && process.env.USE_HTTP !== "true";
 const options = {};
 
-if (process.env.NODE_ENV !== "development") {
+if (useHttps) {
   options.cert = fs.readFileSync("cert.pem");
   options.key = fs.readFileSync("key.pem");
 }
 
-const server = https.createServer(options);
+const server = useHttps ? https.createServer(options) : http.createServer();
+const defaultOriginPattern =
+  "^https?:\\/\\/([^.]+\\.github\\.io|localhost|clocktower\\.online|eddbra1nprivatetownsquare\\.xyz|.+\\.onrender\\.com)$";
+const allowedOriginRegex = new RegExp(
+  process.env.ALLOWED_ORIGINS || defaultOriginPattern,
+  "i"
+);
 const wss = new WebSocket.Server({
-  ...(process.env.NODE_ENV === "development" ? { port: 8081 } : { server }),
+  ...(isDevelopment ? { port: 8081 } : { server }),
   verifyClient: info =>
     info.origin &&
-    !!info.origin.match(
-      /^https?:\/\/([^.]+\.github\.io|localhost|clocktower\.online|eddbra1nprivatetownsquare\.xyz)/i
-    )
+    allowedOriginRegex.test(info.origin)
 });
 
 function noop() {}
@@ -250,9 +258,9 @@ wss.on("close", function close() {
 });
 
 // prod mode with stats API
-if (process.env.NODE_ENV !== "development") {
+if (!isDevelopment) {
   console.log("server starting");
-  server.listen(8080);
+  server.listen(process.env.PORT || 8080);
   server.on("request", (req, res) => {
     res.setHeader("Content-Type", register.contentType);
     register.metrics().then(out => res.end(out));
