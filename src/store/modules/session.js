@@ -27,7 +27,8 @@ const state = () => ({
   voteHistory: [],
   markedPlayer: -1,
   isVoteHistoryAllowed: true,
-  isRolesDistributed: false
+  isRolesDistributed: false,
+  autoDistributeDone: false
 });
 
 const getters = {};
@@ -52,6 +53,8 @@ const mutations = {
   setVoteHistoryAllowed: set("isVoteHistoryAllowed"),
   claimSeat: set("claimedSeat"),
   distributeRoles: set("isRolesDistributed"),
+  setAutoDistributeDone: set("autoDistributeDone"),
+  requestJoin: () => {},
   setSessionId(state, sessionId) {
     state.sessionId = sessionId
       .toLocaleLowerCase()
