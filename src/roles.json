@@ -1,7 +1,7 @@
 [
   {
     "id": "washerwoman",
-    "name": "VALEDICTORIAN",
+    "name": "Valedictorian",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 33,
@@ -15,7 +15,7 @@
   },
   {
     "id": "librarian",
-    "name": "TRANSFER STUDENT",
+    "name": "Transfer Student",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 34,
@@ -29,7 +29,7 @@
   },
   {
     "id": "investigator",
-    "name": "NERD",
+    "name": "Nerd",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 35,
@@ -43,7 +43,7 @@
   },
   {
     "id": "chef",
-    "name": "HALL MONITOR",
+    "name": "Hall Monitor",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 36,
@@ -56,7 +56,7 @@
   },
   {
     "id": "empath",
-    "name": "GOTH",
+    "name": "Goth",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 37,
@@ -69,7 +69,7 @@
   },
   {
     "id": "fortuneteller",
-    "name": "GOSSIP",
+    "name": "Gossip",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 38,
@@ -95,7 +95,7 @@
   },
   {
     "id": "monk",
-    "name": "JOCK",
+    "name": "Jock",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -108,7 +108,7 @@
   },
   {
     "id": "ravenkeeper",
-    "name": "MOVIE BUFF",
+    "name": "Movie Buff",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -121,7 +121,7 @@
   },
   {
     "id": "virgin",
-    "name": "QUEEN BEE",
+    "name": "Queen Bee",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -134,7 +134,7 @@
   },
   {
     "id": "slayer",
-    "name": "DRAMA KID",
+    "name": "Drama Kid",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -147,7 +147,7 @@
   },
   {
     "id": "soldier",
-    "name": "FINAL GIRL",
+    "name": "Final Girl",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -173,7 +173,7 @@
   },
   {
     "id": "butler",
-    "name": "COACH",
+    "name": "Coach",
     "edition": "tb",
     "team": "outsider",
     "firstNight": 39,
@@ -200,7 +200,7 @@
   },
   {
     "id": "recluse",
-    "name": "SUBSTITUTE TEACHER",
+    "name": "Sub Teacher",
     "edition": "tb",
     "team": "outsider",
     "firstNight": 0,
@@ -213,7 +213,7 @@
   },
   {
     "id": "saint",
-    "name": "HIP TEACHER",
+    "name": "Hip Teacher",
     "edition": "tb",
     "team": "outsider",
     "firstNight": 0,
@@ -226,7 +226,7 @@
   },
   {
     "id": "zealot",
-    "name": "PRINCIPAL",
+    "name": "Principle",
     "edition": "tb",
     "team": "outsider",
     "firstNight": 0,
@@ -239,7 +239,7 @@
   },
   {
     "id": "poisoner",
-    "name": "DRUG DEALER",
+    "name": "Drug Dealer",
     "edition": "tb",
     "team": "minion",
     "firstNight": 17,
@@ -252,7 +252,7 @@
   },
   {
     "id": "spy",
-    "name": "SNITCH",
+    "name": "Snitch",
     "edition": "tb",
     "team": "minion",
     "firstNight": 49,
@@ -265,7 +265,7 @@
   },
   {
     "id": "scarletwoman",
-    "name": "WANNABE",
+    "name": "Wannabe",
     "edition": "tb",
     "team": "minion",
     "firstNight": 0,
@@ -278,7 +278,7 @@
   },
   {
     "id": "baron",
-    "name": "TEACHER\u2019S PET",
+    "name": "Teacher\u2019s Pet",
     "edition": "tb",
     "team": "minion",
     "firstNight": 0,
@@ -291,7 +291,7 @@
   },
   {
     "id": "imp",
-    "name": "MASKED KILLER",
+    "name": "Masked Killer",
     "edition": "tb",
     "team": "demon",
     "firstNight": 0,
