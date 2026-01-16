@@ -1,7 +1,7 @@
 [
   {
     "id": "washerwoman",
-    "name": "Washerwoman",
+    "name": "THE VALEDICTORIAN",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 33,
@@ -11,11 +11,11 @@
     "reminders": ["Townsfolk",
         "Wrong"],
     "setup": false,
-    "ability": "You start knowing that 1 of 2 players is a particular Townsfolk."
+    "ability": "You start knowing that 1 of 2 players is a particular Student."
   },
   {
     "id": "librarian",
-    "name": "Librarian",
+    "name": "THE TRANSFER STUDENT",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 34,
@@ -25,11 +25,11 @@
     "reminders": ["Outsider",
         "Wrong"],
     "setup": false,
-    "ability": "You start knowing that 1 of 2 players is a particular Outsider. (Or that zero are in play.)"
+    "ability": "You start knowing that 1 of 2 players is a particular Faculty member. (Or that zero are in play.)"
   },
   {
     "id": "investigator",
-    "name": "Investigator",
+    "name": "THE NERD",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 35,
@@ -39,11 +39,11 @@
     "reminders": ["Minion",
         "Wrong"],
     "setup": false,
-    "ability": "You start knowing that 1 of 2 players is a particular Minion."
+    "ability": "You start knowing that 1 of 2 players is a particular Accomplice."
   },
   {
     "id": "chef",
-    "name": "Chef",
+    "name": "THE HALL MONITOR",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 36,
@@ -56,7 +56,7 @@
   },
   {
     "id": "empath",
-    "name": "Empath",
+    "name": "THE GOTH",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 37,
@@ -65,11 +65,11 @@
     "otherNightReminder": "Show the finger signal (0, 1, 2) for the number of evil neighbours.",
     "reminders": [],
     "setup": false,
-    "ability": "Each night, you learn how many of your 2 alive neighbours are evil."
+    "ability": "Each night, you learn how many of your 2 living neighbors are evil."
   },
   {
     "id": "fortuneteller",
-    "name": "Fortune Teller",
+    "name": "THE GOSSIP",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 38,
@@ -78,7 +78,7 @@
     "otherNightReminder": "The Fortune Teller points to two players. Show the head signal (nod 'yes', shake 'no') for whether one of those players is the Demon.",
     "reminders": ["Red herring"],
     "setup": false,
-    "ability": "Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you."
+    "ability": "Each night, choose 2 players: you learn if either is the Killer. There is a good player that registers as the Killer to you."
   },
   {
     "id": "undertaker",
@@ -95,7 +95,7 @@
   },
   {
     "id": "monk",
-    "name": "Monk",
+    "name": "THE JOCK",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -104,11 +104,11 @@
     "otherNightReminder": "The previously protected player is no longer protected. The Monk points to a player not themself. Mark that player 'Protected'.",
     "reminders": ["Protected"],
     "setup": false,
-    "ability": "Each night*, choose a player (not yourself): they are safe from the Demon tonight."
+    "ability": "Each night*, choose a player (not yourself): they are safe from the Killer tonight."
   },
   {
     "id": "ravenkeeper",
-    "name": "Ravenkeeper",
+    "name": "THE MOVIE BUFF",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -121,7 +121,7 @@
   },
   {
     "id": "virgin",
-    "name": "Virgin",
+    "name": "THE QUEEN BEE",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -130,11 +130,11 @@
     "otherNightReminder": "",
     "reminders": ["No ability"],
     "setup": false,
-    "ability": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately."
+    "ability": "The 1st time you are nominated, if the nominator is a Student, they are executed immediately."
   },
   {
     "id": "slayer",
-    "name": "Slayer",
+    "name": "THE DRAMA KID",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -143,11 +143,11 @@
     "otherNightReminder": "",
     "reminders": ["No ability"],
     "setup": false,
-    "ability": "Once per game, during the day, publicly choose a player: if they are the Demon, they die."
+    "ability": "Once per game, during the day, publicly choose a player: if they are the Killer, they die."
   },
   {
     "id": "soldier",
-    "name": "Soldier",
+    "name": "THE FINAL GIRL",
     "edition": "tb",
     "team": "townsfolk",
     "firstNight": 0,
@@ -156,7 +156,7 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "You are safe from the Demon."
+    "ability": "You are safe from the Killer."
   },
   {
     "id": "mayor",
@@ -173,7 +173,7 @@
   },
   {
     "id": "butler",
-    "name": "Butler",
+    "name": "THE COACH",
     "edition": "tb",
     "team": "outsider",
     "firstNight": 39,
@@ -200,7 +200,7 @@
   },
   {
     "id": "recluse",
-    "name": "Recluse",
+    "name": "THE SUBSTITUTE TEACHER",
     "edition": "tb",
     "team": "outsider",
     "firstNight": 0,
@@ -209,11 +209,11 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": false,
-    "ability": "You might register as evil & as a Minion or Demon, even if dead."
+    "ability": "You might register as evil & as an Accomplice or Killer, even if dead."
   },
   {
     "id": "saint",
-    "name": "Saint",
+    "name": "THE HIP TEACHER",
     "edition": "tb",
     "team": "outsider",
     "firstNight": 0,
@@ -225,8 +225,21 @@
     "ability": "If you die by execution, your team loses."
   },
   {
+    "id": "zealot",
+    "name": "THE PRINCIPAL",
+    "edition": "tb",
+    "team": "outsider",
+    "firstNight": 0,
+    "firstNightReminder": "",
+    "otherNight": 0,
+    "otherNightReminder": "",
+    "reminders": [],
+    "setup": false,
+    "ability": "If there are 5 or more players alive, you must vote for every nomination."
+  },
+  {
     "id": "poisoner",
-    "name": "Poisoner",
+    "name": "THE DRUG DEALER",
     "edition": "tb",
     "team": "minion",
     "firstNight": 17,
@@ -235,11 +248,11 @@
     "otherNightReminder": "The previously poisoned player is no longer poisoned. The Poisoner points to a player. That player is poisoned.",
     "reminders": ["Poisoned"],
     "setup": false,
-    "ability": "Each night, choose a player: they are poisoned tonight and tomorrow day."
+    "ability": "Each night, choose a player: they are drugged tonight and tomorrow day."
   },
   {
     "id": "spy",
-    "name": "Spy",
+    "name": "THE SNITCH",
     "edition": "tb",
     "team": "minion",
     "firstNight": 49,
@@ -248,11 +261,11 @@
     "otherNightReminder": "Show the Grimoire to the Spy for as long as they need.",
     "reminders": [],
     "setup": false,
-    "ability": "Each night, you see the Grimoire. You might register as good & as a Townsfolk or Outsider, even if dead."
+    "ability": "Each night, you see the Case File. You might register as good & as a Student or Faculty member, even if dead."
   },
   {
     "id": "scarletwoman",
-    "name": "Scarlet Woman",
+    "name": "THE WANNABE",
     "edition": "tb",
     "team": "minion",
     "firstNight": 0,
@@ -261,11 +274,11 @@
     "otherNightReminder": "If the Scarlet Woman became the Demon today: Show the 'You are' card, then the demon token.",
     "reminders": ["Demon"],
     "setup": false,
-    "ability": "If there are 5 or more players alive & the Demon dies, you become the Demon. (Travellers don\u2019t count)"
+    "ability": "If there are 5 or more players alive & the Killer dies, you become the Killer."
   },
   {
     "id": "baron",
-    "name": "Baron",
+    "name": "THE TEACHER\u2019S PET",
     "edition": "tb",
     "team": "minion",
     "firstNight": 0,
@@ -274,11 +287,11 @@
     "otherNightReminder": "",
     "reminders": [],
     "setup": true,
-    "ability": "There are extra Outsiders in play. [+2 Outsiders]"
+    "ability": "There are extra Faculty members in play. [+2 Faculty]"
   },
   {
     "id": "imp",
-    "name": "Imp",
+    "name": "MASKED KILLER",
     "edition": "tb",
     "team": "demon",
     "firstNight": 0,
@@ -287,7 +300,7 @@
     "otherNightReminder": "The Imp points to a player. That player dies. If the Imp chose themselves: Replace the character of 1 alive minion with a spare Imp token. Show the 'You are' card, then the Imp token.",
     "reminders": ["Dead"],
     "setup": false,
-    "ability": "Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp."
+    "ability": "Each night*, choose a player: they die. If you kill yourself this way, an Accomplice becomes the Slasher."
   },
   {
     "id": "bureaucrat",
@@ -464,7 +477,7 @@
   },
   {
     "id": "professor",
-    "name": "Professor",
+    "name": "THE WICCAN",
     "edition": "bmr",
     "team": "townsfolk",
     "firstNight": 0,
@@ -474,7 +487,7 @@
     "reminders": ["Alive",
         "No ability"],
     "setup": false,
-    "ability": "Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected."
+    "ability": "Once per game, at night*, choose a dead player: if they are a Student, they are resurrected."
   },
   {
     "id": "minstrel",
@@ -826,7 +839,7 @@
   },
   {
     "id": "towncrier",
-    "name": "Town Crier",
+    "name": "THE LOUDMOUTH",
     "edition": "snv",
     "team": "townsfolk",
     "firstNight": 0,
@@ -836,7 +849,7 @@
     "reminders": ["Minions not nominated",
         "Minion nominated"],
     "setup": false,
-    "ability": "Each night*, you learn if a Minion nominated today."
+    "ability": "Each night*, you learn if an Accomplice nominated today."
   },
   {
     "id": "oracle",
@@ -1740,4 +1753,3 @@
     "ability": "Once per day, you may choose to kill an alive neighbour, if your other alive neighbour agrees."
   }
 ]
-
