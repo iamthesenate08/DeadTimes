@@ -124,6 +124,11 @@ class LiveSession {
       console.log("unsupported socket message", data);
     }
     switch (command) {
+      case "join":
+        if (!this._isSpectator) {
+          this._handleJoin(params);
+        }
+        break;
       case "getGamestate":
         this.sendGamestate(params);
         break;
@@ -620,6 +625,79 @@ class LiveSession {
   }
 
   /**
+   * Request a seat with a player name. Player only.
+   * @param name
+   */
+  requestJoin(name) {
+    if (!this._isSpectator) return;
+    const trimmed = String(name || "").trim();
+    if (!trimmed) return;
+    this._sendDirect("host", "join", {
+      name: trimmed,
+      playerId: this._store.state.session.playerId
+    });
+  }
+
+  /**
+   * Handle a join request on the host.
+   * @param name
+   * @param playerId
+   * @private
+   */
+  _handleJoin({ name, playerId } = {}) {
+    if (this._isSpectator) return;
+    const trimmed = String(name || "").trim();
+    if (!trimmed || !playerId) return;
+    const safeName = trimmed.slice(0, 20);
+    const players = this._store.state.players.players;
+    const existing = players.find(player => player.id === playerId);
+    if (existing) {
+      if (existing.name !== safeName) {
+        this._store.commit("players/update", {
+          player: existing,
+          property: "name",
+          value: safeName
+        });
+      }
+      return;
+    }
+    let seatIndex = players.findIndex(player => !player.id);
+    if (seatIndex === -1) {
+      this._store.commit("players/add", safeName);
+      seatIndex = players.length - 1;
+    }
+    const player = players[seatIndex];
+    if (!player) return;
+    this._store.commit("players/update", {
+      player,
+      property: "name",
+      value: safeName
+    });
+    this._store.commit("players/update", {
+      player,
+      property: "id",
+      value: playerId
+    });
+    this._autoDistributeIfReady();
+  }
+
+  _autoDistributeIfReady() {
+    if (this._isSpectator) return;
+    const { players } = this._store.state.players;
+    const { autoDistributeDone } = this._store.state.session;
+    if (!players.length || autoDistributeDone) return;
+    const allSeated = players.every(player => player.id);
+    const allAssigned = players.every(player => player.role && player.role.id);
+    if (allSeated && allAssigned) {
+      this._store.commit("session/setAutoDistributeDone", true);
+      this._store.commit("session/distributeRoles", true);
+      setTimeout(() => {
+        this._store.commit("session/distributeRoles", false);
+      }, 2000);
+    }
+  }
+
+  /**
    * Update a player id associated with that seat.
    * @param index seat index or -1
    * @param value playerId to add / remove
@@ -842,6 +920,17 @@ export default store => {
 
   // listen to mutations
   store.subscribe(({ type, payload }, state) => {
+    const shouldResetAutoDistribute =
+      state.session.autoDistributeDone &&
+      (type === "players/clear" ||
+        type === "players/set" ||
+        type === "players/add" ||
+        type === "players/remove" ||
+        (type === "players/update" &&
+          (payload.property === "role" || payload.property === "id")));
+    if (shouldResetAutoDistribute) {
+      store.commit("session/setAutoDistributeDone", false);
+    }
     switch (type) {
       case "session/setSessionId":
         if (state.session.sessionId) {
@@ -853,6 +942,9 @@ export default store => {
         break;
       case "session/claimSeat":
         session.claimSeat(payload);
+        break;
+      case "session/requestJoin":
+        session.requestJoin(payload);
         break;
       case "session/distributeRoles":
         if (payload) {
@@ -906,6 +998,7 @@ export default store => {
       case "players/clear":
       case "players/add":
         session.sendGamestate("", true);
+        session._autoDistributeIfReady();
         break;
       case "players/update":
         if (payload.property === "pronouns") {
@@ -913,6 +1006,7 @@ export default store => {
         } else {
           session.sendPlayer(payload);
         }
+        session._autoDistributeIfReady();
         break;
     }
   });

@@ -22,8 +22,11 @@
     ></video>
     <div class="backdrop"></div>
     <transition name="blur">
-      <Intro v-if="!players.length"></Intro>
-      <TownInfo v-if="players.length && !session.nomination"></TownInfo>
+      <JoinLanding v-if="showJoinLanding" />
+      <Intro v-else-if="!players.length"></Intro>
+      <TownInfo
+        v-else-if="players.length && !session.nomination"
+      ></TownInfo>
       <Vote v-if="session.nomination"></Vote>
     </transition>
     <TownSquare></TownSquare>
@@ -49,6 +52,7 @@ import Menu from "./components/Menu";
 import RolesModal from "./components/modals/RolesModal";
 import EditionModal from "./components/modals/EditionModal";
 import Intro from "./components/Intro";
+import JoinLanding from "./components/JoinLanding";
 import ReferenceModal from "./components/modals/ReferenceModal";
 import Vote from "./components/Vote";
 import Gradients from "./components/Gradients";
@@ -65,6 +69,7 @@ export default {
     NightOrderModal,
     Vote,
     ReferenceModal,
+    JoinLanding,
     Intro,
     TownInfo,
     TownSquare,
@@ -75,7 +80,14 @@ export default {
   },
   computed: {
     ...mapState(["grimoire", "session"]),
-    ...mapState("players", ["players"])
+    ...mapState("players", ["players"]),
+    showJoinLanding() {
+      const isSpectator = this.session.isSpectator && this.session.sessionId;
+      const isSeated = this.players.some(
+        player => player.id === this.session.playerId
+      );
+      return isSpectator && !isSeated && !this.session.nomination;
+    }
   },
   data() {
     return {

@@ -114,22 +114,22 @@ export default {
         rolesFirstNight.push(
           {
             id: "evil",
-            name: "Minion info",
+            name: "Accomplice info",
             firstNight: 5,
             team: "minion",
             players: this.players.filter(p => p.role.team === "minion"),
             firstNightReminder:
-              "• If more than one Minion, they all make eye contact with each other. " +
-              "• Show the “This is the Demon” card. Point to the Demon."
+              "• If more than one Accomplice, they all make eye contact with each other. " +
+              "• Show the “This is the Slasher” card. Point to the Slasher."
           },
           {
             id: "evil",
-            name: "Demon info & bluffs",
+            name: "Slasher info & bluffs",
             firstNight: 8,
             team: "demon",
             players: this.players.filter(p => p.role.team === "demon"),
             firstNightReminder:
-              "• Show the “These are your minions” card. Point to each Minion. " +
+              "• Show the “These are your accomplices” card. Point to each Accomplice. " +
               "• Show the “These characters are not in play” card. Show 3 character tokens of good " +
               "characters not in play."
           }

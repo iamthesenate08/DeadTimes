@@ -57,18 +57,18 @@
     "setup": false,
     "name": "Fiddler",
     "team": "fabled",
-    "ability": "Once per game, the Demon secretly chooses an opposing player: all players choose which of these 2 players win."
+    "ability": "Once per game, the Slasher secretly chooses an opposing player: all players choose which of these 2 players win."
   },
   {
     "id": "toymaker",
     "firstNightReminder": "",
     "otherNight": 1,
-    "otherNightReminder": "If it is a night when a Demon attack could end the game, and the Demon is marked “Final night: No Attack,” then the Demon does not act tonight. (Do not wake them.)",
+    "otherNightReminder": "If it is a night when a Slasher attack could end the game, and the Slasher is marked “Final night: No Attack,” then the Slasher does not act tonight. (Do not wake them.)",
     "reminders": ["Final Night: No Attack"],
     "setup": false,
     "name": "Toymaker",
     "team": "fabled",
-    "ability": "The Demon may choose not to attack & must do this at least once per game. Evil players get normal starting info."
+    "ability": "The Slasher may choose not to attack & must do this at least once per game. Evil players get normal starting info."
   },
   {
     "id": "fibbin",
@@ -99,7 +99,7 @@
     "setup": true,
     "name": "Sentinel",
     "team": "fabled",
-    "ability": "There might be 1 extra or 1 fewer Outsider in play."
+    "ability": "There might be 1 extra or 1 fewer Faculty in play."
   },
   {
     "id": "spiritofivory",

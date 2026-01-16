@@ -31,7 +31,7 @@
     >
       <h3>
         <span v-if="session.isSpectator">Other characters</span>
-        <span v-else>Demon bluffs</span>
+        <span v-else>Slasher bluffs</span>
         <font-awesome-icon icon="times-circle" @click.stop="toggleBluffs" />
         <font-awesome-icon icon="plus-circle" @click.stop="toggleBluffs" />
       </h3>
@@ -395,7 +395,7 @@ export default {
   }
 }
 
-/***** Demon bluffs / Fabled *******/
+/***** Slasher bluffs / Fabled *******/
 #townsquare > .bluffs,
 #townsquare > .fabled {
   position: absolute;
