@@ -123,10 +123,65 @@ If you see an error like `Cannot find module '/opt/render/project/src/App.vue'`,
 it usually means the front-end is being started as a Node web service (for
 example, with a custom start command such as `node App.vue`). This project is a
 Vue SPA that should be deployed as a **static** Render service using the
-blueprint in `render.yaml`. Make sure the service type is **Static Site**, the
-root directory is the repository root, and the build command is `npm install &&
-npm run build`. If you intentionally run it as a web service, use `npm start`
-instead of pointing Node directly at `App.vue`.
+blueprint in `render.yaml`. When configuring Render manually, make sure:
+
+1. The service type is **Static Site**.
+2. The root directory is the repository root (not `/src`).
+3. The build command is `npm install && npm run build`.
+4. The publish directory is `dist` (and must exist after the build). If Render
+   says `Publish directory nm does not exist`, update the publish directory to
+   `dist`.
+
+If you intentionally run it as a web service (not recommended), use `npm start`
+from the repository root instead of pointing Node directly at `App.vue`.
+
+If the app loads but you see a browser console error like
+`WebSocket connection to 'wss://live.clocktower.online:8080/...' failed`, make
+sure `VUE_APP_WS_URL` points at your websocket service (for example,
+`wss://townsquare-ws.onrender.com/`) and that the websocket service is running.
+On Render, set this in the **Static Site** service’s **Environment** settings
+(Dashboard → your static service → Environment → Add Environment Variable). Then
+trigger a new deploy so the build picks up the updated value. For local
+development, you can export it before running `npm run serve`, e.g.
+`VUE_APP_WS_URL=ws://localhost:8081/ npm run serve`.
+
+#### Setting up the websocket service on Render
+
+To use the `render.yaml` blueprint:
+
+1. In Render, click **New** → **Blueprint**.
+2. Select this repository and approve the blueprint plan.
+3. Render will create two services:
+   - **townsquare-web** (Static Site)
+   - **townsquare-ws** (Web Service)
+4. After creation, open the **townsquare-web** service and set
+   `VUE_APP_WS_URL` to the websocket service URL using `wss://`
+   (for example, `wss://townsquare-ws.onrender.com/`), then trigger a new
+   deploy.
+
+If you want to configure the websocket service manually:
+
+1. In Render, click **New** → **Web Service**.
+2. Connect the same repository and choose the `server` directory as the **Root
+   Directory**.
+3. Set **Environment** to **Node**.
+4. Set **Build Command** to `npm install`.
+5. Set **Start Command** to `node index.js`.
+6. Add these **Environment Variables**:
+   - `NODE_ENV=production`
+   - `USE_HTTP=true` (Render terminates TLS at the edge; the service should use
+     HTTP internally)
+   - `ALLOWED_ORIGINS=^https?:\\/\\/.+\\.onrender\\.com$` (or a regex that
+     matches your custom domain)
+7. Deploy the service and copy its **URL** (it will look like
+   `https://townsquare-ws.onrender.com`).
+8. Update the **Static Site** service’s `VUE_APP_WS_URL` to the websocket URL
+   with `wss://` (for example, `wss://townsquare-ws.onrender.com/`), then trigger
+   a new deploy of the static site.
+
+You can confirm it is running by checking the Render logs for the websocket
+service and ensuring the static site no longer logs websocket connection
+failures in the browser console.
 
 ## [Code of Conduct](CODE_OF_CONDUCT.md)
 
