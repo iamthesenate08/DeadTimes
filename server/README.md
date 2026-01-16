@@ -38,6 +38,12 @@ This will make the backend server available at your domain on port 8080.
 If you want to have it automatically recover on crash or server restart,
 you could use [pm2](https://pm2.keymetrics.io/) with the provided `ecosystem.config.js`
 
+### Render setup
+
+Render sets `PORT` automatically and terminates TLS at the edge. You can run the
+server without local TLS by setting `USE_HTTP=true` or by relying on the Render
+environment, and configure allowed origins using `ALLOWED_ORIGINS`.
+
 ### Allowing access from different domains
 
 Currently the backend server only accepts connections coming from

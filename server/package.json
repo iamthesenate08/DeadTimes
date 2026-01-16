@@ -1,0 +1,13 @@
+{
+  "name": "townsquare-live-session",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "prom-client": "^13.0.0",
+    "ws": "^7.4.6"
+  }
+}

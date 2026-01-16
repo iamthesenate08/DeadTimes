@@ -22,7 +22,7 @@
     "hatred": [
       {
         "id": "Mathematician",
-        "reason": "The Mathematician learns if the Lunatic attacks a different player(s) than the real Demon attacked."
+        "reason": "The Mathematician learns if the Lunatic attacks a different player(s) than the real Slasher attacked."
       }
     ]
   },
@@ -103,7 +103,7 @@
     "hatred": [
       {
         "id": "Poppy Grower",
-        "reason": "If the Poppy Grower is in play, Minions don't wake together. They are woken one by one, until one of them chooses to take the Lil' Monsta token."
+        "reason": "If the Poppy Grower is in play, Accomplices don't wake together. They are woken one by one, until one of them chooses to take the Lil' Monsta token."
       },
       {
         "id": "Magician",
@@ -142,7 +142,7 @@
     "hatred": [
       {
         "id": "Scarlet Woman",
-        "reason": "If the Fang Gu chooses an Outsider and dies, the Scarlet Woman does not become the Fang Gu."
+        "reason": "If the Fang Gu chooses a Faculty member and dies, the Scarlet Woman does not become the Fang Gu."
       }
     ]
   },
@@ -151,7 +151,7 @@
     "hatred": [
       {
         "id": "Magician",
-        "reason": "When the Spy sees the Grimoire, the Demon and Magician's character tokens are removed."
+        "reason": "When the Spy sees the Grimoire, the Slasher and Magician's character tokens are removed."
       },
       {
         "id": "Alchemist",
@@ -176,7 +176,7 @@
     "hatred": [
       {
         "id": "Magician",
-        "reason": "When the Widow sees the Grimoire, the Demon and Magician's character tokens are removed."
+        "reason": "When the Widow sees the Grimoire, the Slasher and Magician's character tokens are removed."
       },
       {
         "id": "Poppy Grower",
@@ -210,7 +210,7 @@
     "hatred": [
       {
         "id": "Heretic",
-        "reason": "The Baron might only add 1 Outsider, not 2."
+        "reason": "The Baron might only add 1 Faculty, not 2."
       }
     ]
   },
@@ -219,19 +219,19 @@
     "hatred": [
       {
         "id": "Lil' Monsta",
-        "reason": "The Marionette neighbors a Minion, not the Demon. The Marionette is not woken to choose who takes the Lil' Monsta token."
+        "reason": "The Marionette neighbors an Accomplice, not the Slasher. The Marionette is not woken to choose who takes the Lil' Monsta token."
       },
       {
         "id": "Poppy Grower",
-        "reason": "When the Poppy Grower dies, the Demon learns the Marionette but the Marionette learns nothing."
+        "reason": "When the Poppy Grower dies, the Slasher learns the Marionette but the Marionette learns nothing."
       },
       {
         "id": "Snitch",
-        "reason": "The Marionette does not learn 3 not in-play characters. The Demon learns an extra 3 instead."
+        "reason": "The Marionette does not learn 3 not in-play characters. The Slasher learns an extra 3 instead."
       },
       {
         "id": "Balloonist",
-        "reason": "If the Marionette thinks that they are the Balloonist, +1 Outsider was added."
+        "reason": "If the Marionette thinks that they are the Balloonist, +1 Faculty was added."
       },
       {
         "id": "Damsel",
@@ -336,23 +336,23 @@
       },
       {
         "id": "Investigator",
-        "reason": "Riot registers as a Minion to the Investigator."
+        "reason": "Riot registers as an Accomplice to the Investigator."
       },
       {
         "id": "Clockmaker",
-        "reason": "Riot registers as a Minion to the Clockmaker."
+        "reason": "Riot registers as an Accomplice to the Clockmaker."
       },
       {
         "id": "Town Crier",
-        "reason": "Riot registers as a Minion to the Town Crier."
+        "reason": "Riot registers as an Accomplice to the Town Crier."
       },
       {
         "id": "Damsel",
-        "reason": "Riot registers as a Minion to the Damsel."
+        "reason": "Riot registers as an Accomplice to the Damsel."
       },
       {
         "id": "Preacher",
-        "reason": "Riot registers as a Minion to the Preacher."
+        "reason": "Riot registers as an Accomplice to the Preacher."
       }
     ]
   },
