@@ -103,6 +103,20 @@ For base game characters, it is sufficient to only provide the ID, similar to wh
   _Note_: if you create a custom Fabled character, it will be automatically added to the game when the custom script is loaded
 - **ability**: the displayed ability text of the character
 
+## Deploying on Render
+
+This repository includes a `render.yaml` blueprint with a static front-end
+service and a websocket service.
+
+1. Create a new Render Blueprint from this repository.
+2. Update `VUE_APP_WS_URL` in the static service to point at your websocket
+   service URL (for example, `wss://townsquare-ws.onrender.com`).
+3. If you use a custom domain, set `ALLOWED_ORIGINS` on the websocket service
+   to a regex that matches your site origin.
+
+The websocket server reads `ALLOWED_ORIGINS`, `USE_HTTP`, and Render’s `PORT`
+environment variable for configuration.
+
 ## [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## [Contributing](CONTRIBUTING.md)

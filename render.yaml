@@ -1,0 +1,21 @@
+services:
+  - type: static
+    name: townsquare-web
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VUE_APP_WS_URL
+        value: wss://YOUR-WS-SERVICE.onrender.com
+  - type: web
+    name: townsquare-ws
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: USE_HTTP
+        value: "true"
+      - key: ALLOWED_ORIGINS
+        value: ^https?:\\/\\/.+\\.onrender\\.com$
