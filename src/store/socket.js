@@ -220,7 +220,7 @@ class LiveSession {
       case "anonymousNoteApproved":
         this._store.commit(
           "session/approveAnonymousNote",
-          params && params.id
+          params
         );
         break;
       case "noteRejected":
