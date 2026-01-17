@@ -112,6 +112,8 @@ export default new Vuex.Store({
       edition: false,
       fabled: false,
       gameState: false,
+      anonymousNote: false,
+      anonymousNoteQueue: false,
       nightOrder: false,
       reference: false,
       reminder: false,
