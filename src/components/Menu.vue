@@ -155,8 +155,8 @@
               @click="toggleModal('anonymousNoteQueue')"
             >
               Review Notes
-              <em v-if="session.anonymousNotes.length">{{
-                session.anonymousNotes.length
+              <em v-if="session.pendingAnonymousNotes.length">{{
+                session.pendingAnonymousNotes.length
               }}</em>
             </li>
             <li @click="leaveSession">

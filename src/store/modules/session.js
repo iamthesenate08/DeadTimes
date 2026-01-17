@@ -29,7 +29,9 @@ const state = () => ({
   isVoteHistoryAllowed: true,
   isRolesDistributed: false,
   autoDistributeDone: false,
-  anonymousNotes: []
+  pendingAnonymousNotes: [],
+  approvedAnonymousNotes: [],
+  activeAnonymousNoteId: null
 });
 
 const getters = {};
@@ -59,18 +61,6 @@ const mutations = {
   setActiveAnonymousNoteId: set("activeAnonymousNoteId"),
   submitAnonymousNote: () => {},
   requestJoin: () => {},
-  submitAnonymousNote: () => {},
-  approveAnonymousNote(state, id) {
-    state.anonymousNotes = state.anonymousNotes.filter(note => note.id !== id);
-  },
-  rejectAnonymousNote(state, id) {
-    state.anonymousNotes = state.anonymousNotes.filter(note => note.id !== id);
-  },
-  addAnonymousNote(state, note) {
-    if (!note || !note.id) return;
-    if (state.anonymousNotes.some(existing => existing.id === note.id)) return;
-    state.anonymousNotes = [...state.anonymousNotes, note];
-  },
   setSessionId(state, sessionId) {
     state.sessionId = sessionId
       .toLocaleLowerCase()
@@ -130,7 +120,8 @@ const mutations = {
       [note] = state.pendingAnonymousNotes.splice(pendingIndex, 1);
     }
     if (!note) return;
-    const { playerId, ...safeNote } = note;
+    const safeNote = { ...note };
+    delete safeNote.playerId;
     const approvedIndex = state.approvedAnonymousNotes.findIndex(
       existing => existing.id === safeNote.id
     );
