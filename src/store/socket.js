@@ -211,6 +211,22 @@ class LiveSession {
       case "pronouns":
         this._updatePlayerPronouns(params);
         break;
+      case "noteSubmit":
+        if (this._isSpectator) return;
+        this._handleNoteSubmit(params);
+        break;
+      case "noteApproved":
+        if (!this._isSpectator) return;
+        this._store.commit("session/approveAnonymousNote", params);
+        break;
+      case "noteRejected":
+        if (!this._isSpectator) return;
+        this._store.commit("session/rejectAnonymousNote", params);
+        break;
+      case "noteClear":
+        if (!this._isSpectator) return;
+        this._store.commit("session/clearAnonymousNotes");
+        break;
     }
   }
 
@@ -279,6 +295,9 @@ class LiveSession {
     } else {
       const { session, grimoire } = this._store.state;
       const { fabled } = this._store.state.players;
+      const approvedAnonymousNotes = session.approvedAnonymousNotes.map(note =>
+        this._stripAnonymousNoteSender(note)
+      );
       this.sendEdition(playerId);
       this._sendDirect(playerId, "gs", {
         gamestate: this._gamestate,
@@ -289,6 +308,8 @@ class LiveSession {
         lockedVote: session.lockedVote,
         isVoteInProgress: session.isVoteInProgress,
         markedPlayer: session.markedPlayer,
+        approvedAnonymousNotes,
+        activeAnonymousNoteId: session.activeAnonymousNoteId,
         fabled: fabled.map(f => (f.isCustom ? f : { id: f.id })),
         ...(session.nomination ? { votes: session.votes } : {})
       });
@@ -313,6 +334,8 @@ class LiveSession {
       lockedVote,
       isVoteInProgress,
       markedPlayer,
+      approvedAnonymousNotes,
+      activeAnonymousNoteId,
       fabled
     } = data;
     const players = this._store.state.players.players;
@@ -368,6 +391,18 @@ class LiveSession {
         isVoteInProgress
       });
       this._store.commit("session/setMarkedPlayer", markedPlayer);
+      if (approvedAnonymousNotes !== undefined) {
+        this._store.commit(
+          "session/setApprovedAnonymousNotes",
+          approvedAnonymousNotes
+        );
+      }
+      if (activeAnonymousNoteId !== undefined) {
+        this._store.commit(
+          "session/setActiveAnonymousNoteId",
+          activeAnonymousNoteId
+        );
+      }
       this._store.commit("players/setFabled", {
         fabled: fabled.map(f => this._store.state.fabled.get(f.id) || f)
       });
@@ -612,6 +647,33 @@ class LiveSession {
     );
   }
 
+  _normalizeAnonymousNote(note = {}) {
+    const rawNote = typeof note === "string" ? { text: note } : note;
+    return {
+      id:
+        rawNote.id ||
+        `${Date.now().toString(36)}-${Math.random()
+          .toString(36)
+          .substr(2, 6)}`,
+      text: String(rawNote.text || "").trim(),
+      submittedAt: rawNote.submittedAt || new Date().toISOString(),
+      ...(rawNote.playerId ? { playerId: rawNote.playerId } : {})
+    };
+  }
+
+  _stripAnonymousNoteSender(note = {}) {
+    if (!note || typeof note !== "object") return note;
+    const { playerId, ...safeNote } = note;
+    return safeNote;
+  }
+
+  _handleNoteSubmit(note) {
+    if (this._isSpectator) return;
+    const normalized = this._normalizeAnonymousNote(note);
+    if (!normalized.text) return;
+    this._store.commit("session/enqueueAnonymousNote", normalized);
+  }
+
   /**
    * Claim a seat, needs to be confirmed by the Storyteller.
    * Seats already occupied can't be claimed.
@@ -680,6 +742,51 @@ class LiveSession {
       value: playerId
     });
     this._autoDistributeIfReady();
+  }
+
+  submitAnonymousNote(note) {
+    if (!this._isSpectator) return;
+    const baseNote =
+      note && typeof note === "object" ? note : { text: note };
+    const normalized = this._normalizeAnonymousNote({
+      ...baseNote,
+      playerId: this._store.state.session.playerId
+    });
+    if (!normalized.text) return;
+    this._sendDirect("host", "noteSubmit", normalized);
+  }
+
+  approveAnonymousNote(noteId) {
+    if (this._isSpectator) return;
+    const note =
+      typeof noteId === "object"
+        ? noteId
+        : this._store.state.session.pendingAnonymousNotes.find(
+            pending => pending.id === noteId
+          ) ||
+          this._store.state.session.approvedAnonymousNotes.find(
+            approved => approved.id === noteId
+          );
+    if (!note) return;
+    const safeNote = this._stripAnonymousNoteSender(note);
+    this._send("noteApproved", safeNote);
+  }
+
+  rejectAnonymousNote(noteId) {
+    if (this._isSpectator) return;
+    const note =
+      typeof noteId === "object"
+        ? noteId
+        : this._store.state.session.pendingAnonymousNotes.find(
+            pending => pending.id === noteId
+          );
+    if (!note || !note.playerId) return;
+    this._sendDirect(note.playerId, "noteRejected", { id: note.id });
+  }
+
+  clearAnonymousNotes() {
+    if (this._isSpectator) return;
+    this._send("noteClear");
   }
 
   _autoDistributeIfReady() {
@@ -985,6 +1092,18 @@ export default store => {
         break;
       case "session/setMarkedPlayer":
         session.setMarked(payload);
+        break;
+      case "session/submitAnonymousNote":
+        session.submitAnonymousNote(payload);
+        break;
+      case "session/approveAnonymousNote":
+        session.approveAnonymousNote(payload);
+        break;
+      case "session/rejectAnonymousNote":
+        session.rejectAnonymousNote(payload);
+        break;
+      case "session/clearAnonymousNotes":
+        session.clearAnonymousNotes();
         break;
       case "players/swap":
         session.swapPlayer(payload);
