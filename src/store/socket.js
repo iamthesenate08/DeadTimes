@@ -211,18 +211,25 @@ class LiveSession {
       case "pronouns":
         this._updatePlayerPronouns(params);
         break;
+      case "noteSubmit":
       case "anonymousNote":
         if (this._isSpectator) return;
-        this._store.commit("session/addAnonymousNote", params);
+        this._handleNoteSubmit(params);
         break;
+      case "noteApproved":
       case "anonymousNoteApproved":
         this._store.commit(
           "session/approveAnonymousNote",
           params && params.id
         );
         break;
+      case "noteRejected":
       case "anonymousNoteRejected":
         this._store.commit("session/rejectAnonymousNote", params && params.id);
+        break;
+      case "noteClear":
+      case "anonymousNoteClear":
+        this._store.commit("session/clearAnonymousNotes");
         break;
     }
   }
