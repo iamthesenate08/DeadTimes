@@ -28,7 +28,8 @@ const state = () => ({
   markedPlayer: -1,
   isVoteHistoryAllowed: true,
   isRolesDistributed: false,
-  autoDistributeDone: false
+  autoDistributeDone: false,
+  approvedAnonymousNotes: []
 });
 
 const getters = {};
@@ -54,6 +55,13 @@ const mutations = {
   claimSeat: set("claimedSeat"),
   distributeRoles: set("isRolesDistributed"),
   setAutoDistributeDone: set("autoDistributeDone"),
+  setApprovedAnonymousNotes: set("approvedAnonymousNotes"),
+  addApprovedAnonymousNote(state, note) {
+    state.approvedAnonymousNotes = [...state.approvedAnonymousNotes, note];
+  },
+  clearAnonymousNote(state) {
+    state.approvedAnonymousNotes = state.approvedAnonymousNotes.slice(0, -1);
+  },
   requestJoin: () => {},
   setSessionId(state, sessionId) {
     state.sessionId = sessionId

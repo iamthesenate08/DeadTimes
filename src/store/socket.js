@@ -289,6 +289,7 @@ class LiveSession {
         lockedVote: session.lockedVote,
         isVoteInProgress: session.isVoteInProgress,
         markedPlayer: session.markedPlayer,
+        approvedAnonymousNotes: session.approvedAnonymousNotes,
         fabled: fabled.map(f => (f.isCustom ? f : { id: f.id })),
         ...(session.nomination ? { votes: session.votes } : {})
       });
@@ -313,6 +314,7 @@ class LiveSession {
       lockedVote,
       isVoteInProgress,
       markedPlayer,
+      approvedAnonymousNotes,
       fabled
     } = data;
     const players = this._store.state.players.players;
@@ -368,6 +370,10 @@ class LiveSession {
         isVoteInProgress
       });
       this._store.commit("session/setMarkedPlayer", markedPlayer);
+      this._store.commit(
+        "session/setApprovedAnonymousNotes",
+        approvedAnonymousNotes || []
+      );
       this._store.commit("players/setFabled", {
         fabled: fabled.map(f => this._store.state.fabled.get(f.id) || f)
       });
@@ -973,6 +979,11 @@ export default store => {
         break;
       case "session/setVoteHistoryAllowed":
         session.setVoteHistoryAllowed();
+        break;
+      case "session/setApprovedAnonymousNotes":
+      case "session/addApprovedAnonymousNote":
+      case "session/clearAnonymousNote":
+        session.sendGamestate();
         break;
       case "toggleNight":
         session.setIsNight();

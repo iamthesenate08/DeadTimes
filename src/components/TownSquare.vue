@@ -23,6 +23,8 @@
       ></Player>
     </ul>
 
+    <AnonymousNoteOverlay />
+
     <div
       class="bluffs"
       v-if="players.length"
@@ -90,6 +92,7 @@
 import { mapGetters, mapState } from "vuex";
 import Player from "./Player";
 import Token from "./Token";
+import AnonymousNoteOverlay from "./AnonymousNoteOverlay";
 import ReminderModal from "./modals/ReminderModal";
 import RoleModal from "./modals/RoleModal";
 
@@ -97,6 +100,7 @@ export default {
   components: {
     Player,
     Token,
+    AnonymousNoteOverlay,
     RoleModal,
     ReminderModal
   },
@@ -261,6 +265,7 @@ export default {
 @import "../vars.scss";
 
 #townsquare {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 20px;
