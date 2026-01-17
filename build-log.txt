@@ -1,0 +1,592 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> townsquare@2.16.2 build
+> vue-cli-service build ./src/main.js
+
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+All browser targets in the browserslist configuration have supported ES module.
+Therefore we don't build two separate bundles for differential loading.
+
+
+-  Building for production...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ WARNING  Compiled with 5 warnings4:45:13 AM
+
+[eslint] 
+/workspace/DeadTimes/src/App.vue
+    8:32       warning  Insert `,`                                                                                                                                                                                                                    prettier/prettier
+   13:13       warning  Insert `,`                                                                                                                                                                                                                    prettier/prettier
+   27:16       warning  Replace `⏎········v-else-if="players.length·&&·!session.nomination"⏎······` with `·v-else-if="players.length·&&·!session.nomination"`                                                                                         prettier/prettier
+   85:14       warning  Insert `,`                                                                                                                                                                                                                    prettier/prettier
+   93:9        warning  Replace `player·=>·player.id·===·this.session.playerId` with `(player)·=>·player.id·===·this.session.playerId,`                                                                                                               prettier/prettier
+   96:6        warning  Insert `,`                                                                                                                                                                                                                    prettier/prettier
+  100:14       warning  Insert `,`                                                                                                                                                                                                                    prettier/prettier
+  145:6        warning  Insert `,`                                                                                                                                                                                                                    prettier/prettier
+  146:4        warning  Insert `,`                                                                                                                                                                                                                    prettier/prettier
+  156:7        warning  Insert `⏎···`                                                                                                                                                                                                                 prettier/prettier
+  174:306077   warning  Insert `⏎···`                                                                                                                                                                                                                 prettier/prettier
+  279:14       warning  Replace `·inset·0·1px·1px·#9c9c9c,` with `⏎····inset·0·1px·1px·#9c9c9c,⏎···`                                                                                                                                                  prettier/prettier
+  280:14       warning  Replace `·radial-gradient(⏎········at·0·-15%,⏎········rgba(#fff,·0.07)·70%,⏎········rgba(#fff,·0)·71%⏎······)⏎······0·0/·80%` with `⏎····radial-gradient(at·0·-15%,·rgba(#fff,·0.07)·70%,·rgba(#fff,·0)·71%)·0·0/·80%⏎·····`  prettier/prettier
+  312:16       warning  Insert `⏎·····`                                                                                                                                                                                                               prettier/prettier
+  320:16       warning  Replace `·inset·0·1px·1px·#002c9c,` with `⏎······inset·0·1px·1px·#002c9c,⏎·····`                                                                                                                                              prettier/prettier
+  326:16       warning  Insert `⏎·····`                                                                                                                                                                                                               prettier/prettier
+  334:16       warning  Replace `·inset·0·1px·1px·#9c0000,` with `⏎······inset·0·1px·1px·#9c0000,⏎·····`                                                                                                                                              prettier/prettier
+  355:1717676  warning  Insert `⏎···`                                                                                                                                                                                                                 prettier/prettier
+
+/workspace/DeadTimes/src/components/Gradients.vue
+  31:39  warning  Insert `,`  prettier/prettier
+  32:8   warning  Insert `,`  prettier/prettier
+  34:4   warning  Insert `,`  prettier/prettier
+
+/workspace/DeadTimes/src/components/Intro.vue
+  38:75  warning  Insert `,`  prettier/prettier
+  41:40  warning  Insert `,`  prettier/prettier
+
+/workspace/DeadTimes/src/components/JoinLanding.vue
+  30:25  warning  Insert `,`                        prettier/prettier
+  37:32  warning  Replace `player` with `(player)`  prettier/prettier
+  38:6   warning  Insert `,`                        prettier/prettier
+  45:6   warning  Insert `,`                        prettier/prettier
+  53:6   warning  Insert `,`                        prettier/prettier
+  54:4   warning  Insert `,`                        prettier/prettier
+
+/workspace/DeadTimes/src/components/Menu.vue
+    7:15  warning  Delete `⏎········`                                                  prettier/prettier
+    9:1   warning  Delete `··`                                                         prettier/prettier
+   10:7   warning  Replace `··}`⏎······` with `}``                                     prettier/prettier
+   20:45  warning  Insert `,`                                                          prettier/prettier
+   24:15  warning  Delete `⏎········`                                                  prettier/prettier
+   26:1   warning  Replace `··········` with `········`                                prettier/prettier
+   27:7   warning  Replace `··}`⏎······` with `}``                                     prettier/prettier
+   67:68  warning  Insert `,`                                                          prettier/prettier
+   88:48  warning  Insert `·`                                                          prettier/prettier
+   96:68  warning  Insert `,`                                                          prettier/prettier
+  121:39  warning  Replace `⏎············Live·Session⏎··········` with `Live·Session`  prettier/prettier
+  135:49  warning  Insert `·`                                                          prettier/prettier
+  139:58  warning  Insert `·`                                                          prettier/prettier
+  175:47  warning  Insert `·`                                                          prettier/prettier
+  179:52  warning  Insert `·`                                                          prettier/prettier
+  199:49  warning  Insert `·`                                                          prettier/prettier
+  203:52  warning  Insert `·`                                                          prettier/prettier
+  220:52  warning  Insert `·`                                                          prettier/prettier
+  254:40  warning  Insert `,`                                                          prettier/prettier
+  258:22  warning  Insert `,`                                                          prettier/prettier
+  272:42  warning  Insert `,`                                                          prettier/prettier
+  296:15  warning  Insert `,`                                                          prettier/prettier
+  310:74  warning  Insert `,`                                                          prettier/prettier
+  371:20  warning  Insert `,`                                                          prettier/prettier
+  372:7   warning  Insert `,`                                                          prettier/prettier
+  373:4   warning  Insert `,`                                                          prettier/prettier
+
+/workspace/DeadTimes/src/components/Player.vue
+   13:34  warning  Insert `,`                                                                                                          prettier/prettier
+   15:25  warning  Insert `,`                                                                                                          prettier/prettier
+  124:15  warning  Delete `··`                                                                                                         prettier/prettier
+  165:41  warning  Replace `⏎··············Claim·seat⏎···········` with `·Claim·seat`                                                  prettier/prettier
+  191:27  warning  Insert `⏎····················`                                                                                      prettier/prettier
+  192:1   warning  Insert `··`                                                                                                         prettier/prettier
+  193:21  warning  Replace `'.png'` with `··'.png',⏎··················`                                                                prettier/prettier
+  194:16  warning  Insert `,`                                                                                                          prettier/prettier
+  213:10  warning  Insert `,`                                                                                                          prettier/prettier
+  218:21  warning  Insert `,`                                                                                                          prettier/prettier
+  219:6   warning  Insert `,`                                                                                                          prettier/prettier
+  225:20  warning  Insert `·`                                                                                                          prettier/prettier
+  228:25  warning  Insert `·`                                                                                                          prettier/prettier
+  236:19  warning  Insert `·`                                                                                                          prettier/prettier
+  247:6   warning  Insert `,`                                                                                                          prettier/prettier
+  252:20  warning  Insert `,`                                                                                                          prettier/prettier
+  308:14  warning  Insert `,`                                                                                                          prettier/prettier
+  345:40  warning  Insert `,`                                                                                                          prettier/prettier
+  347:6   warning  Insert `,`                                                                                                          prettier/prettier
+  348:4   warning  Insert `,`                                                                                                          prettier/prettier
+  872:17  warning  Replace `·0·1px·1px·#f6dfbd,·0·-1px·1px·#f6dfbd,` with `⏎······0·1px·1px·#f6dfbd,⏎······0·-1px·1px·#f6dfbd,⏎·····`  prettier/prettier
+
+/workspace/DeadTimes/src/components/Token.vue
+  11:12  warning  Insert `,`                    prettier/prettier
+  57:26  warning  Insert `,`                    prettier/prettier
+  58:6   warning  Insert `,`                    prettier/prettier
+  61:29  warning  Insert `·`                    prettier/prettier
+  67:30  warning  Insert `,`                    prettier/prettier
+  73:21  warning  Replace `name` with `(name)`  prettier/prettier
+  81:6   warning  Insert `,`                    prettier/prettier
+  86:6   warning  Insert `,`                    prettier/prettier
+  87:4   warning  Insert `,`                    prettier/prettier
+
+/workspace/DeadTimes/src/components/TownInfo.vue
+   11:12  warning  Insert `,`                                                                                                                                         prettier/prettier
+   14:52  warning  Replace `⏎······Please·add·more·players!⏎····` with `Please·add·more·players!`                                                                     prettier/prettier
+   80:20  warning  Insert `·`                                                                                                                                         prettier/prettier
+   83:36  warning  Replace `player` with `(player)`                                                                                                                   prettier/prettier
+   91:13  warning  Replace `player·=>·player.isDead·===·true·&&·player.isVoteless·!==·true` with `(player)·=>·player.isDead·===·true·&&·player.isVoteless·!==·true,`  prettier/prettier
+   92:19  warning  Insert `,`                                                                                                                                         prettier/prettier
+   96:40  warning  Insert `,`                                                                                                                                         prettier/prettier
+   97:4   warning  Insert `,`                                                                                                                                         prettier/prettier
+  124:17  warning  Replace `·0·2px·1px·black,·0·-2px·1px·black,` with `⏎······0·2px·1px·black,⏎······0·-2px·1px·black,⏎·····`                                         prettier/prettier
+
+/workspace/DeadTimes/src/components/TownSquare.vue
+    8:31  warning  Insert `,`                                                                                               prettier/prettier
+   21:34  warning  Insert `,`                                                                                               prettier/prettier
+  106:18  warning  Insert `,`                                                                                               prettier/prettier
+  116:9   warning  Replace `note·=>·note.id·===·activeAnonymousNoteId` with `(note)·=>·note.id·===·activeAnonymousNoteId,`  prettier/prettier
+  118:6   warning  Insert `,`                                                                                               prettier/prettier
+  128:25  warning  Insert `,`                                                                                               prettier/prettier
+  170:76  warning  Insert `,`                                                                                               prettier/prettier
+  185:78  warning  Insert `,`                                                                                               prettier/prettier
+  201:65  warning  Replace `nom` with `(nom)`                                                                               prettier/prettier
+  215:35  warning  Insert `,`                                                                                               prettier/prettier
+  229:64  warning  Replace `(nom` with `((nom)`                                                                             prettier/prettier
+  244:35  warning  Insert `,`                                                                                               prettier/prettier
+  266:6   warning  Insert `,`                                                                                               prettier/prettier
+  267:4   warning  Insert `,`                                                                                               prettier/prettier
+
+/workspace/DeadTimes/src/components/Vote.vue
+   62:71  warning  Insert `,`                                                                                                    prettier/prettier
+   68:53  warning  Replace `⏎············Clear·mark⏎··········` with `Clear·mark`                                                prettier/prettier
+   94:32  warning  Replace `⏎········Please·claim·a·seat·to·vote.⏎······` with `Please·claim·a·seat·to·vote.`                    prettier/prettier
+  125:24  warning  Insert `·`                                                                                                    prettier/prettier
+  128:29  warning  Insert `·`                                                                                                    prettier/prettier
+  133:66  warning  Insert `,`                                                                                                    prettier/prettier
+  136:22  warning  Insert `·`                                                                                                    prettier/prettier
+  139:27  warning  Insert `·`                                                                                                    prettier/prettier
+  146:66  warning  Insert `,`                                                                                                    prettier/prettier
+  149:21  warning  Insert `·`                                                                                                    prettier/prettier
+  150:32  warning  Replace `p` with `(p)`                                                                                        prettier/prettier
+  152:26  warning  Insert `·`                                                                                                    prettier/prettier
+  153:44  warning  Replace `p·=>·p.id·===·this.session.playerId` with `⏎········(p)·=>·p.id·===·this.session.playerId,⏎······`   prettier/prettier
+  156:22  warning  Insert `·`                                                                                                    prettier/prettier
+  167:21  warning  Insert `·`                                                                                                    prettier/prettier
+  172:68  warning  Insert `,`                                                                                                    prettier/prettier
+  176:43  warning  Insert `,`                                                                                                    prettier/prettier
+  178:15  warning  Insert `⏎········`                                                                                            prettier/prettier
+  179:1   warning  Replace `········` with `··········`                                                                          prettier/prettier
+  180:9   warning  Insert `··`                                                                                                   prettier/prettier
+  181:15  warning  Replace `(n` with `((n)`                                                                                      prettier/prettier
+  182:6   warning  Insert `,`                                                                                                    prettier/prettier
+  186:22  warning  Insert `,`                                                                                                    prettier/prettier
+  236:44  warning  Replace `p·=>·p.id·===·this.session.playerId` with `⏎········(p)·=>·p.id·===·this.session.playerId,⏎······`   prettier/prettier
+  252:6   warning  Insert `,`                                                                                                    prettier/prettier
+  253:4   warning  Insert `,`                                                                                                    prettier/prettier
+  271:15  warning  Replace `·0·1px·2px·#000000,·0·-1px·2px·#000000,` with `⏎····0·1px·2px·#000000,⏎····0·-1px·2px·#000000,⏎···`  prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/AnonymousNoteModal.vue
+   2:9   warning  Replace `⏎····class="anonymous-note"⏎····v-if="modals.anonymousNote"⏎····@close="close"⏎··` with `·class="anonymous-note"·v-if="modals.anonymousNote"·@close="close"`  prettier/prettier
+  34:46  warning  Replace `⏎····.toString(36)⏎····` with `.toString(36)`                                                                                                                 prettier/prettier
+  43:21  warning  Insert `,`                                                                                                                                                             prettier/prettier
+  50:6   warning  Insert `,`                                                                                                                                                             prettier/prettier
+  58:30  warning  Insert `,`                                                                                                                                                             prettier/prettier
+  67:37  warning  Insert `,`                                                                                                                                                             prettier/prettier
+  68:4   warning  Insert `,`                                                                                                                                                             prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/AnonymousNoteQueueModal.vue
+  18:67  warning  Replace `⏎············Approve⏎··········` with `Approve`  prettier/prettier
+  21:62  warning  Replace `⏎············Reject⏎··········` with `Reject`    prettier/prettier
+  40:6   warning  Insert `,`                                                prettier/prettier
+  55:37  warning  Insert `,`                                                prettier/prettier
+  56:4   warning  Insert `,`                                                prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/EditionModal.vue
+   11:45   warning  Replace `'../../assets/editions/'·+⏎··············edition.id·+` with `⏎··············'../../assets/editions/'·+·edition.id·+·'.png',`             prettier/prettier
+   13:13   warning  Replace `··'.png')})`` with `)})`,`                                                                                                               prettier/prettier
+   24:83   warning  Insert `,`                                                                                                                                        prettier/prettier
+   90:10   warning  Insert `,`                                                                                                                                        prettier/prettier
+   92:17   warning  Insert `·`                                                                                                                                        prettier/prettier
+   99:147  warning  Insert `,`                                                                                                                                        prettier/prettier
+  103:147  warning  Insert `,`                                                                                                                                        prettier/prettier
+  107:148  warning  Insert `,`                                                                                                                                        prettier/prettier
+  111:155  warning  Insert `,`                                                                                                                                        prettier/prettier
+  115:163  warning  Insert `,`                                                                                                                                        prettier/prettier
+  119:158  warning  Insert `,`                                                                                                                                        prettier/prettier
+  120:10   warning  Insert `,`                                                                                                                                        prettier/prettier
+  121:8    warning  Insert `,`                                                                                                                                        prettier/prettier
+  173:25   warning  Replace `role·=>·typeof·role·===·"string"·?·{·id:·role·}·:·role` with `(role)·=>⏎········typeof·role·===·"string"·?·{·id:·role·}·:·role,⏎······`  prettier/prettier
+  182:50   warning  Insert `,`                                                                                                                                        prettier/prettier
+  196:51   warning  Insert `,`                                                                                                                                        prettier/prettier
+  197:4    warning  Insert `,`                                                                                                                                        prettier/prettier
+  213:15   warning  Replace `·-1px·-1px·0·#000,·1px·-1px·0·#000,` with `⏎····-1px·-1px·0·#000,⏎····1px·-1px·0·#000,⏎···`                                              prettier/prettier
+  214:20   warning  Insert `⏎···`                                                                                                                                     prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/FabledModal.vue
+   3:9   warning  Replace `⏎······Choose·a·fabled·character·to·add·to·the·game⏎····` with `Choose·a·fabled·character·to·add·to·the·game`  prettier/prettier
+  25:40  warning  Replace `role` with `(role)`                                                                                            prettier/prettier
+  28:50  warning  Replace `fable·=>·fable.id·===·role.id` with `⏎············(fable)·=>·fable.id·===·role.id,⏎··········`                 prettier/prettier
+  34:6   warning  Insert `,`                                                                                                              prettier/prettier
+  39:21  warning  Insert `,`                                                                                                              prettier/prettier
+  43:37  warning  Insert `,`                                                                                                              prettier/prettier
+  44:4   warning  Insert `,`                                                                                                              prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/GameStateModal.vue
+   31:10  warning  Insert `,`                          prettier/prettier
+   34:24  warning  Insert `·`                          prettier/prettier
+   43:41  warning  Replace `fabled` with `(fabled)`    prettier/prettier
+   44:55  warning  Insert `,`                          prettier/prettier
+   46:42  warning  Replace `(player` with `((player)`  prettier/prettier
+   48:37  warning  Insert `,`                          prettier/prettier
+   49:12  warning  Insert `,`                          prettier/prettier
+   52:70  warning  Insert `,`                          prettier/prettier
+   56:16  warning  Insert `,`                          prettier/prettier
+   60:19  warning  Insert `·`                          prettier/prettier
+   63:19  warning  Insert `·`                          prettier/prettier
+   78:60  warning  Insert `,`                          prettier/prettier
+   85:15  warning  Replace `f` with `(f)`              prettier/prettier
+   88:18  warning  Insert `,`                          prettier/prettier
+   89:14  warning  Insert `,`                          prettier/prettier
+   95:25  warning  Replace `player` with `(player)`    prettier/prettier
+  100:19  warning  Insert `,`                          prettier/prettier
+  101:16  warning  Insert `,`                          prettier/prettier
+  109:37  warning  Insert `,`                          prettier/prettier
+  110:4   warning  Insert `,`                          prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/Modal.vue
+  34:17  warning  Insert `·`  prettier/prettier
+  36:25  warning  Insert `,`  prettier/prettier
+  42:6   warning  Insert `,`  prettier/prettier
+  43:4   warning  Insert `,`  prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/NightOrderModal.vue
+   47:29  warning  Insert `⏎······················`                        prettier/prettier
+   48:1   warning  Insert `··`                                             prettier/prettier
+   49:23  warning  Replace `'.png'` with `··'.png',⏎····················`  prettier/prettier
+   50:18  warning  Insert `,`                                              prettier/prettier
+   72:29  warning  Insert `⏎······················`                        prettier/prettier
+   73:1   warning  Insert `··`                                             prettier/prettier
+   74:23  warning  Replace `'.png'` with `··'.png',⏎····················`  prettier/prettier
+   75:18  warning  Insert `,`                                              prettier/prettier
+  107:10  warning  Insert `,`                                              prettier/prettier
+  110:30  warning  Insert `·`                                              prettier/prettier
+  120:42  warning  Replace `p` with `(p)`                                  prettier/prettier
+  123:77  warning  Insert `,`                                              prettier/prettier
+  130:41  warning  Replace `(p` with `((p)`                                prettier/prettier
+  134:40  warning  Insert `,`                                              prettier/prettier
+  135:12  warning  Insert `,`                                              prettier/prettier
+  138:25  warning  Replace `(role` with `((role)`                          prettier/prettier
+  139:45  warning  Replace `p` with `(p)`                                  prettier/prettier
+  146:17  warning  Replace `(fabled` with `((fabled)`                      prettier/prettier
+  152:30  warning  Insert `·`                                              prettier/prettier
+  154:26  warning  Replace `role` with `(role)`                            prettier/prettier
+  155:45  warning  Replace `p` with `(p)`                                  prettier/prettier
+  162:18  warning  Replace `fabled` with `(fabled)`                        prettier/prettier
+  169:50  warning  Insert `,`                                              prettier/prettier
+  172:37  warning  Insert `,`                                              prettier/prettier
+  173:4   warning  Insert `,`                                              prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/ReferenceModal.vue
+   35:29  warning  Insert `⏎······················`                                                                                                                                                            prettier/prettier
+   36:1   warning  Insert `··`                                                                                                                                                                                 prettier/prettier
+   37:23  warning  Replace `'.png'` with `··'.png',⏎····················`                                                                                                                                      prettier/prettier
+   38:18  warning  Insert `,`                                                                                                                                                                                  prettier/prettier
+   63:47  warning  Replace `'../../assets/icons/'·+⏎················jinx.first.id·+` with `⏎················'../../assets/icons/'·+·jinx.first.id·+·'.png',`                                                   prettier/prettier
+   65:15  warning  Replace `··'.png')})`` with `)})`,`                                                                                                                                                         prettier/prettier
+   71:47  warning  Replace `'../../assets/icons/'·+⏎················jinx.second.id·+⏎················'.png')})`` with `⏎················'../../assets/icons/'·+·jinx.second.id·+·'.png',⏎··············)})`,`  prettier/prettier
+   96:10  warning  Insert `,`                                                                                                                                                                                  prettier/prettier
+  103:21  warning  Insert `·`                                                                                                                                                                                  prettier/prettier
+  105:26  warning  Replace `role` with `(role)`                                                                                                                                                                prettier/prettier
+  112:23  warning  Insert `,`                                                                                                                                                                                  prettier/prettier
+  120:27  warning  Insert `·`                                                                                                                                                                                  prettier/prettier
+  122:25  warning  Replace `(role` with `((role)`                                                                                                                                                              prettier/prettier
+  131:28  warning  Insert `·`                                                                                                                                                                                  prettier/prettier
+  144:40  warning  Insert `,`                                                                                                                                                                                  prettier/prettier
+  147:37  warning  Insert `,`                                                                                                                                                                                  prettier/prettier
+  148:4   warning  Insert `,`                                                                                                                                                                                  prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/ReminderModal.vue
+   21:27  warning  Insert `⏎····················`                                                                prettier/prettier
+   22:1   warning  Insert `··`                                                                                   prettier/prettier
+   23:21  warning  Replace `'.png'` with `··'.png',⏎··················`                                          prettier/prettier
+   24:16  warning  Insert `,`                                                                                    prettier/prettier
+   42:20  warning  Replace `·({·id,·image,·imageAlt·})·=>·name` with `⏎··({·id,·image,·imageAlt·})·=>⏎··(name)`  prettier/prettier
+   43:1   warning  Replace `··` with `····`                                                                      prettier/prettier
+   44:3   warning  Insert `··`                                                                                   prettier/prettier
+   45:1   warning  Replace `··` with `····`                                                                      prettier/prettier
+   46:1   warning  Replace `··name` with `····name,`                                                             prettier/prettier
+   47:1   warning  Insert `··`                                                                                   prettier/prettier
+   56:39  warning  Replace `role` with `(role)`                                                                  prettier/prettier
+   58:26  warning  Replace `p` with `(p)`                                                                        prettier/prettier
+   62:30  warning  Replace `bluff` with `(bluff)`                                                                prettier/prettier
+   69:59  warning  Insert `,`                                                                                    prettier/prettier
+   74:48  warning  Replace `role` with `(role)`                                                                  prettier/prettier
+   79:48  warning  Replace `role` with `(role)`                                                                  prettier/prettier
+   80:25  warning  Replace `(p` with `((p)`                                                                      prettier/prettier
+   91:40  warning  Insert `,`                                                                                    prettier/prettier
+  107:14  warning  Insert `,`                                                                                    prettier/prettier
+  111:37  warning  Insert `,`                                                                                    prettier/prettier
+  112:4   warning  Insert `,`                                                                                    prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/RoleModal.vue
+   63:39  warning  Replace `role` with `(role)`                                              prettier/prettier
+   68:27  warning  Replace `player` with `(player)`                                          prettier/prettier
+   78:36  warning  Insert `,`                                                                prettier/prettier
+   82:26  warning  Insert `,`                                                                prettier/prettier
+   91:15  warning  Insert `,`                                                                prettier/prettier
+  100:22  warning  Insert `,`                                                                prettier/prettier
+  110:37  warning  Insert `,`                                                                prettier/prettier
+  111:4   warning  Insert `,`                                                                prettier/prettier
+  125:16  warning  Replace `·0·0·10px·$townsfolk,` with `⏎······0·0·10px·$townsfolk,⏎·····`  prettier/prettier
+  128:16  warning  Replace `·0·0·10px·$outsider,` with `⏎······0·0·10px·$outsider,⏎·····`    prettier/prettier
+  131:16  warning  Replace `·0·0·10px·$minion,` with `⏎······0·0·10px·$minion,⏎·····`        prettier/prettier
+  134:16  warning  Replace `·0·0·10px·$demon,` with `⏎······0·0·10px·$demon,⏎·····`          prettier/prettier
+  137:16  warning  Replace `·0·0·10px·$traveler,` with `⏎······0·0·10px·$traveler,⏎·····`    prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/RolesModal.vue
+   48:67  warning  Insert `,`                                                                                     prettier/prettier
+   68:23  warning  Replace `arr` with `(arr)`                                                                     prettier/prettier
+   73:10  warning  Insert `,`                                                                                     prettier/prettier
+   75:17  warning  Insert `·`                                                                                     prettier/prettier
+   79:27  warning  Insert `,`                                                                                     prettier/prettier
+   83:28  warning  Insert `·`                                                                                     prettier/prettier
+   85:13  warning  Replace `(roles` with `((roles)`                                                               prettier/prettier
+   88:36  warning  Insert `·`                                                                                     prettier/prettier
+   89:53  warning  Replace `roles` with `(roles)`                                                                 prettier/prettier
+   90:20  warning  Replace `role·=>·role.selected·&&·role.setup)` with `(role)·=>·role.selected·&&·role.setup),`  prettier/prettier
+   95:60  warning  Insert `,`                                                                                     prettier/prettier
+  100:26  warning  Replace `role` with `(role)`                                                                   prettier/prettier
+  110:40  warning  Replace `team` with `(team)`                                                                   prettier/prettier
+  114:15  warning  Replace `role·=>·!role.selected` with `(role)·=>·!role.selected,`                              prettier/prettier
+  127:16  warning  Replace `roles` with `(roles)`                                                                 prettier/prettier
+  130:74  warning  Insert `,`                                                                                     prettier/prettier
+  134:15  warning  Replace `(a` with `((a)`                                                                       prettier/prettier
+  136:16  warning  Replace `a` with `(a)`                                                                         prettier/prettier
+  137:30  warning  Replace `player` with `(player)`                                                               prettier/prettier
+  143:20  warning  Insert `,`                                                                                     prettier/prettier
+  150:37  warning  Insert `,`                                                                                     prettier/prettier
+  152:20  warning  Insert `·`                                                                                     prettier/prettier
+  160:6   warning  Insert `,`                                                                                     prettier/prettier
+  161:4   warning  Insert `,`                                                                                     prettier/prettier
+  186:18  warning  Replace `·0·0·10px·$townsfolk,` with `⏎········0·0·10px·$townsfolk,⏎·······`                   prettier/prettier
+  189:18  warning  Replace `·0·0·10px·$outsider,` with `⏎········0·0·10px·$outsider,⏎·······`                     prettier/prettier
+  192:18  warning  Replace `·0·0·10px·$minion,` with `⏎········0·0·10px·$minion,⏎·······`                         prettier/prettier
+  195:18  warning  Replace `·0·0·10px·$demon,` with `⏎········0·0·10px·$demon,⏎·······`                           prettier/prettier
+  198:18  warning  Replace `·0·0·10px·$traveler,` with `⏎········0·0·10px·$traveler,⏎·······`                     prettier/prettier
+
+/workspace/DeadTimes/src/components/modals/VoteHistoryModal.vue
+   23:71  warning  Insert `,`                                                                                                                                                                                                   prettier/prettier
+   52:15  warning  Replace `⏎··············vote.timestamp⏎················.getHours()⏎················.toString()⏎················.padStart(2,·"0")⏎···········` with `·vote.timestamp.getHours().toString().padStart(2,·"0")`  prettier/prettier
+   58:29  warning  Replace `⏎················.getMinutes()⏎················.toString()⏎················` with `.getMinutes().toString()`                                                                                        prettier/prettier
+   76:79  warning  Insert `,`                                                                                                                                                                                                   prettier/prettier
+   95:10  warning  Insert `,`                                                                                                                                                                                                   prettier/prettier
+   98:39  warning  Insert `,`                                                                                                                                                                                                   prettier/prettier
+  107:43  warning  Insert `,`                                                                                                                                                                                                   prettier/prettier
+  110:37  warning  Insert `,`                                                                                                                                                                                                   prettier/prettier
+  111:4   warning  Insert `,`                                                                                                                                                                                                   prettier/prettier
+
+/workspace/DeadTimes/src/main.js
+  55:19  warning  Insert `,`                                                   prettier/prettier
+  59:18  warning  Replace `i` with `(i)`                                       prettier/prettier
+  60:19  warning  Replace `i·=>·fab["fa"·+·i])` with `(i)·=>·fab["fa"·+·i]),`  prettier/prettier
+  66:11  warning  Replace `h` with `(h)`                                       prettier/prettier
+  67:8   warning  Insert `,`                                                   prettier/prettier
+
+/workspace/DeadTimes/src/store/index.js
+   18:15  warning  Replace `r` with `(r)`                                                                                                                                                     prettier/prettier
+   20:12  warning  Replace `role·=>·[role.id,·role])` with `(role)·=>·[role.id,·role]),`                                                                                                      prettier/prettier
+   28:9   warning  Replace `r` with `(r)`                                                                                                                                                     prettier/prettier
+   31:40  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+   33:11  warning  Replace `(role·=>·[role.id,·role])` with `((role)·=>·[role.id,·role]),`                                                                                                    prettier/prettier
+   37:12  warning  Replace `·key·=>` with `⏎··(key)·=>⏎·`                                                                                                                                     prettier/prettier
+   38:1   warning  Replace `··` with `····`                                                                                                                                                   prettier/prettier
+   39:1   warning  Insert `··`                                                                                                                                                                prettier/prettier
+   41:15  warning  Replace `·key·=>` with `⏎··(key)·=>⏎·`                                                                                                                                     prettier/prettier
+   42:3   warning  Insert `··`                                                                                                                                                                prettier/prettier
+   43:5   warning  Insert `··`                                                                                                                                                                prettier/prettier
+   44:3   warning  Insert `··`                                                                                                                                                                prettier/prettier
+   45:1   warning  Insert `··`                                                                                                                                                                prettier/prettier
+   46:3   warning  Insert `··`                                                                                                                                                                prettier/prettier
+   47:1   warning  Insert `··`                                                                                                                                                                prettier/prettier
+   49:15  warning  Replace `id` with `(id)`                                                                                                                                                   prettier/prettier
+   53:19  warning  Replace `edition·=>·[edition.id,·edition])` with `(edition)·=>·[edition.id,·edition]),`                                                                                    prettier/prettier
+   55:45  warning  Replace `role` with `(role)`                                                                                                                                               prettier/prettier
+   56:39  warning  Replace `role` with `(role)`                                                                                                                                               prettier/prettier
+   68:67  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+   69:7   warning  Insert `,`                                                                                                                                                                 prettier/prettier
+   73:3   warning  Unexpected console statement                                                                                                                                               no-console
+   91:17  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+   97:12  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  109:21  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  122:25  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  128:11  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  143:19  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  145:21  warning  Replace `role` with `(role)`                                                                                                                                               prettier/prettier
+  164:39  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  193:14  warning  Replace `role` with `(role)`                                                                                                                                               prettier/prettier
+  208:13  warning  Replace `(role` with `((role)`                                                                                                                                             prettier/prettier
+  214:11  warning  Replace `role` with `(role)`                                                                                                                                               prettier/prettier
+  217:48  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  220:14  warning  Replace `role` with `(role)`                                                                                                                                               prettier/prettier
+  228:31  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  235:16  warning  Replace `(role` with `((role)`                                                                                                                                             prettier/prettier
+  241:19  warning  Replace `role` with `(role)`                                                                                                                                               prettier/prettier
+  242:16  warning  Replace `role·=>·[role.id,·role])` with `(role)·=>·[role.id,·role]),`                                                                                                      prettier/prettier
+  246:26  warning  Replace `.filter(r·=>·r.team·===·"fabled").map(r` with `⏎··········.filter((r)·=>·r.team·===·"fabled")⏎··········.map((r)`                                                 prettier/prettier
+  247:27  warning  Replace `role·=>·[role.id,·role])` with `(role)·=>·[role.id,·role]),`                                                                                                      prettier/prettier
+  252:19  warning  Replace `r·=>·r.team·===·"traveler"·&&·!roles.some(i·=>·i.id·===·r.id)` with `⏎············(r)·=>·r.team·===·"traveler"·&&·!roles.some((i)·=>·i.id·===·r.id),⏎··········`  prettier/prettier
+  253:15  warning  Replace `(role·=>·[role.id,·role])` with `((role)·=>·[role.id,·role]),`                                                                                                    prettier/prettier
+  265:6   warning  Insert `,`                                                                                                                                                                 prettier/prettier
+  267:33  warning  Insert `,`                                                                                                                                                                 prettier/prettier
+
+/workspace/DeadTimes/src/store/modules/players.js
+    8:15  warning  Insert `,`                                                                                               prettier/prettier
+   14:13  warning  Insert `,`                                                                                               prettier/prettier
+   19:27  warning  Replace `player` with `(player)`                                                                         prettier/prettier
+   23:7   warning  Replace `player·=>·player.role.team·!==·"traveler"` with `(player)·=>·player.role.team·!==·"traveler",`  prettier/prettier
+   39:20  warning  Replace `role` with `(role)`                                                                             prettier/prettier
+   50:21  warning  Replace `player` with `(player)`                                                                         prettier/prettier
+   55:20  warning  Replace `role` with `(role)`                                                                             prettier/prettier
+   61:4   warning  Insert `,`                                                                                               prettier/prettier
+   67:12  warning  Replace `a` with `(a)`                                                                                   prettier/prettier
+   69:11  warning  Replace `(a` with `((a)`                                                                                 prettier/prettier
+   75:35  warning  Replace `player` with `(player)`                                                                         prettier/prettier
+   87:17  warning  Insert `,`                                                                                               prettier/prettier
+   93:4   warning  Insert `,`                                                                                               prettier/prettier
+  122:11  warning  Insert `,`                                                                                               prettier/prettier
+  131:26  warning  Insert `,`                                                                                               prettier/prettier
+  156:4   warning  Insert `,`                                                                                               prettier/prettier
+  164:12  warning  Insert `,`                                                                                               prettier/prettier
+
+/workspace/DeadTimes/src/store/modules/session.js
+   34:30  warning  Insert `,`                                                                                                                                                          prettier/prettier
+   42:13  warning  Replace `key` with `(key)`                                                                                                                                          prettier/prettier
+   72:74  warning  Insert `,`                                                                                                                                                          prettier/prettier
+   96:24  warning  Replace `player·=>·!player.isDead·||·isExile).length·/·2` with `(player)·=>·!player.isDead·||·isExile).length·/·2,`                                                 prettier/prettier
+  100:33  warning  Insert `,`                                                                                                                                                          prettier/prettier
+  116:7   warning  Replace `note·=>·note.id·===·noteId` with `(note)·=>·note.id·===·noteId,`                                                                                           prettier/prettier
+  126:7   warning  Replace `existing·=>·existing.id·===·safeNote.id` with `(existing)·=>·existing.id·===·safeNote.id,`                                                                 prettier/prettier
+  131:17  warning  Insert `,`                                                                                                                                                          prettier/prettier
+  134:71  warning  Replace `existing·=>⏎········existing.id·===·safeNote.id·?·safeNote·:·existing` with `⏎········(existing)·=>·(existing.id·===·safeNote.id·?·safeNote·:·existing),`  prettier/prettier
+  144:7   warning  Replace `note·=>·note.id·!==·noteId` with `(note)·=>·note.id·!==·noteId,`                                                                                           prettier/prettier
+  165:4   warning  Insert `,`                                                                                                                                                          prettier/prettier
+  173:12  warning  Insert `,`                                                                                                                                                          prettier/prettier
+
+/workspace/DeadTimes/src/store/persistence.js
+    1:18  warning  Replace `store` with `(store)`                                                                                                   prettier/prettier
+    2:27  warning  Replace `isPublic` with `(isPublic)`                                                                                             prettier/prettier
+   39:48  warning  Insert `,`                                                                                                                       prettier/prettier
+   46:9   warning  Replace `fabled·=>·store.state.fabled.get(fabled.id)·||·fabled` with `(fabled)·=>·store.state.fabled.get(fabled.id)·||·fabled,`  prettier/prettier
+   47:8   warning  Insert `,`                                                                                                                       prettier/prettier
+   53:44  warning  Replace `player` with `(player)`                                                                                                 prettier/prettier
+   58:13  warning  Insert `,`                                                                                                                       prettier/prettier
+   59:10  warning  Insert `,`                                                                                                                       prettier/prettier
+  134:67  warning  Insert `,`                                                                                                                       prettier/prettier
+  141:38  warning  Replace `fabled` with `(fabled)`                                                                                                 prettier/prettier
+  142:59  warning  Insert `,`                                                                                                                       prettier/prettier
+  143:14  warning  Insert `,`                                                                                                                       prettier/prettier
+  144:12  warning  Insert `,`                                                                                                                       prettier/prettier
+  158:41  warning  Replace `player` with `(player)`                                                                                                 prettier/prettier
+  161:43  warning  Insert `,`                                                                                                                       prettier/prettier
+  162:18  warning  Insert `,`                                                                                                                       prettier/prettier
+  163:14  warning  Insert `,`                                                                                                                       prettier/prettier
+  173:65  warning  Insert `,`                                                                                                                       prettier/prettier
+
+/workspace/DeadTimes/src/store/socket.js
+    32:74  warning  Insert `,`                                                                                                                    prettier/prettier
+    36:28  warning  Replace `err` with `(err)`                                                                                                    prettier/prettier
+    45:19  warning  Insert `,`                                                                                                                    prettier/prettier
+    91:43  warning  Insert `,`                                                                                                                    prettier/prettier
+   109:16  warning  Insert `,`                                                                                                                    prettier/prettier
+   125:7   warning  Unexpected console statement                                                                                                  no-console
+   160:46  warning  Insert `,`                                                                                                                    prettier/prettier
+   221:28  warning  Replace `⏎··········"session/approveAnonymousNote",⏎··········params⏎········` with `"session/approveAnonymousNote",·params`  prettier/prettier
+   246:22  warning  Replace `⏎··········.toString(36)⏎··········.substr(2)` with `.toString(36).substr(2),`                                       prettier/prettier
+   284:61  warning  Replace `player` with `(player)`                                                                                              prettier/prettier
+   292:14  warning  Insert `,`                                                                                                                    prettier/prettier
+   297:22  warning  Insert `,`                                                                                                                    prettier/prettier
+   302:73  warning  Delete `note·=>`                                                                                                              prettier/prettier
+   303:8   warning  Replace `·this._stripAnonymousNoteSender(note)` with `·(note)·=>·this._stripAnonymousNoteSender(note),`                       prettier/prettier
+   317:28  warning  Replace `f` with `(f)`                                                                                                        prettier/prettier
+   318:64  warning  Insert `,`                                                                                                                    prettier/prettier
+   343:13  warning  Insert `,`                                                                                                                    prettier/prettier
+   361:66  warning  Replace `property` with `(property)`                                                                                          prettier/prettier
+   376:24  warning  Insert `,`                                                                                                                    prettier/prettier
+   383:20  warning  Insert `,`                                                                                                                    prettier/prettier
+   395:25  warning  Insert `,`                                                                                                                    prettier/prettier
+   401:33  warning  Insert `,`                                                                                                                    prettier/prettier
+   407:32  warning  Insert `,`                                                                                                                    prettier/prettier
+   411:28  warning  Replace `f·=>·this._store.state.fabled.get(f.id)·||·f)` with `(f)·=>·this._store.state.fabled.get(f.id)·||·f),`               prettier/prettier
+   429:34  warning  Insert `,`                                                                                                                    prettier/prettier
+   454:51  warning  Insert `,`                                                                                                                    prettier/prettier
+   470:17  warning  Replace `(f·=>·(f.isCustom·?·f·:·{·id:·f.id·}))` with `((f)·=>·(f.isCustom·?·f·:·{·id:·f.id·})),`                             prettier/prettier
+   482:26  warning  Replace `f·=>·this._store.state.fabled.get(f.id)·||·f)` with `(f)·=>·this._store.state.fabled.get(f.id)·||·f),`               prettier/prettier
+   502:26  warning  Insert `,`                                                                                                                    prettier/prettier
+   532:20  warning  Insert `,`                                                                                                                    prettier/prettier
+   543:22  warning  Insert `,`                                                                                                                    prettier/prettier
+   583:26  warning  Insert `,`                                                                                                                    prettier/prettier
+   604:49  warning  Replace `player` with `(player)`                                                                                              prettier/prettier
+   609:22  warning  Insert `,`                                                                                                                    prettier/prettier
+   623:72  warning  Insert `,`                                                                                                                    prettier/prettier
+   635:80  warning  Insert `,`                                                                                                                    prettier/prettier
+   650:40  warning  Insert `,`                                                                                                                    prettier/prettier
+   659:52  warning  Replace `⏎··········.toString(36)⏎··········` with `.toString(36)`                                                            prettier/prettier
+   664:66  warning  Insert `,`                                                                                                                    prettier/prettier
+   705:51  warning  Insert `,`                                                                                                                    prettier/prettier
+   721:34  warning  Replace `(player` with `((player)`                                                                                            prettier/prettier
+   727:26  warning  Insert `,`                                                                                                                    prettier/prettier
+   732:38  warning  Replace `(player` with `((player)`                                                                                            prettier/prettier
+   742:22  warning  Insert `,`                                                                                                                    prettier/prettier
+   747:22  warning  Insert `,`                                                                                                                    prettier/prettier
+   754:21  warning  Delete `⏎·····`                                                                                                               prettier/prettier
+   758:51  warning  Insert `,`                                                                                                                    prettier/prettier
+   770:13  warning  Replace `pending·=>·pending.id·===·noteId` with `(pending)·=>·pending.id·===·noteId,`                                         prettier/prettier
+   773:13  warning  Replace `approved·=>·approved.id·===·noteId` with `(approved)·=>·approved.id·===·noteId,`                                     prettier/prettier
+   786:13  warning  Replace `pending·=>·pending.id·===·noteId` with `(pending)·=>·pending.id·===·noteId,`                                         prettier/prettier
+   802:36  warning  Replace `(player` with `((player)`                                                                                            prettier/prettier
+   803:39  warning  Replace `player·=>·player.role·&&·player.role.id` with `⏎······(player)·=>·player.role·&&·player.role.id,⏎····`               prettier/prettier
+   829:18  warning  Insert `,`                                                                                                                    prettier/prettier
+   853:61  warning  Insert `,`                                                                                                                    prettier/prettier
+   904:53  warning  Insert `,`                                                                                                                    prettier/prettier
+   951:27  warning  Insert `,`                                                                                                                    prettier/prettier
+  1028:1   warning  Delete `⏎`                                                                                                                    prettier/prettier
+  1031:16  warning  Replace `store` with `(store)`                                                                                                prettier/prettier
+
+✖ 466 problems (0 errors, 466 warnings)
+  0 errors and 464 warnings potentially fixable with the `--fix` option.
+
+
+You may use special comments to disable some warnings.
+Use // eslint-disable-next-line to ignore the next line.
+Use /* eslint-disable */ to ignore all warnings in a file.
+ warning  in ./src/App.vue?vue&type=script&lang=js
+
+Should not import the named export 'version' (imported as 'version') from default-exporting module (only default export is available soon)
+
+ warning  
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  img/papyrus.4ee3b046.svg (308 KiB)
+  css/app.3176319e.css (2.16 MiB)
+  js/app.de78d9be.js (288 KiB)
+  img/custom.1892fe23.png (416 KiB)
+  img/engineer.31903b46.png (899 KiB)
+  js/chunk-vendors.4144e6f3.js (1.19 MiB)
+
+ warning  
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (3.62 MiB)
+      js/chunk-vendors.4144e6f3.js
+      css/app.3176319e.css
+      js/app.de78d9be.js
+
+
+ warning  
+
+webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+
+  File                                 Size               Gzipped
+
+  dist/js/chunk-vendors.4144e6f3.js    1213.71 KiB        440.76 KiB
+  dist/js/app.de78d9be.js              287.51 KiB         116.63 KiB
+  dist/css/app.3176319e.css            2209.59 KiB        1511.80 KiB
+
+  Images and other types of assets omitted.
+  Build at: 2026-01-17T04:45:13.363Z - Hash: 7959fe0a2ee2aaee - Time: 13655ms
+
+ DONE  Build complete. The dist directory is ready to be deployed.
+ INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+       
