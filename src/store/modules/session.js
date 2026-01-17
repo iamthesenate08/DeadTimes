@@ -55,6 +55,9 @@ const mutations = {
   claimSeat: set("claimedSeat"),
   distributeRoles: set("isRolesDistributed"),
   setAutoDistributeDone: set("autoDistributeDone"),
+  setApprovedAnonymousNotes: set("approvedAnonymousNotes"),
+  setActiveAnonymousNoteId: set("activeAnonymousNoteId"),
+  submitAnonymousNote: () => {},
   requestJoin: () => {},
   submitAnonymousNote: () => {},
   approveAnonymousNote(state, id) {
@@ -109,6 +112,54 @@ const mutations = {
   },
   clearVoteHistory(state) {
     state.voteHistory = [];
+  },
+  enqueueAnonymousNote(state, note) {
+    if (!note || !note.id) return;
+    state.pendingAnonymousNotes = [...state.pendingAnonymousNotes, note];
+  },
+  approveAnonymousNote(state, payload) {
+    const incomingNote =
+      payload && typeof payload === "object" ? payload.note || payload : null;
+    const noteId = incomingNote?.id || payload;
+    if (!noteId) return;
+    const pendingIndex = state.pendingAnonymousNotes.findIndex(
+      note => note.id === noteId
+    );
+    let note = incomingNote;
+    if (pendingIndex !== -1) {
+      [note] = state.pendingAnonymousNotes.splice(pendingIndex, 1);
+    }
+    if (!note) return;
+    const { playerId, ...safeNote } = note;
+    const approvedIndex = state.approvedAnonymousNotes.findIndex(
+      existing => existing.id === safeNote.id
+    );
+    if (approvedIndex === -1) {
+      state.approvedAnonymousNotes = [
+        ...state.approvedAnonymousNotes,
+        safeNote
+      ];
+    } else {
+      state.approvedAnonymousNotes = state.approvedAnonymousNotes.map(existing =>
+        existing.id === safeNote.id ? safeNote : existing
+      );
+    }
+    state.activeAnonymousNoteId = safeNote.id;
+  },
+  rejectAnonymousNote(state, payload) {
+    const noteId = payload && payload.id ? payload.id : payload;
+    if (!noteId) return;
+    state.pendingAnonymousNotes = state.pendingAnonymousNotes.filter(
+      note => note.id !== noteId
+    );
+    if (state.activeAnonymousNoteId === noteId) {
+      state.activeAnonymousNoteId = null;
+    }
+  },
+  clearAnonymousNotes(state) {
+    state.pendingAnonymousNotes = [];
+    state.approvedAnonymousNotes = [];
+    state.activeAnonymousNoteId = null;
   },
   /**
    * Store a vote with and without syncing it to the live session.
