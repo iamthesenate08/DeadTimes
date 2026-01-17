@@ -660,7 +660,8 @@ class LiveSession {
 
   _stripAnonymousNoteSender(note = {}) {
     if (!note || typeof note !== "object") return note;
-    const { playerId, ...safeNote } = note;
+    const safeNote = { ...note };
+    delete safeNote.playerId;
     return safeNote;
   }
 
@@ -1018,21 +1019,6 @@ class LiveSession {
     this._send("remove", payload);
   }
 
-  submitAnonymousNote(note) {
-    if (this._isSpectator) {
-      this._sendDirect("host", "anonymousNote", note);
-    }
-  }
-
-  approveAnonymousNote(id) {
-    if (this._isSpectator) return;
-    this._send("anonymousNoteApproved", { id });
-  }
-
-  rejectAnonymousNote(id) {
-    if (this._isSpectator) return;
-    this._send("anonymousNoteRejected", { id });
-  }
 }
 
 export default store => {
@@ -1126,15 +1112,6 @@ export default store => {
         break;
       case "players/remove":
         session.removePlayer(payload);
-        break;
-      case "session/submitAnonymousNote":
-        session.submitAnonymousNote(payload);
-        break;
-      case "session/approveAnonymousNote":
-        session.approveAnonymousNote(payload);
-        break;
-      case "session/rejectAnonymousNote":
-        session.rejectAnonymousNote(payload);
         break;
       case "players/set":
       case "players/clear":

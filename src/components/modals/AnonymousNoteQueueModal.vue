@@ -36,7 +36,7 @@ export default {
   computed: {
     ...mapState(["modals", "session"]),
     anonymousNotes() {
-      return this.session.anonymousNotes || [];
+      return this.session.pendingAnonymousNotes || [];
     }
   },
   methods: {
