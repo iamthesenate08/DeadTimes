@@ -23,6 +23,10 @@
       ></Player>
     </ul>
 
+    <div v-if="activeAnonymousNote" class="anonymous-note">
+      <p class="anonymous-note__text">{{ activeAnonymousNote.text }}</p>
+    </div>
+
     <div
       class="bluffs"
       v-if="players.length"
@@ -103,7 +107,14 @@ export default {
   computed: {
     ...mapGetters({ nightOrder: "players/nightOrder" }),
     ...mapState(["grimoire", "roles", "session"]),
-    ...mapState("players", ["players", "bluffs", "fabled"])
+    ...mapState("players", ["players", "bluffs", "fabled"]),
+    activeAnonymousNote() {
+      const { approvedAnonymousNotes, activeAnonymousNoteId } = this.session;
+      if (!activeAnonymousNoteId) return null;
+      return approvedAnonymousNotes.find(
+        note => note.id === activeAnonymousNoteId
+      );
+    }
   },
   data() {
     return {
@@ -268,6 +279,31 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+
+.anonymous-note {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 85vw);
+  aspect-ratio: 4 / 3;
+  background: url("~@/assets/reminder.png") center/contain no-repeat;
+  padding: 36px 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  pointer-events: none;
+
+  &__text {
+    color: #3c2c1a;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0;
+    word-break: break-word;
+  }
 }
 
 .circle {
