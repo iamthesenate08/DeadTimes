@@ -38,6 +38,8 @@
     <NightOrderModal />
     <VoteHistoryModal />
     <GameStateModal />
+    <AnonymousNoteModal />
+    <AnonymousNoteQueueModal />
     <Gradients />
     <span id="version">v{{ version }}</span>
   </div>
@@ -60,6 +62,8 @@ import NightOrderModal from "./components/modals/NightOrderModal";
 import FabledModal from "@/components/modals/FabledModal";
 import VoteHistoryModal from "@/components/modals/VoteHistoryModal";
 import GameStateModal from "@/components/modals/GameStateModal";
+import AnonymousNoteModal from "@/components/modals/AnonymousNoteModal";
+import AnonymousNoteQueueModal from "@/components/modals/AnonymousNoteQueueModal";
 
 export default {
   components: {
@@ -67,6 +71,8 @@ export default {
     VoteHistoryModal,
     FabledModal,
     NightOrderModal,
+    AnonymousNoteModal,
+    AnonymousNoteQueueModal,
     Vote,
     ReferenceModal,
     JoinLanding,

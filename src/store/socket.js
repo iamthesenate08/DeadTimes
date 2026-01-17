@@ -211,6 +211,19 @@ class LiveSession {
       case "pronouns":
         this._updatePlayerPronouns(params);
         break;
+      case "anonymousNote":
+        if (this._isSpectator) return;
+        this._store.commit("session/addAnonymousNote", params);
+        break;
+      case "anonymousNoteApproved":
+        this._store.commit(
+          "session/approveAnonymousNote",
+          params && params.id
+        );
+        break;
+      case "anonymousNoteRejected":
+        this._store.commit("session/rejectAnonymousNote", params && params.id);
+        break;
     }
   }
 
@@ -913,6 +926,22 @@ class LiveSession {
     if (this._isSpectator) return;
     this._send("remove", payload);
   }
+
+  submitAnonymousNote(note) {
+    if (this._isSpectator) {
+      this._sendDirect("host", "anonymousNote", note);
+    }
+  }
+
+  approveAnonymousNote(id) {
+    if (this._isSpectator) return;
+    this._send("anonymousNoteApproved", { id });
+  }
+
+  rejectAnonymousNote(id) {
+    if (this._isSpectator) return;
+    this._send("anonymousNoteRejected", { id });
+  }
 }
 
 export default store => {
@@ -994,6 +1023,15 @@ export default store => {
         break;
       case "players/remove":
         session.removePlayer(payload);
+        break;
+      case "session/submitAnonymousNote":
+        session.submitAnonymousNote(payload);
+        break;
+      case "session/approveAnonymousNote":
+        session.approveAnonymousNote(payload);
+        break;
+      case "session/rejectAnonymousNote":
+        session.rejectAnonymousNote(payload);
         break;
       case "players/set":
       case "players/clear":

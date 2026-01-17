@@ -144,6 +144,21 @@
             >
               Vote history<em>[V]</em>
             </li>
+            <li
+              v-if="session.isSpectator"
+              @click="toggleModal('anonymousNote')"
+            >
+              Submit Anonymous Note
+            </li>
+            <li
+              v-if="!session.isSpectator"
+              @click="toggleModal('anonymousNoteQueue')"
+            >
+              Review Notes
+              <em v-if="session.anonymousNotes.length">{{
+                session.anonymousNotes.length
+              }}</em>
+            </li>
             <li @click="leaveSession">
               Leave Session
               <em>{{ session.sessionId }}</em>
