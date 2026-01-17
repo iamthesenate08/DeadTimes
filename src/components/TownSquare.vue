@@ -23,6 +23,11 @@
       ></Player>
     </ul>
 
+    <div v-if="activeAnonymousNote" class="anonymous-note-banner">
+      <strong>Anonymous note:</strong>
+      <span>{{ activeAnonymousNote.text }}</span>
+    </div>
+
     <div
       class="bluffs"
       v-if="players.length"
@@ -103,7 +108,14 @@ export default {
   computed: {
     ...mapGetters({ nightOrder: "players/nightOrder" }),
     ...mapState(["grimoire", "roles", "session"]),
-    ...mapState("players", ["players", "bluffs", "fabled"])
+    ...mapState("players", ["players", "bluffs", "fabled"]),
+    activeAnonymousNote() {
+      const { approvedAnonymousNotes, activeAnonymousNoteId } = this.session;
+      if (!activeAnonymousNoteId) return null;
+      return approvedAnonymousNotes.find(
+        note => note.id === activeAnonymousNoteId
+      );
+    }
   },
   data() {
     return {
@@ -268,6 +280,33 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+
+.anonymous-note-banner {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(720px, 90vw);
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  z-index: 30;
+
+  strong {
+    color: $townsfolk;
+    white-space: nowrap;
+  }
+
+  span {
+    color: #fff;
+    line-height: 1.4;
+    word-break: break-word;
+  }
 }
 
 .circle {
