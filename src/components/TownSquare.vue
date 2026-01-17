@@ -23,8 +23,9 @@
       ></Player>
     </ul>
 
-    <div v-if="activeAnonymousNote" class="anonymous-note">
-      <p class="anonymous-note__text">{{ activeAnonymousNote.text }}</p>
+    <div v-if="activeAnonymousNote" class="anonymous-note-banner">
+      <strong>Anonymous note:</strong>
+      <span>{{ activeAnonymousNote.text }}</span>
     </div>
 
     <div
@@ -281,27 +282,29 @@ export default {
   justify-content: center;
 }
 
-.anonymous-note {
+.anonymous-note-banner {
   position: absolute;
-  top: 16px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(420px, 85vw);
-  aspect-ratio: 4 / 3;
-  background: url("~@/assets/reminder.png") center/contain no-repeat;
-  padding: 36px 42px;
+  max-width: min(720px, 90vw);
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
+  align-items: baseline;
   z-index: 30;
-  pointer-events: none;
 
-  &__text {
-    color: #3c2c1a;
-    font-size: 1rem;
+  strong {
+    color: $townsfolk;
+    white-space: nowrap;
+  }
+
+  span {
+    color: #fff;
     line-height: 1.4;
-    text-align: center;
-    margin: 0;
     word-break: break-word;
   }
 }
