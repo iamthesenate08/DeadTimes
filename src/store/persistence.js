@@ -11,6 +11,18 @@ module.exports = store => {
   if (localStorage.getItem("muted")) {
     store.commit("toggleMuted", true);
   }
+  if (localStorage.getItem("soundCuesEnabled") !== null) {
+    store.commit(
+      "toggleSoundCues",
+      localStorage.getItem("soundCuesEnabled") === "1"
+    );
+  }
+  if (localStorage.getItem("soundVolume") !== null) {
+    store.commit(
+      "setSoundVolume",
+      parseFloat(localStorage.getItem("soundVolume"))
+    );
+  }
   if (localStorage.getItem("static")) {
     store.commit("toggleStatic", true);
   }
@@ -99,6 +111,15 @@ module.exports = store => {
         } else {
           localStorage.removeItem("muted");
         }
+        break;
+      case "toggleSoundCues":
+        localStorage.setItem(
+          "soundCuesEnabled",
+          state.grimoire.isSoundCuesEnabled ? "1" : "0"
+        );
+        break;
+      case "setSoundVolume":
+        localStorage.setItem("soundVolume", state.grimoire.soundVolume);
         break;
       case "toggleStatic":
         if (state.grimoire.isStatic) {
