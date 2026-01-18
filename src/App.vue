@@ -24,15 +24,16 @@
     ></video>
     <div class="backdrop"></div>
     <transition name="blur">
-      <ChalkboardLanding v-if="showJoinLanding && isMobile" />
+      <PublicChalkboard v-if="grimoire.isPublicView" />
+      <ChalkboardLanding v-else-if="showJoinLanding && isMobile" />
       <JoinLanding v-else-if="showJoinLanding" />
       <Intro v-else-if="!players.length"></Intro>
       <TownInfo
         v-else-if="players.length && !session.nomination"
       ></TownInfo>
-      <Vote v-if="session.nomination"></Vote>
+      <Vote v-if="session.nomination && !grimoire.isPublicView"></Vote>
     </transition>
-    <TownSquare></TownSquare>
+    <TownSquare v-if="!grimoire.isPublicView"></TownSquare>
     <Menu v-if="!grimoire.isPublicView" ref="menu"></Menu>
     <EditionModal v-if="!grimoire.isPublicView" />
     <FabledModal v-if="!grimoire.isPublicView" />
@@ -60,6 +61,7 @@ import EditionModal from "./components/modals/EditionModal";
 import Intro from "./components/Intro";
 import JoinLanding from "./components/JoinLanding";
 import ChalkboardLanding from "./components/ChalkboardLanding";
+import PublicChalkboard from "./components/PublicChalkboard";
 import ReferenceModal from "./components/modals/ReferenceModal";
 import Vote from "./components/Vote";
 import Gradients from "./components/Gradients";
@@ -86,6 +88,7 @@ export default {
     ReferenceModal,
     JoinLanding,
     ChalkboardLanding,
+    PublicChalkboard,
     Intro,
     TownInfo,
     TownSquare,
