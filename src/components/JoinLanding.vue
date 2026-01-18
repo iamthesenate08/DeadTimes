@@ -124,4 +124,41 @@ input {
   margin-top: 12px;
   opacity: 0.8;
 }
+
+@media screen and (max-width: 767.98px) {
+  .join {
+    width: min(92vw, 360px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+    padding: 12px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .join-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .join-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .join {
+    width: 94vw;
+  }
+}
 </style>
