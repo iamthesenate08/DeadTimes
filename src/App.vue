@@ -175,6 +175,14 @@ export default {
       });
     },
     keyup({ key, ctrlKey, metaKey }) {
+      const activeElement = document.activeElement;
+      if (
+        activeElement &&
+        (["INPUT", "TEXTAREA"].includes(activeElement.tagName) ||
+          activeElement.isContentEditable)
+      ) {
+        return;
+      }
       if (this.grimoire.isPublicView) return;
       if (ctrlKey || metaKey) return;
       switch (key.toLocaleLowerCase()) {
