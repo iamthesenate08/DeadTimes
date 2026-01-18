@@ -1142,6 +1142,8 @@ export default store => {
   if (sessionId) {
     store.commit("session/setSpectator", true);
     store.commit("session/setSessionId", sessionId);
-    store.commit("toggleGrimoire", false);
+    if (!store.state.grimoire.isPublicView) {
+      store.commit("toggleGrimoire", false);
+    }
   }
 };

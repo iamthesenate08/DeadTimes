@@ -46,6 +46,24 @@ const toggle = key => ({ grimoire }, val) => {
   }
 };
 
+const isPublicViewEnabled = () => {
+  if (typeof window === "undefined") return false;
+  const params = new URLSearchParams(window.location.search);
+  return params.has("public");
+};
+
+const toggleGrimoire = ({ grimoire }, val) => {
+  if (grimoire.isPublicView) {
+    grimoire.isPublic = true;
+    return;
+  }
+  if (val === true || val === false) {
+    grimoire.isPublic = val;
+  } else {
+    grimoire.isPublic = !grimoire.isPublic;
+  }
+};
+
 const clean = id => id.toLocaleLowerCase().replace(/[^a-z0-9]/g, "");
 
 // global data maps
@@ -101,6 +119,7 @@ export default new Vuex.Store({
       isNight: false,
       isNightOrder: true,
       isPublic: true,
+      isPublicView: isPublicViewEnabled(),
       isMenuOpen: false,
       isStatic: false,
       isMuted: false,
@@ -174,7 +193,7 @@ export default new Vuex.Store({
     toggleNightOrder: toggle("isNightOrder"),
     toggleStatic: toggle("isStatic"),
     toggleNight: toggle("isNight"),
-    toggleGrimoire: toggle("isPublic"),
+    toggleGrimoire,
     toggleImageOptIn: toggle("isImageOptIn"),
     toggleInPerson: toggle("isInPerson"),
     togglePassAndPlay: toggle("isPassAndPlay"),
