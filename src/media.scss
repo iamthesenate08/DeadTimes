@@ -45,7 +45,7 @@
     padding: 8px;
   }
   #townsquare .circle {
-    transform: scale(0.7);
+    transform: scale(0.8);
     transform-origin: center;
   }
   .pass-and-play {
@@ -116,7 +116,7 @@
     font-size: 0.8em;
   }
   #townsquare .circle {
-    transform: scale(0.62);
+    transform: scale(0.72);
   }
   #controls {
     right: 2px;
@@ -139,7 +139,7 @@
 
 @media screen and (max-height: 700px) {
   #townsquare .circle {
-    transform: scale(0.68);
+    transform: scale(0.75);
   }
 }
 
