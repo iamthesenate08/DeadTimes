@@ -57,6 +57,10 @@
             <template v-if="grimoire.isPublic">Show</template>
             <em>[G]</em>
           </li>
+          <li @click="launchPublicView" v-if="players.length">
+            Launch public view
+            <em><font-awesome-icon icon="window-maximize"/></em>
+          </li>
           <li @click="toggleNight" v-if="!session.isSpectator">
             <template v-if="!grimoire.isNight">Switch to Night</template>
             <template v-if="grimoire.isNight">Switch to Day</template>
@@ -323,6 +327,11 @@ export default {
       if (background || background === "") {
         this.$store.commit("setBackground", background);
       }
+    },
+    launchPublicView() {
+      const url = new URL(window.location.href);
+      url.searchParams.set("public", "1");
+      window.open(url.toString(), "_blank", "noopener");
     },
     hostSession() {
       if (this.session.sessionId) return;

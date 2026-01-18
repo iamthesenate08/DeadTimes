@@ -4,6 +4,7 @@
     class="square"
     :class="{
       public: grimoire.isPublic,
+      'public-view': grimoire.isPublicView,
       spectator: session.isSpectator,
       vote: session.nomination
     }"
@@ -77,14 +78,17 @@
       </div>
     </div>
 
-    <div v-if="activeAnonymousNote" class="anonymous-note-banner">
+    <div
+      v-if="activeAnonymousNote && !grimoire.isPublicView"
+      class="anonymous-note-banner"
+    >
       <strong>Anonymous note:</strong>
       <span>{{ activeAnonymousNote.text }}</span>
     </div>
 
     <div
       class="bluffs"
-      v-if="players.length"
+      v-if="players.length && !grimoire.isPublicView"
       ref="bluffs"
       :class="{ closed: !isBluffsOpen }"
     >
@@ -105,7 +109,11 @@
       </ul>
     </div>
 
-    <div class="fabled" :class="{ closed: !isFabledOpen }" v-if="fabled.length">
+    <div
+      class="fabled"
+      :class="{ closed: !isFabledOpen }"
+      v-if="fabled.length && !grimoire.isPublicView"
+    >
       <h3>
         <span>Fabled</span>
         <font-awesome-icon icon="times-circle" @click.stop="toggleFabled" />
@@ -140,8 +148,14 @@
       </ul>
     </div>
 
-    <ReminderModal :player-index="selectedPlayer"></ReminderModal>
-    <RoleModal :player-index="selectedPlayer"></RoleModal>
+    <ReminderModal
+      v-if="!grimoire.isPublicView"
+      :player-index="selectedPlayer"
+    ></ReminderModal>
+    <RoleModal
+      v-if="!grimoire.isPublicView"
+      :player-index="selectedPlayer"
+    ></RoleModal>
   </div>
 </template>
 
@@ -164,7 +178,11 @@ export default {
     ...mapState(["grimoire", "roles", "session"]),
     ...mapState("players", ["players", "bluffs", "fabled"]),
     showPassAndPlay() {
-      return this.grimoire.isPassAndPlay && !this.session.isSpectator;
+      return (
+        this.grimoire.isPassAndPlay &&
+        !this.session.isSpectator &&
+        !this.grimoire.isPublicView
+      );
     },
     filteredPassAndPlay() {
       const query = this.passAndPlayQuery.trim().toLowerCase();
@@ -178,6 +196,7 @@ export default {
       return this.players[this.passAndPlaySelected];
     },
     activeAnonymousNote() {
+      if (this.grimoire.isPublicView) return null;
       const { approvedAnonymousNotes, activeAnonymousNoteId } = this.session;
       if (!activeAnonymousNoteId) return null;
       return approvedAnonymousNotes.find(
@@ -405,6 +424,10 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+
+#townsquare.public-view {
+  pointer-events: none;
 }
 
 .pass-and-play {

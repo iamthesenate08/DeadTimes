@@ -6,7 +6,8 @@
     :class="{
       night: grimoire.isNight,
       static: grimoire.isStatic,
-      'in-person': grimoire.isInPerson
+      'in-person': grimoire.isInPerson,
+      'public-view': grimoire.isPublicView
     }"
     :style="{
       backgroundImage: grimoire.background
@@ -31,17 +32,17 @@
       <Vote v-if="session.nomination"></Vote>
     </transition>
     <TownSquare></TownSquare>
-    <Menu ref="menu"></Menu>
-    <EditionModal />
-    <FabledModal />
-    <RolesModal />
-    <ReferenceModal />
-    <NightOrderModal />
-    <VoteHistoryModal />
-    <GameStateModal />
-    <AnonymousNoteModal />
-    <AnonymousNoteQueueModal />
-    <SessionQrModal />
+    <Menu v-if="!grimoire.isPublicView" ref="menu"></Menu>
+    <EditionModal v-if="!grimoire.isPublicView" />
+    <FabledModal v-if="!grimoire.isPublicView" />
+    <RolesModal v-if="!grimoire.isPublicView" />
+    <ReferenceModal v-if="!grimoire.isPublicView" />
+    <NightOrderModal v-if="!grimoire.isPublicView" />
+    <VoteHistoryModal v-if="!grimoire.isPublicView" />
+    <GameStateModal v-if="!grimoire.isPublicView" />
+    <AnonymousNoteModal v-if="!grimoire.isPublicView" />
+    <AnonymousNoteQueueModal v-if="!grimoire.isPublicView" />
+    <SessionQrModal v-if="!grimoire.isPublicView" />
     <Gradients />
     <span id="version">v{{ version }}</span>
   </div>
@@ -158,6 +159,7 @@ export default {
       });
     },
     keyup({ key, ctrlKey, metaKey }) {
+      if (this.grimoire.isPublicView) return;
       if (ctrlKey || metaKey) return;
       switch (key.toLocaleLowerCase()) {
         case "g":

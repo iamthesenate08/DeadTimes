@@ -1,48 +1,50 @@
 <template>
   <div class="token" @click="setRole" :class="[role.id]">
-    <span
-      class="icon"
-      v-if="role.id"
-      :style="{
-        backgroundImage: `url(${
-          role.image && grimoire.isImageOptIn
-            ? role.image
-            : require('../assets/icons/' + (role.imageAlt || role.id) + '.png')
-        })`
-      }"
-    ></span>
-    <span
-      class="leaf-left"
-      v-if="role.firstNight || role.firstNightReminder"
-    ></span>
-    <span
-      class="leaf-right"
-      v-if="role.otherNight || role.otherNightReminder"
-    ></span>
-    <span v-if="reminderLeaves" :class="['leaf-top' + reminderLeaves]"></span>
-    <span class="leaf-orange" v-if="role.setup"></span>
-    <svg viewBox="0 0 150 150" class="name">
-      <path
-        d="M 13 75 C 13 160, 138 160, 138 75"
-        id="curve"
-        fill="transparent"
-      />
-      <text
-        width="150"
-        x="66.6%"
-        text-anchor="middle"
-        class="label mozilla"
-        :font-size="role.name | nameToFontSize"
-      >
-        <textPath xlink:href="#curve">
-          {{ role.name }}
-        </textPath>
-      </text>
-    </svg>
-    <div class="edition" :class="[`edition-${role.edition}`, role.team]"></div>
-    <div class="ability" v-if="role.ability">
-      {{ role.ability }}
-    </div>
+    <template v-if="!grimoire.isPublicView">
+      <span
+        class="icon"
+        v-if="role.id"
+        :style="{
+          backgroundImage: `url(${
+            role.image && grimoire.isImageOptIn
+              ? role.image
+              : require('../assets/icons/' + (role.imageAlt || role.id) + '.png')
+          })`
+        }"
+      ></span>
+      <span
+        class="leaf-left"
+        v-if="role.firstNight || role.firstNightReminder"
+      ></span>
+      <span
+        class="leaf-right"
+        v-if="role.otherNight || role.otherNightReminder"
+      ></span>
+      <span v-if="reminderLeaves" :class="['leaf-top' + reminderLeaves]"></span>
+      <span class="leaf-orange" v-if="role.setup"></span>
+      <svg viewBox="0 0 150 150" class="name">
+        <path
+          d="M 13 75 C 13 160, 138 160, 138 75"
+          id="curve"
+          fill="transparent"
+        />
+        <text
+          width="150"
+          x="66.6%"
+          text-anchor="middle"
+          class="label mozilla"
+          :font-size="role.name | nameToFontSize"
+        >
+          <textPath xlink:href="#curve">
+            {{ role.name }}
+          </textPath>
+        </text>
+      </svg>
+      <div class="edition" :class="[`edition-${role.edition}`, role.team]"></div>
+      <div class="ability" v-if="role.ability">
+        {{ role.ability }}
+      </div>
+    </template>
   </div>
 </template>
 
@@ -82,6 +84,7 @@ export default {
   },
   methods: {
     setRole() {
+      if (this.grimoire.isPublicView) return;
       this.$emit("set-role");
     }
   }
