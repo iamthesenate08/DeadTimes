@@ -31,7 +31,8 @@ const state = () => ({
   autoDistributeDone: false,
   pendingAnonymousNotes: [],
   approvedAnonymousNotes: [],
-  activeAnonymousNoteId: null
+  activeAnonymousNoteId: null,
+  hasDeclinedSeat: false
 });
 
 const getters = {};
@@ -59,6 +60,7 @@ const mutations = {
   setAutoDistributeDone: set("autoDistributeDone"),
   setApprovedAnonymousNotes: set("approvedAnonymousNotes"),
   setActiveAnonymousNoteId: set("activeAnonymousNoteId"),
+  setHasDeclinedSeat: set("hasDeclinedSeat"),
   submitAnonymousNote: () => {},
   requestJoin: () => {},
   setSessionId(state, sessionId) {
@@ -66,6 +68,7 @@ const mutations = {
       .toLocaleLowerCase()
       .replace(/[^0-9a-z]/g, "")
       .substr(0, 10);
+    state.hasDeclinedSeat = false;
   },
   nomination(
     state,
