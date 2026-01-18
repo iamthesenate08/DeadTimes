@@ -182,6 +182,13 @@ class LiveSession {
         if (!this._isSpectator) return;
         this._store.commit("toggleNight", params);
         break;
+      case "sessionQr":
+        if (!this._isSpectator) return;
+        this._store.commit("setModal", {
+          name: "sessionQr",
+          value: !!params
+        });
+        break;
       case "isVoteHistoryAllowed":
         if (!this._isSpectator) return;
         this._store.commit("session/setVoteHistoryAllowed", params);
@@ -897,6 +904,15 @@ class LiveSession {
   }
 
   /**
+   * Send the session QR modal state. ST only
+   * @param isOpen
+   */
+  setSessionQr(isOpen) {
+    if (this._isSpectator) return;
+    this._send("sessionQr", !!isOpen);
+  }
+
+  /**
    * Send the isVoteHistoryAllowed state. ST only
    */
   setVoteHistoryAllowed() {
@@ -1088,6 +1104,11 @@ export default store => {
         break;
       case "session/setVoteHistoryAllowed":
         session.setVoteHistoryAllowed();
+        break;
+      case "toggleModal":
+        if (payload === "sessionQr" || payload === undefined) {
+          session.setSessionQr(state.modals.sessionQr);
+        }
         break;
       case "toggleNight":
         session.setIsNight();
