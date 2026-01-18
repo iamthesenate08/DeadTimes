@@ -14,6 +14,11 @@
         },
         player.role.team
       ]"
+      :draggable="isDraggable"
+      @dragstart="dragStart"
+      @dragover.prevent="dragOver"
+      @drop.prevent="dragDrop"
+      @dragend="dragEnd"
     >
       <div class="shroud" @click="toggleStatus()"></div>
       <div class="life" @click="toggleStatus()"></div>
@@ -225,6 +230,9 @@ export default {
     index: function() {
       return this.players.indexOf(this.player);
     },
+    isDraggable: function() {
+      return !this.session.isSpectator && !this.session.lockedVote;
+    },
     voteLocked: function() {
       const session = this.session;
       const players = this.players.length;
@@ -333,6 +341,24 @@ export default {
     claimSeat() {
       this.isMenuOpen = false;
       this.$emit("trigger", ["claimSeat"]);
+    },
+    dragStart(event) {
+      if (!this.isDraggable) return;
+      event.dataTransfer.effectAllowed = "move";
+      event.dataTransfer.setData("text/plain", this.index);
+      this.$emit("trigger", ["dragStart", this.index]);
+    },
+    dragOver(event) {
+      if (!this.isDraggable) return;
+      event.dataTransfer.dropEffect = "move";
+    },
+    dragDrop() {
+      if (!this.isDraggable) return;
+      this.$emit("trigger", ["dragDrop", this.index]);
+    },
+    dragEnd() {
+      if (!this.isDraggable) return;
+      this.$emit("trigger", ["dragEnd"]);
     },
     /**
      * Allow the ST to override a locked vote.

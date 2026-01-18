@@ -124,6 +124,7 @@ export default {
       swap: -1,
       move: -1,
       nominate: -1,
+      dragIndex: null,
       isBluffsOpen: true,
       isFabledOpen: true
     };
@@ -223,26 +224,7 @@ export default {
         this.cancel();
         this.move = from;
       } else {
-        if (this.session.nomination) {
-          // update nomination if it is affected by the move
-          const moveTo = this.players.indexOf(to);
-          const updatedNomination = this.session.nomination.map(nom => {
-            if (nom === this.move) return moveTo;
-            if (nom > this.move && nom <= moveTo) return nom - 1;
-            if (nom < this.move && nom >= moveTo) return nom + 1;
-            return nom;
-          });
-          if (
-            this.session.nomination[0] !== updatedNomination[0] ||
-            this.session.nomination[1] !== updatedNomination[1]
-          ) {
-            this.$store.commit("session/setNomination", updatedNomination);
-          }
-        }
-        this.$store.commit("players/move", [
-          this.move,
-          this.players.indexOf(to)
-        ]);
+        this.applyMove(this.move, this.players.indexOf(to));
         this.cancel();
       }
     },
@@ -259,10 +241,44 @@ export default {
         this.cancel();
       }
     },
+    dragStart(playerIndex) {
+      if (this.session.isSpectator || this.session.lockedVote) return;
+      this.cancel();
+      this.dragIndex = playerIndex;
+    },
+    dragDrop(playerIndex) {
+      if (this.session.isSpectator || this.session.lockedVote) return;
+      if (this.dragIndex === null) return;
+      this.applyMove(this.dragIndex, playerIndex);
+      this.dragIndex = null;
+    },
+    dragEnd() {
+      this.dragIndex = null;
+    },
+    applyMove(fromIndex, toIndex) {
+      if (fromIndex === toIndex) return;
+      if (this.session.nomination) {
+        // update nomination if it is affected by the move
+        const updatedNomination = this.session.nomination.map(nom => {
+          if (nom === fromIndex) return toIndex;
+          if (nom > fromIndex && nom <= toIndex) return nom - 1;
+          if (nom < fromIndex && nom >= toIndex) return nom + 1;
+          return nom;
+        });
+        if (
+          this.session.nomination[0] !== updatedNomination[0] ||
+          this.session.nomination[1] !== updatedNomination[1]
+        ) {
+          this.$store.commit("session/setNomination", updatedNomination);
+        }
+      }
+      this.$store.commit("players/move", [fromIndex, toIndex]);
+    },
     cancel() {
       this.move = -1;
       this.swap = -1;
       this.nominate = -1;
+      this.dragIndex = null;
     }
   }
 };
