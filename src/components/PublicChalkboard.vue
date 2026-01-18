@@ -7,6 +7,14 @@
         alt="Chalkboard"
       />
       <div class="public-chalkboard__overlay">
+        <div class="public-chalkboard__names">
+          <h3>Players</h3>
+          <ul>
+            <li v-for="player in players" :key="player.id">
+              {{ player.name }}
+            </li>
+          </ul>
+        </div>
         <div class="public-chalkboard__notes">
           <p v-if="activeAnonymousNote">
             {{ activeAnonymousNote.text }}
@@ -31,6 +39,7 @@ export default {
   },
   computed: {
     ...mapState(["session"]),
+    ...mapState("players", ["players"]),
     activeAnonymousNote() {
       const { approvedAnonymousNotes, activeAnonymousNoteId } = this.session;
       if (!activeAnonymousNoteId) return null;
@@ -77,10 +86,35 @@ export default {
   position: absolute;
   inset: 6% 8%;
   display: grid;
-  place-items: center;
+  grid-template-columns: minmax(160px, 26%) 1fr;
+  gap: 20px;
   align-items: center;
   color: #f7f3e8;
   font-size: clamp(0.9rem, 2.4vw, 1.2rem);
+}
+
+.public-chalkboard__names {
+  align-self: stretch;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-start;
+  padding-right: 10px;
+}
+
+.public-chalkboard__names h3 {
+  font-size: clamp(1rem, 2.8vw, 1.4rem);
+  margin-bottom: 4px;
+}
+
+.public-chalkboard__names ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  font-size: clamp(0.85rem, 2.2vw, 1.1rem);
 }
 
 .public-chalkboard__notes {
@@ -93,7 +127,6 @@ export default {
   justify-self: center;
   align-self: center;
   max-width: 90%;
-  text-transform: uppercase;
 }
 
 .public-chalkboard__placeholder {
@@ -103,8 +136,18 @@ export default {
 
 @media screen and (max-width: 768px) {
   .public-chalkboard__overlay {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    text-align: center;
+  }
+
+  .public-chalkboard__names {
     align-items: center;
     text-align: center;
+  }
+
+  .public-chalkboard__notes {
+    padding-top: 0;
   }
 }
 </style>
