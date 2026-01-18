@@ -32,6 +32,7 @@ const faIcons = [
   "PeopleArrows",
   "PlusCircle",
   "Question",
+  "Qrcode",
   "Random",
   "RedoAlt",
   "SearchMinus",
