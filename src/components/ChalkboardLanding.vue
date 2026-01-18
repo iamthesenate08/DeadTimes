@@ -10,16 +10,44 @@
         <div class="chalkboard__header">
           <h2>Welcome to the Chalkboard</h2>
           <p>
-            You're viewing this session as a spectator. Leave an anonymous note
-            for the town.
+            You're viewing this session as a spectator. Request a seat or leave
+            an anonymous note for the town.
           </p>
         </div>
+        <form class="chalkboard__form" @submit.prevent="submit">
+          <input
+            v-model.trim="name"
+            type="text"
+            maxlength="20"
+            placeholder="Your name"
+            autocomplete="name"
+          />
+          <div class="chalkboard__actions">
+            <button
+              class="button"
+              type="submit"
+              :disabled="!name || isSubmitted"
+            >
+              {{ isSubmitted ? "Request sent" : "Join game" }}
+            </button>
+            <button
+              class="button button-secondary"
+              type="button"
+              @click="spectate"
+            >
+              Spectate instead
+            </button>
+          </div>
+        </form>
         <button
           class="button button-secondary chalkboard__note-button"
           @click="openAnonymousNote"
         >
           Leave an anonymous note
         </button>
+        <p v-if="isSubmitted && !isSeated" class="chalkboard__status">
+          Waiting for the host to seat you...
+        </p>
         <div class="chalkboard__names">
           <h3>Players</h3>
           <ul>
@@ -70,6 +98,17 @@ export default {
     }
   },
   methods: {
+    submit() {
+      if (!this.name) return;
+      localStorage.setItem("playerName", this.name);
+      this.isSubmitted = true;
+      this.$store.commit("session/setHasDeclinedSeat", false);
+      this.$store.commit("session/requestJoin", this.name);
+    },
+    spectate() {
+      this.isSubmitted = false;
+      this.$store.commit("session/setHasDeclinedSeat", true);
+    },
     openAnonymousNote() {
       this.$store.commit("toggleModal", "anonymousNote");
     }
@@ -141,6 +180,11 @@ export default {
 .button-secondary {
   background: #3a3a3a;
   border-color: #2a2a2a;
+}
+
+.chalkboard__note-button {
+  align-self: center;
+  width: min(80%, 320px);
 }
 
 .chalkboard__note-button {
