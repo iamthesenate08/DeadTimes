@@ -20,6 +20,9 @@ module.exports = store => {
   if (localStorage.getItem("inPerson")) {
     store.commit("toggleInPerson", true);
   }
+  if (localStorage.getItem("passAndPlay")) {
+    store.commit("togglePassAndPlay", true);
+  }
   if (localStorage.getItem("zoom")) {
     store.commit("setZoom", parseFloat(localStorage.getItem("zoom")));
   }
@@ -116,6 +119,13 @@ module.exports = store => {
           localStorage.setItem("inPerson", 1);
         } else {
           localStorage.removeItem("inPerson");
+        }
+        break;
+      case "togglePassAndPlay":
+        if (state.grimoire.isPassAndPlay) {
+          localStorage.setItem("passAndPlay", 1);
+        } else {
+          localStorage.removeItem("passAndPlay");
         }
         break;
       case "setZoom":

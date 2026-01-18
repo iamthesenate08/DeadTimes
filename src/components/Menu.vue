@@ -97,6 +97,16 @@
                 ]"
             /></em>
           </li>
+          <li @click="togglePassAndPlay" v-if="players.length">
+            Pass-and-play
+            <em
+              ><font-awesome-icon
+                :icon="[
+                  'fas',
+                  grimoire.isPassAndPlay ? 'check-square' : 'square'
+                ]"
+            /></em>
+          </li>
           <li @click="setBackground" v-if="!grimoire.isInPerson">
             Background image
             <em><font-awesome-icon icon="image"/></em>
@@ -382,6 +392,7 @@ export default {
       "toggleMenu",
       "toggleImageOptIn",
       "toggleInPerson",
+      "togglePassAndPlay",
       "toggleMuted",
       "toggleNightOrder",
       "toggleStatic",
