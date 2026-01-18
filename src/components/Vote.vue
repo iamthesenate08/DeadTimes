@@ -14,12 +14,30 @@
         {{ voters.length }} vote{{ voters.length !== 1 ? "s" : "" }}
       </em>
       in favor
-      <em v-if="nominee.role.team !== 'traveler'">
-        (majority is {{ Math.ceil(alive / 2) }})
-      </em>
-      <em v-else>(majority is {{ Math.ceil(players.length / 2) }})</em>
+      <em>(majority is {{ majority }})</em>
 
       <template v-if="!session.isSpectator">
+        <div class="in-person-tally">
+          <div class="in-person-title">In-person tally</div>
+          <div class="in-person-count">
+            <span class="count">{{ session.inPersonVotes }}</span>
+            <span class="majority">/ {{ majority }} required</span>
+          </div>
+          <div class="button-group tally-controls">
+            <div class="button demon" @click="adjustInPersonVotes(-1)">
+              -1
+            </div>
+            <div class="button townsfolk" @click="adjustInPersonVotes(1)">
+              +1
+            </div>
+            <div class="button" @click="resetInPersonVotes">
+              Reset
+            </div>
+          </div>
+          <div class="in-person-note">
+            In-person tally is separate from online votes.
+          </div>
+        </div>
         <div v-if="!session.isVoteInProgress && session.lockedVote < 1">
           Time per player:
           <font-awesome-icon
@@ -164,6 +182,14 @@ export default {
         (index - 1 + players - session.nomination[1]) % players;
       return indexAdjusted >= session.lockedVote - 1;
     },
+    majority: function() {
+      return Math.ceil(this.maxEligibleVotes / 2);
+    },
+    maxEligibleVotes: function() {
+      return this.nominee.role.team !== "traveler"
+        ? this.alive
+        : this.players.length;
+    },
     voters: function() {
       const nomination = this.session.nomination[1];
       const voters = Array(this.players.length)
@@ -249,6 +275,16 @@ export default {
     },
     removeMarked() {
       this.$store.commit("session/setMarkedPlayer", -1);
+    },
+    adjustInPersonVotes(diff) {
+      const next = Math.max(
+        0,
+        Math.min(this.session.inPersonVotes + diff, this.maxEligibleVotes)
+      );
+      this.$store.commit("session/setInPersonVotes", next);
+    },
+    resetInPersonVotes() {
+      this.$store.commit("session/setInPersonVotes", 0);
     }
   }
 };
@@ -289,6 +325,53 @@ export default {
     &.blue {
       color: $townsfolk;
     }
+  }
+
+  .in-person-tally {
+    margin: 0.5rem 0 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .in-person-title {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .in-person-count {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.35rem 0;
+  }
+
+  .in-person-count .count {
+    font-size: 2.6rem;
+    font-weight: 700;
+  }
+
+  .in-person-count .majority {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  .tally-controls {
+    margin-top: 0.25rem;
+  }
+
+  .tally-controls .button {
+    min-width: 3.5rem;
+  }
+
+  .in-person-note {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 0.35rem;
   }
 
   svg {

@@ -21,6 +21,7 @@ const state = () => ({
   claimedSeat: -1,
   nomination: false,
   votes: [],
+  inPersonVotes: 0,
   lockedVote: 0,
   votingSpeed: 3000,
   isVoteInProgress: false,
@@ -61,6 +62,7 @@ const mutations = {
   setApprovedAnonymousNotes: set("approvedAnonymousNotes"),
   setActiveAnonymousNoteId: set("activeAnonymousNoteId"),
   setHasDeclinedSeat: set("hasDeclinedSeat"),
+  setInPersonVotes: set("inPersonVotes"),
   submitAnonymousNote: () => {},
   requestJoin: () => {},
   setSessionId(state, sessionId) {
@@ -76,6 +78,7 @@ const mutations = {
   ) {
     state.nomination = nomination || false;
     state.votes = votes || [];
+    state.inPersonVotes = 0;
     state.votingSpeed = votingSpeed || state.votingSpeed;
     state.lockedVote = lockedVote || 0;
     state.isVoteInProgress = isVoteInProgress || false;
