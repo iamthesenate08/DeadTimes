@@ -105,6 +105,7 @@ export default new Vuex.Store({
       isStatic: false,
       isMuted: false,
       isImageOptIn: false,
+      isInPerson: false,
       zoom: 0,
       background: ""
     },
@@ -173,6 +174,7 @@ export default new Vuex.Store({
     toggleNight: toggle("isNight"),
     toggleGrimoire: toggle("isPublic"),
     toggleImageOptIn: toggle("isImageOptIn"),
+    toggleInPerson: toggle("isInPerson"),
     toggleModal({ modals }, name) {
       if (name) {
         modals[name] = !modals[name];

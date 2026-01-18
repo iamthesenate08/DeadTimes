@@ -17,6 +17,9 @@ module.exports = store => {
   if (localStorage.getItem("imageOptIn")) {
     store.commit("toggleImageOptIn", true);
   }
+  if (localStorage.getItem("inPerson")) {
+    store.commit("toggleInPerson", true);
+  }
   if (localStorage.getItem("zoom")) {
     store.commit("setZoom", parseFloat(localStorage.getItem("zoom")));
   }
@@ -106,6 +109,13 @@ module.exports = store => {
           localStorage.setItem("imageOptIn", 1);
         } else {
           localStorage.removeItem("imageOptIn");
+        }
+        break;
+      case "toggleInPerson":
+        if (state.grimoire.isInPerson) {
+          localStorage.setItem("inPerson", 1);
+        } else {
+          localStorage.removeItem("inPerson");
         }
         break;
       case "setZoom":
