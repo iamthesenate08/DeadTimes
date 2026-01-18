@@ -10,9 +10,14 @@
         placeholder="Your name"
         autocomplete="name"
       />
-      <button class="button" type="submit" :disabled="!name || isSubmitted">
-        {{ isSubmitted ? "Request sent" : "Join game" }}
-      </button>
+      <div class="join-actions">
+        <button class="button" type="submit" :disabled="!name || isSubmitted">
+          {{ isSubmitted ? "Request sent" : "Join game" }}
+        </button>
+        <button class="button button-secondary" type="button" @click="spectate">
+          Spectate instead
+        </button>
+      </div>
     </form>
     <p v-if="isSubmitted && !isSeated" class="status">
       Waiting for the host to seat you...
@@ -49,7 +54,12 @@ export default {
       if (!this.name) return;
       localStorage.setItem("playerName", this.name);
       this.isSubmitted = true;
+      this.$store.commit("session/setHasDeclinedSeat", false);
       this.$store.commit("session/requestJoin", this.name);
+    },
+    spectate() {
+      this.isSubmitted = false;
+      this.$store.commit("session/setHasDeclinedSeat", true);
     }
   }
 };
@@ -73,27 +83,41 @@ export default {
 
 .join-form {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   margin-top: 12px;
   justify-content: center;
-  input {
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid #333;
-    min-width: 200px;
-  }
-  .button {
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: 1px solid #222;
-    background: #222;
-    color: white;
-    cursor: pointer;
-  }
-  .button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+  align-items: center;
+}
+
+.join-actions {
+  display: flex;
+  gap: 8px;
+}
+
+input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  min-width: 200px;
+}
+
+.button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #222;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-secondary {
+  background: #3a3a3a;
+  border-color: #2a2a2a;
 }
 
 .status {

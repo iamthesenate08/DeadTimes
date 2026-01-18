@@ -92,7 +92,12 @@ export default {
       const isSeated = this.players.some(
         player => player.id === this.session.playerId
       );
-      return isSpectator && !isSeated && !this.session.nomination;
+      return (
+        isSpectator &&
+        !isSeated &&
+        !this.session.nomination &&
+        !this.session.hasDeclinedSeat
+      );
     }
   },
   data() {
