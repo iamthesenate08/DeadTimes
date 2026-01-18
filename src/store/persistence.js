@@ -83,7 +83,8 @@ module.exports = store => {
   }
   if (localStorage.getItem("session") && !window.location.hash.substr(1)) {
     const [spectator, sessionId] = JSON.parse(localStorage.getItem("session"));
-    store.commit("session/setSpectator", spectator);
+    const shouldSpectate = store.state.grimoire.isPublicView || spectator;
+    store.commit("session/setSpectator", shouldSpectate);
     store.commit("session/setSessionId", sessionId);
   }
   if (store.state.grimoire.isPublicView) {
