@@ -79,17 +79,12 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      name: localStorage.getItem("playerName") || "",
-      isSubmitted: false,
       chalkboardImage: "https://i.imgur.com/yfOk8nj.png"
     };
   },
   computed: {
     ...mapState(["session"]),
     ...mapState("players", ["players"]),
-    isSeated() {
-      return this.players.some(player => player.id === this.session.playerId);
-    },
     activeAnonymousNote() {
       const { approvedAnonymousNotes, activeAnonymousNoteId } = this.session;
       if (!activeAnonymousNoteId) return null;
@@ -100,13 +95,6 @@ export default {
     activeAnonymousNoteText() {
       if (!this.activeAnonymousNote) return "";
       return this.activeAnonymousNote.text.toUpperCase();
-    }
-  },
-  watch: {
-    isSeated(value) {
-      if (value) {
-        this.isSubmitted = false;
-      }
     }
   },
   methods: {
@@ -175,29 +163,6 @@ export default {
   margin-bottom: 6px;
 }
 
-.chalkboard__form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.chalkboard__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: min(80%, 320px);
-}
-
-input {
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  width: min(80%, 320px);
-}
-
 .button {
   padding: 8px 14px;
   border-radius: 6px;
@@ -217,8 +182,9 @@ input {
   border-color: #2a2a2a;
 }
 
-.chalkboard__status {
-  opacity: 0.85;
+.chalkboard__note-button {
+  align-self: center;
+  width: min(80%, 320px);
 }
 
 .chalkboard__note-button {
