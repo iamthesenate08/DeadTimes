@@ -23,6 +23,60 @@
       ></Player>
     </ul>
 
+    <div
+      v-if="showPassAndPlay"
+      class="pass-and-play"
+      :class="{ active: passAndPlaySelected !== null }"
+    >
+      <div class="pass-and-play__header">
+        <h3>Pass-and-play</h3>
+        <button class="neutral" @click="resetPassAndPlay">
+          Return to neutral screen
+        </button>
+      </div>
+      <div class="pass-and-play__search">
+        <input
+          v-model="passAndPlayQuery"
+          type="text"
+          placeholder="Search player"
+          @keydown.enter.prevent="revealFirstMatch"
+        />
+        <button @click="revealFirstMatch" :disabled="!filteredPassAndPlay.length">
+          Reveal
+        </button>
+      </div>
+      <div v-if="passAndPlaySelected === null" class="pass-and-play__results">
+        <p v-if="!filteredPassAndPlay.length">No matching players.</p>
+        <button
+          v-for="player in filteredPassAndPlay"
+          :key="player.id || player.name"
+          @click="selectPassAndPlay(player)"
+        >
+          {{ player.name }}
+        </button>
+      </div>
+      <div v-else class="pass-and-play__details">
+        <div class="pass-and-play__player">
+          <Token :role="passAndPlayPlayer.role" />
+          <div>
+            <strong>{{ passAndPlayPlayer.name }}</strong>
+            <p>{{ passAndPlayPlayer.role.name }}</p>
+          </div>
+        </div>
+        <ul
+          v-if="passAndPlayPlayer.reminders && passAndPlayPlayer.reminders.length"
+        >
+          <li
+            v-for="reminder in passAndPlayPlayer.reminders"
+            :key="reminder.name"
+          >
+            {{ reminder.name }}
+          </li>
+        </ul>
+        <button class="done" @click="resetPassAndPlay">Done</button>
+      </div>
+    </div>
+
     <div v-if="activeAnonymousNote" class="anonymous-note-banner">
       <strong>Anonymous note:</strong>
       <span>{{ activeAnonymousNote.text }}</span>
@@ -109,6 +163,20 @@ export default {
     ...mapGetters({ nightOrder: "players/nightOrder" }),
     ...mapState(["grimoire", "roles", "session"]),
     ...mapState("players", ["players", "bluffs", "fabled"]),
+    showPassAndPlay() {
+      return this.grimoire.isPassAndPlay && !this.session.isSpectator;
+    },
+    filteredPassAndPlay() {
+      const query = this.passAndPlayQuery.trim().toLowerCase();
+      if (!query) return this.players;
+      return this.players.filter(player =>
+        (player.name || "").toLowerCase().includes(query)
+      );
+    },
+    passAndPlayPlayer() {
+      if (this.passAndPlaySelected === null) return null;
+      return this.players[this.passAndPlaySelected];
+    },
     activeAnonymousNote() {
       const { approvedAnonymousNotes, activeAnonymousNoteId } = this.session;
       if (!activeAnonymousNoteId) return null;
@@ -126,10 +194,46 @@ export default {
       nominate: -1,
       dragIndex: null,
       isBluffsOpen: true,
-      isFabledOpen: true
+      isFabledOpen: true,
+      passAndPlayQuery: "",
+      passAndPlaySelected: null,
+      passAndPlayTimeout: null
     };
   },
+  watch: {
+    "grimoire.isPassAndPlay"(enabled) {
+      if (!enabled) {
+        this.resetPassAndPlay();
+      }
+    }
+  },
   methods: {
+    revealFirstMatch() {
+      if (!this.filteredPassAndPlay.length) return;
+      this.selectPassAndPlay(this.filteredPassAndPlay[0]);
+    },
+    selectPassAndPlay(player) {
+      const index = this.players.indexOf(player);
+      if (index < 0) return;
+      this.passAndPlaySelected = index;
+      this.startPassAndPlayTimeout();
+    },
+    startPassAndPlayTimeout() {
+      if (this.passAndPlayTimeout) {
+        clearTimeout(this.passAndPlayTimeout);
+      }
+      this.passAndPlayTimeout = setTimeout(() => {
+        this.resetPassAndPlay();
+      }, 10000);
+    },
+    resetPassAndPlay() {
+      if (this.passAndPlayTimeout) {
+        clearTimeout(this.passAndPlayTimeout);
+        this.passAndPlayTimeout = null;
+      }
+      this.passAndPlaySelected = null;
+      this.passAndPlayQuery = "";
+    },
     toggleBluffs() {
       this.isBluffsOpen = !this.isBluffsOpen;
     },
@@ -280,6 +384,11 @@ export default {
       this.nominate = -1;
       this.dragIndex = null;
     }
+  },
+  beforeDestroy() {
+    if (this.passAndPlayTimeout) {
+      clearTimeout(this.passAndPlayTimeout);
+    }
   }
 };
 </script>
@@ -296,6 +405,92 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+
+.pass-and-play {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: min(360px, 90vw);
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(10, 10, 10, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__search {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+
+    input {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+    }
+  }
+
+  &__results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    button {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__player {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+
+  button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .neutral {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .done {
+    align-self: flex-start;
+  }
 }
 
 .anonymous-note-banner {
