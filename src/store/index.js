@@ -210,6 +210,10 @@ export default new Vuex.Store({
         modals[modal] = false;
       }
     },
+    setModal({ modals }, { name, value }) {
+      if (!name || modals[name] === undefined) return;
+      modals[name] = value;
+    },
     /**
      * Store custom roles
      * @param state
