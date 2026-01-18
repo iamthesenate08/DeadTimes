@@ -44,6 +44,7 @@
     <GameStateModal v-if="!grimoire.isPublicView" />
     <AnonymousNoteModal v-if="!grimoire.isPublicView" />
     <AnonymousNoteQueueModal v-if="!grimoire.isPublicView" />
+    <ChalkboardNoteModal v-if="!grimoire.isPublicView" />
     <SessionQrModal v-if="!grimoire.isPublicView" />
     <Gradients />
     <span id="version">v{{ version }}</span>
@@ -71,6 +72,7 @@ import VoteHistoryModal from "@/components/modals/VoteHistoryModal";
 import GameStateModal from "@/components/modals/GameStateModal";
 import AnonymousNoteModal from "@/components/modals/AnonymousNoteModal";
 import AnonymousNoteQueueModal from "@/components/modals/AnonymousNoteQueueModal";
+import ChalkboardNoteModal from "@/components/modals/ChalkboardNoteModal";
 import SessionQrModal from "@/components/modals/SessionQrModal";
 import dayTransitionSound from "@/assets/sounds/day-transition";
 import nightTransitionSound from "@/assets/sounds/night-transition";
@@ -83,6 +85,7 @@ export default {
     NightOrderModal,
     AnonymousNoteModal,
     AnonymousNoteQueueModal,
+    ChalkboardNoteModal,
     SessionQrModal,
     Vote,
     ReferenceModal,

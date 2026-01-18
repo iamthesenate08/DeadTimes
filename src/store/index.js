@@ -132,6 +132,7 @@ export default new Vuex.Store({
       background: ""
     },
     modals: {
+      chalkboardNote: false,
       edition: false,
       fabled: false,
       gameState: false,
