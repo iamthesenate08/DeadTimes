@@ -42,7 +42,11 @@
             @click="tab = 'players'"
           />
           <font-awesome-icon icon="theater-masks" @click="tab = 'characters'" />
-          <font-awesome-icon icon="question" @click="tab = 'help'" />
+          <font-awesome-icon
+            icon="question"
+            v-if="!grimoire.isInPerson"
+            @click="tab = 'help'"
+          />
         </li>
 
         <template v-if="tab === 'grimoire'">
@@ -83,11 +87,24 @@
               />
             </em>
           </li>
-          <li @click="setBackground">
+          <li @click="toggleInPerson">
+            In-person mode
+            <em
+              ><font-awesome-icon
+                :icon="[
+                  'fas',
+                  grimoire.isInPerson ? 'check-square' : 'square'
+                ]"
+            /></em>
+          </li>
+          <li @click="setBackground" v-if="!grimoire.isInPerson">
             Background image
             <em><font-awesome-icon icon="image"/></em>
           </li>
-          <li v-if="!edition.isOfficial" @click="imageOptIn">
+          <li
+            v-if="!edition.isOfficial && !grimoire.isInPerson"
+            @click="imageOptIn"
+          >
             <small>Show Custom Images</small>
             <em
               ><font-awesome-icon
@@ -97,14 +114,14 @@
                 ]"
             /></em>
           </li>
-          <li @click="toggleStatic">
+          <li @click="toggleStatic" v-if="!grimoire.isInPerson">
             Disable Animations
             <em
               ><font-awesome-icon
                 :icon="['fas', grimoire.isStatic ? 'check-square' : 'square']"
             /></em>
           </li>
-          <li @click="toggleMuted">
+          <li @click="toggleMuted" v-if="!grimoire.isInPerson">
             Mute Sounds
             <em
               ><font-awesome-icon
@@ -204,7 +221,7 @@
           </li>
         </template>
 
-        <template v-if="tab === 'help'">
+        <template v-if="tab === 'help' && !grimoire.isInPerson">
           <!-- Help -->
           <li class="headline">Help</li>
           <li @click="toggleModal('reference')">
@@ -364,6 +381,7 @@ export default {
       "toggleGrimoire",
       "toggleMenu",
       "toggleImageOptIn",
+      "toggleInPerson",
       "toggleMuted",
       "toggleNightOrder",
       "toggleStatic",

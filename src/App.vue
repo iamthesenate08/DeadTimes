@@ -5,7 +5,8 @@
     tabindex="-1"
     :class="{
       night: grimoire.isNight,
-      static: grimoire.isStatic
+      static: grimoire.isStatic,
+      'in-person': grimoire.isInPerson
     }"
     :style="{
       backgroundImage: grimoire.background
@@ -236,6 +237,25 @@ ul {
     transition: none !important;
     animation: none !important;
   }
+}
+
+#app.in-person {
+  font-size: 1.35em;
+  line-height: 1.6;
+}
+
+#app.in-person h1,
+#app.in-person h2,
+#app.in-person h3,
+#app.in-person h4,
+#app.in-person h5 {
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+#app.in-person #controls .menu ul li {
+  padding: 6px 10px;
+  min-height: 36px;
 }
 
 #version {
