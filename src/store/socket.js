@@ -1087,6 +1087,11 @@ export default store => {
       case "session/setVoteHistoryAllowed":
         session.setVoteHistoryAllowed();
         break;
+      case "session/setApprovedAnonymousNotes":
+      case "session/addApprovedAnonymousNote":
+      case "session/clearAnonymousNote":
+        session.sendGamestate();
+        break;
       case "toggleNight":
         session.setIsNight();
         break;
