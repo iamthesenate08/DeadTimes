@@ -9,7 +9,10 @@
       <div class="chalkboard__overlay">
         <div class="chalkboard__header">
           <h2>Welcome to the Chalkboard</h2>
-          <p>Sign in to take a seat in this session.</p>
+          <p>
+            You're viewing this session as a spectator. Request a seat or leave
+            an anonymous note for the town.
+          </p>
         </div>
         <form class="chalkboard__form" @submit.prevent="submit">
           <input
@@ -36,6 +39,12 @@
             </button>
           </div>
         </form>
+        <button
+          class="button button-secondary chalkboard__note-button"
+          @click="openAnonymousNote"
+        >
+          Leave an anonymous note
+        </button>
         <p v-if="isSubmitted && !isSeated" class="chalkboard__status">
           Waiting for the host to seat you...
         </p>
@@ -112,6 +121,9 @@ export default {
       this.isSubmitted = false;
       this.$store.commit("session/setHasDeclinedSeat", true);
     },
+    openAnonymousNote() {
+      this.$store.commit("toggleModal", "anonymousNote");
+    }
   }
 };
 </script>
@@ -207,6 +219,11 @@ input {
 
 .chalkboard__status {
   opacity: 0.85;
+}
+
+.chalkboard__note-button {
+  align-self: center;
+  width: min(80%, 320px);
 }
 
 .chalkboard__names {

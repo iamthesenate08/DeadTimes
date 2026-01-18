@@ -25,8 +25,7 @@
     <div class="backdrop"></div>
     <transition name="blur">
       <PublicChalkboard v-if="grimoire.isPublicView" />
-      <ChalkboardLanding v-else-if="showJoinLanding && isMobile" />
-      <JoinLanding v-else-if="showJoinLanding" />
+      <ChalkboardLanding v-else-if="showJoinLanding" />
       <Intro v-else-if="!players.length"></Intro>
       <TownInfo
         v-else-if="players.length && !session.nomination"
@@ -60,7 +59,6 @@ import Menu from "./components/Menu";
 import RolesModal from "./components/modals/RolesModal";
 import EditionModal from "./components/modals/EditionModal";
 import Intro from "./components/Intro";
-import JoinLanding from "./components/JoinLanding";
 import ChalkboardLanding from "./components/ChalkboardLanding";
 import PublicChalkboard from "./components/PublicChalkboard";
 import ReferenceModal from "./components/modals/ReferenceModal";
@@ -89,7 +87,6 @@ export default {
     SessionQrModal,
     Vote,
     ReferenceModal,
-    JoinLanding,
     ChalkboardLanding,
     PublicChalkboard,
     Intro,
@@ -103,9 +100,6 @@ export default {
   computed: {
     ...mapState(["grimoire", "session"]),
     ...mapState("players", ["players"]),
-    isMobile() {
-      return this.windowWidth <= 767;
-    },
     showJoinLanding() {
       const isSpectator = this.session.isSpectator && this.session.sessionId;
       const isSeated = this.players.some(
@@ -122,7 +116,6 @@ export default {
   data() {
     return {
       version,
-      windowWidth: typeof window === "undefined" ? 1024 : window.innerWidth,
       transitionSounds: {
         day: null,
         night: null
@@ -134,12 +127,6 @@ export default {
     this.transitionSounds.night = new Audio(nightTransitionSound);
     this.setTransitionVolumes(this.grimoire.soundVolume);
   },
-  mounted() {
-    window.addEventListener("resize", this.handleResize);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.handleResize);
-  },
   watch: {
     "grimoire.isNight"(isNight) {
       this.playTransitionSound(isNight);
@@ -149,9 +136,6 @@ export default {
     }
   },
   methods: {
-    handleResize() {
-      this.windowWidth = window.innerWidth;
-    },
     setTransitionVolumes(volume) {
       const clampedVolume = Math.max(0, Math.min(1, volume));
       Object.values(this.transitionSounds).forEach(sound => {
