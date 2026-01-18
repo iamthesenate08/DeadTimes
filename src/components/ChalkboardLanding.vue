@@ -39,27 +39,25 @@
         <p v-if="isSubmitted && !isSeated" class="chalkboard__status">
           Waiting for the host to seat you...
         </p>
-        <div v-if="!isNoteDismissed" class="chalkboard__note">
-          <p>Leave an anonymous note for the storyteller?</p>
-          <div class="chalkboard__note-actions">
-            <button class="button button-secondary" @click="openNoteModal">
-              Leave a note
-            </button>
-            <button class="button button-secondary" @click="dismissNote">
-              Not now
-            </button>
-          </div>
-        </div>
         <div class="chalkboard__names">
           <h3>Players</h3>
           <ul>
             <li v-for="player in players" :key="player.id">
-              {{ player.name }}
+              <span class="player-name" :class="{ 'is-dead': player.isDead }">
+                {{ player.name }}
+              </span>
+              <span
+                v-if="player.isDead"
+                class="ghost-vote"
+                :class="{ 'is-used': player.isVoteless }"
+              >
+                (1 Ghost Vote)
+              </span>
             </li>
           </ul>
         </div>
         <div v-if="activeAnonymousNote" class="chalkboard__message">
-          {{ activeAnonymousNote.text }}
+          {{ activeAnonymousNoteText }}
         </div>
       </div>
     </div>
@@ -67,15 +65,14 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   data() {
     return {
       name: localStorage.getItem("playerName") || "",
       isSubmitted: false,
-      isNoteDismissed: false,
-      chalkboardImage: "https://i.imgur.com/AKGaolT.png"
+      chalkboardImage: "https://i.imgur.com/yfOk8nj.png"
     };
   },
   computed: {
@@ -90,6 +87,10 @@ export default {
       return approvedAnonymousNotes.find(
         note => note.id === activeAnonymousNoteId
       );
+    },
+    activeAnonymousNoteText() {
+      if (!this.activeAnonymousNote) return "";
+      return this.activeAnonymousNote.text.toUpperCase();
     }
   },
   watch: {
@@ -111,13 +112,6 @@ export default {
       this.isSubmitted = false;
       this.$store.commit("session/setHasDeclinedSeat", true);
     },
-    openNoteModal() {
-      this.toggleModal("anonymousNote");
-    },
-    dismissNote() {
-      this.isNoteDismissed = true;
-    },
-    ...mapMutations(["toggleModal"])
   }
 };
 </script>
@@ -161,11 +155,11 @@ export default {
   gap: 12px;
   color: #f7f3e8;
   text-align: center;
-  font-size: clamp(0.9rem, 2.4vw, 1.1rem);
+  font-size: clamp(0.9rem, 1.6vw + 0.4rem, 1.2rem);
 }
 
 .chalkboard__header h2 {
-  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  font-size: 1.6em;
   margin-bottom: 6px;
 }
 
@@ -215,24 +209,6 @@ input {
   opacity: 0.85;
 }
 
-.chalkboard__note {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
-}
-
-.chalkboard__note-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.chalkboard__note-actions .button {
-  min-width: 120px;
-}
-
 .chalkboard__names {
   display: flex;
   flex-direction: column;
@@ -251,15 +227,31 @@ input {
 }
 
 .chalkboard__names li {
-  font-size: clamp(0.85rem, 2.2vw, 1.05rem);
+  font-size: 1em;
+}
+
+.player-name.is-dead {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.ghost-vote {
+  margin-left: 6px;
+  font-size: 0.95em;
+}
+
+.ghost-vote.is-used {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
 }
 
 .chalkboard__message {
   margin-top: auto;
   font-family: "Papyrus", serif;
-  font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+  font-size: 2.2em;
   line-height: 1.2;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
 }
 
 @media screen and (max-width: 480px) {
