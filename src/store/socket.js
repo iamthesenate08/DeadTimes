@@ -251,7 +251,9 @@ class LiveSession {
     this._pings = {};
     this._store.commit("session/setPlayerCount", 0);
     this._store.commit("session/setPing", 0);
-    this._isSpectator = this._store.state.session.isSpectator;
+    this._isSpectator =
+      this._store.state.grimoire.isPublicView ||
+      this._store.state.session.isSpectator;
     this._open(channel);
   }
 

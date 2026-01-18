@@ -331,6 +331,9 @@ export default {
     launchPublicView() {
       const url = new URL(window.location.href);
       url.searchParams.set("public", "1");
+      if (this.session.sessionId) {
+        url.hash = this.session.sessionId;
+      }
       window.open(url.toString(), "_blank", "noopener");
     },
     hostSession() {
