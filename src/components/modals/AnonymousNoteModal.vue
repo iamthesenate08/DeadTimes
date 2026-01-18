@@ -58,7 +58,7 @@ export default {
         createdAt: Date.now()
       };
       this.$store.commit("session/submitAnonymousNote", payload);
-      this.close();
+      this.note = "";
     },
     close() {
       this.note = "";

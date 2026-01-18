@@ -9,36 +9,17 @@
       <div class="chalkboard__overlay">
         <div class="chalkboard__header">
           <h2>Welcome to the Chalkboard</h2>
-          <p>Sign in to take a seat in this session.</p>
+          <p>
+            You're viewing this session as a spectator. Leave an anonymous note
+            for the town.
+          </p>
         </div>
-        <form class="chalkboard__form" @submit.prevent="submit">
-          <input
-            v-model.trim="name"
-            type="text"
-            maxlength="20"
-            placeholder="Your name"
-            autocomplete="name"
-          />
-          <div class="chalkboard__actions">
-            <button
-              class="button"
-              type="submit"
-              :disabled="!name || isSubmitted"
-            >
-              {{ isSubmitted ? "Request sent" : "Join game" }}
-            </button>
-            <button
-              class="button button-secondary"
-              type="button"
-              @click="spectate"
-            >
-              Spectate instead
-            </button>
-          </div>
-        </form>
-        <p v-if="isSubmitted && !isSeated" class="chalkboard__status">
-          Waiting for the host to seat you...
-        </p>
+        <button
+          class="button button-secondary chalkboard__note-button"
+          @click="openAnonymousNote"
+        >
+          Leave an anonymous note
+        </button>
         <div class="chalkboard__names">
           <h3>Players</h3>
           <ul>
@@ -70,17 +51,12 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      name: localStorage.getItem("playerName") || "",
-      isSubmitted: false,
       chalkboardImage: "https://i.imgur.com/yfOk8nj.png"
     };
   },
   computed: {
     ...mapState(["session"]),
     ...mapState("players", ["players"]),
-    isSeated() {
-      return this.players.some(player => player.id === this.session.playerId);
-    },
     activeAnonymousNote() {
       const { approvedAnonymousNotes, activeAnonymousNoteId } = this.session;
       if (!activeAnonymousNoteId) return null;
@@ -93,25 +69,10 @@ export default {
       return this.activeAnonymousNote.text.toUpperCase();
     }
   },
-  watch: {
-    isSeated(value) {
-      if (value) {
-        this.isSubmitted = false;
-      }
-    }
-  },
   methods: {
-    submit() {
-      if (!this.name) return;
-      localStorage.setItem("playerName", this.name);
-      this.isSubmitted = true;
-      this.$store.commit("session/setHasDeclinedSeat", false);
-      this.$store.commit("session/requestJoin", this.name);
-    },
-    spectate() {
-      this.isSubmitted = false;
-      this.$store.commit("session/setHasDeclinedSeat", true);
-    },
+    openAnonymousNote() {
+      this.$store.commit("toggleModal", "anonymousNote");
+    }
   }
 };
 </script>
@@ -163,29 +124,6 @@ export default {
   margin-bottom: 6px;
 }
 
-.chalkboard__form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.chalkboard__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: min(80%, 320px);
-}
-
-input {
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  width: min(80%, 320px);
-}
-
 .button {
   padding: 8px 14px;
   border-radius: 6px;
@@ -205,8 +143,9 @@ input {
   border-color: #2a2a2a;
 }
 
-.chalkboard__status {
-  opacity: 0.85;
+.chalkboard__note-button {
+  align-self: center;
+  width: min(80%, 320px);
 }
 
 .chalkboard__names {
