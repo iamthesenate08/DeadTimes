@@ -44,6 +44,10 @@
   #townsquare {
     padding: 8px;
   }
+  #townsquare .circle {
+    transform: scale(0.88);
+    transform-origin: center;
+  }
   .pass-and-play {
     top: 8px;
     right: 8px;
@@ -110,6 +114,9 @@
   html,
   body {
     font-size: 0.8em;
+  }
+  #townsquare .circle {
+    transform: scale(0.8);
   }
   #controls {
     right: 2px;
