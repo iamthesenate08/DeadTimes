@@ -11,13 +11,22 @@
           <h3>Players</h3>
           <ul>
             <li v-for="player in players" :key="player.id">
-              {{ player.name }}
+              <span class="player-name" :class="{ 'is-dead': player.isDead }">
+                {{ player.name }}
+              </span>
+              <span
+                v-if="player.isDead"
+                class="ghost-vote"
+                :class="{ 'is-used': player.isVoteless }"
+              >
+                (1 Ghost Vote)
+              </span>
             </li>
           </ul>
         </div>
         <div class="public-chalkboard__notes">
           <p v-if="activeAnonymousNote">
-            {{ activeAnonymousNote.text }}
+            {{ activeAnonymousNoteText }}
           </p>
           <p v-else class="public-chalkboard__placeholder">
             Anonymous notes will appear here.
@@ -34,7 +43,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      chalkboardImage: "https://i.imgur.com/AKGaolT.png"
+      chalkboardImage: "https://i.imgur.com/yfOk8nj.png"
     };
   },
   computed: {
@@ -46,6 +55,10 @@ export default {
       return approvedAnonymousNotes.find(
         note => note.id === activeAnonymousNoteId
       );
+    },
+    activeAnonymousNoteText() {
+      if (!this.activeAnonymousNote) return "";
+      return this.activeAnonymousNote.text.toUpperCase();
     }
   }
 };
@@ -90,7 +103,7 @@ export default {
   gap: 20px;
   align-items: center;
   color: #f7f3e8;
-  font-size: clamp(0.9rem, 2.4vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.6vw + 0.4rem, 1.25rem);
 }
 
 .public-chalkboard__names {
@@ -104,7 +117,7 @@ export default {
 }
 
 .public-chalkboard__names h3 {
-  font-size: clamp(1rem, 2.8vw, 1.4rem);
+  font-size: 1.3em;
   margin-bottom: 4px;
 }
 
@@ -114,24 +127,41 @@ export default {
   margin: 0;
   display: grid;
   gap: 6px;
-  font-size: clamp(0.85rem, 2.2vw, 1.1rem);
+  font-size: 1em;
+}
+
+.player-name.is-dead {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.ghost-vote {
+  margin-left: 6px;
+  font-size: 0.95em;
+}
+
+.ghost-vote.is-used {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
 }
 
 .public-chalkboard__notes {
   text-align: center;
   font-family: "Papyrus", serif;
-  font-size: clamp(1.6rem, 4.5vw, 3rem);
+  font-size: 2.4em;
   line-height: 1.2;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
   padding: 10px 20px;
   justify-self: center;
   align-self: center;
   max-width: 90%;
+  text-transform: uppercase;
 }
 
 .public-chalkboard__placeholder {
   opacity: 0.65;
-  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  font-size: 1.5em;
+  text-transform: none;
 }
 
 @media screen and (max-width: 768px) {
