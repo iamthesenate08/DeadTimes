@@ -121,6 +121,7 @@ export default new Vuex.Store({
       reminder: false,
       role: false,
       roles: false,
+      sessionQr: false,
       voteHistory: false
     },
     edition: editionJSONbyId.get("tb"),

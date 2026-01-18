@@ -161,6 +161,10 @@
               Copy player link
               <em><font-awesome-icon icon="copy"/></em>
             </li>
+            <li v-if="!session.isSpectator" @click="toggleModal('sessionQr')">
+              Show QR
+              <em><font-awesome-icon icon="qrcode"/></em>
+            </li>
             <li v-if="!session.isSpectator" @click="distributeRoles">
               Send Characters
               <em><font-awesome-icon icon="theater-masks"/></em>
@@ -274,6 +278,7 @@
 
 <script>
 import { mapMutations, mapState } from "vuex";
+import { getSessionJoinUrl } from "../utils/session";
 
 export default {
   computed: {
@@ -306,9 +311,10 @@ export default {
       }
     },
     copySessionUrl() {
-      const url = window.location.href.split("#")[0];
-      const link = url + "#" + this.session.sessionId;
-      navigator.clipboard.writeText(link);
+      const link = getSessionJoinUrl(this.session.sessionId);
+      if (link) {
+        navigator.clipboard.writeText(link);
+      }
     },
     distributeRoles() {
       if (this.session.isSpectator) return;
