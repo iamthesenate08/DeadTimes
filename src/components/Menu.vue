@@ -221,6 +221,17 @@
                 session.pendingAnonymousNotes.length
               }}</em>
             </li>
+            <li
+              v-if="!session.isSpectator"
+              @click="toggleModal('chalkboardNote')"
+            >
+              Set Chalkboard Note
+              <em><font-awesome-icon icon="clipboard"/></em>
+            </li>
+            <li v-if="!session.isSpectator" @click="clearChalkboardNote">
+              Clear Chalkboard
+              <em><font-awesome-icon icon="trash-alt"/></em>
+            </li>
             <li @click="leaveSession">
               Leave Session
               <em>{{ session.sessionId }}</em>
@@ -424,6 +435,12 @@ export default {
     clearRoles() {
       if (confirm("Are you sure you want to remove all player roles?")) {
         this.$store.dispatch("players/clearRoles");
+      }
+    },
+    clearChalkboardNote() {
+      if (this.session.isSpectator) return;
+      if (confirm("Clear the current chalkboard note?")) {
+        this.$store.commit("session/clearAnonymousNotes");
       }
     },
     toggleNight() {
