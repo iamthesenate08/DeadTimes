@@ -138,6 +138,33 @@
                 :icon="['fas', grimoire.isMuted ? 'volume-mute' : 'volume-up']"
             /></em>
           </li>
+          <li @click="toggleSoundCues" v-if="!grimoire.isInPerson">
+            Sound cues
+            <em>
+              <font-awesome-icon
+                :icon="[
+                  'fas',
+                  grimoire.isSoundCuesEnabled ? 'check-square' : 'square'
+                ]"
+              />
+            </em>
+          </li>
+          <li v-if="!grimoire.isInPerson">
+            Sound volume
+            <em>
+              <input
+                class="volume-slider"
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                :value="Math.round(grimoire.soundVolume * 100)"
+                @input="updateSoundVolume"
+                @click.stop
+              />
+              {{ Math.round(grimoire.soundVolume * 100) }}%
+            </em>
+          </li>
         </template>
 
         <template v-if="tab === 'session'">
@@ -393,6 +420,12 @@ export default {
         this.$store.commit("session/setMarkedPlayer", -1);
       }
     },
+    updateSoundVolume(event) {
+      const value = parseInt(event.target.value, 10);
+      if (!Number.isNaN(value)) {
+        this.setSoundVolume(value / 100);
+      }
+    },
     ...mapMutations([
       "toggleGrimoire",
       "toggleMenu",
@@ -400,6 +433,8 @@ export default {
       "toggleInPerson",
       "togglePassAndPlay",
       "toggleMuted",
+      "toggleSoundCues",
+      "setSoundVolume",
       "toggleNightOrder",
       "toggleStatic",
       "setZoom",
@@ -582,6 +617,12 @@ export default {
         $demon 100%
       );
     }
+  }
+
+  .volume-slider {
+    width: 90px;
+    margin-right: 4px;
+    vertical-align: middle;
   }
 }
 </style>

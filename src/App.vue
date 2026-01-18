@@ -67,6 +67,8 @@ import GameStateModal from "@/components/modals/GameStateModal";
 import AnonymousNoteModal from "@/components/modals/AnonymousNoteModal";
 import AnonymousNoteQueueModal from "@/components/modals/AnonymousNoteQueueModal";
 import SessionQrModal from "@/components/modals/SessionQrModal";
+import dayTransitionSound from "@/assets/sounds/day-transition";
+import nightTransitionSound from "@/assets/sounds/night-transition";
 
 export default {
   components: {
@@ -106,10 +108,55 @@ export default {
   },
   data() {
     return {
-      version
+      version,
+      transitionSounds: {
+        day: null,
+        night: null
+      }
     };
   },
+  created() {
+    this.transitionSounds.day = new Audio(dayTransitionSound);
+    this.transitionSounds.night = new Audio(nightTransitionSound);
+    this.setTransitionVolumes(this.grimoire.soundVolume);
+  },
+  watch: {
+    "grimoire.isNight"(isNight) {
+      this.playTransitionSound(isNight);
+    },
+    "grimoire.soundVolume"(volume) {
+      this.setTransitionVolumes(volume);
+    }
+  },
   methods: {
+    setTransitionVolumes(volume) {
+      const clampedVolume = Math.max(0, Math.min(1, volume));
+      Object.values(this.transitionSounds).forEach(sound => {
+        if (sound) {
+          sound.volume = clampedVolume;
+        }
+      });
+    },
+    playTransitionSound(isNight) {
+      if (this.grimoire.isMuted || !this.grimoire.isSoundCuesEnabled) {
+        return;
+      }
+      const sound = isNight
+        ? this.transitionSounds.night
+        : this.transitionSounds.day;
+      if (!sound) return;
+      window.requestAnimationFrame(() => {
+        try {
+          sound.currentTime = 0;
+        } catch (error) {
+          // ignore errors resetting audio position
+        }
+        const playPromise = sound.play();
+        if (playPromise && playPromise.catch) {
+          playPromise.catch(() => {});
+        }
+      });
+    },
     keyup({ key, ctrlKey, metaKey }) {
       if (ctrlKey || metaKey) return;
       switch (key.toLocaleLowerCase()) {
